@@ -10,6 +10,7 @@ env:
   jobs:
     - MOLECULE_SCENARIO_NAME="centos-7"
     - MOLECULE_SCENARIO_NAME="suse-15"
+    - MOLECULE_SCENARIO_NAME="ubuntu-16.04"
     - MOLECULE_SCENARIO_NAME="ubuntu-18.04"
     - MOLECULE_SCENARIO_NAME="ubuntu-19.10"
 
