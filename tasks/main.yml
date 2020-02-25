@@ -56,7 +56,6 @@
     mode: "{{ item.mode | default('0755') }}"
     state: "{{ item.state | default('directory') }}"
   loop:
-    - { dest: "/etc/containers" }
     - { dest: "/usr/local/bin" }
     - { dest: "{{ podman_download.dest | dirname }}" }
   tags: podman
@@ -85,24 +84,14 @@
       && mkdir -p $GOPATH/src/github.com/containers/libpod \
       && cd $GOPATH/src/github.com/containers/libpod \
       && tar -zx -C . -f {{ podman_download.dest }} --strip-components=1 \
-      && make BUILDTAGS='apparmor seccomp selinux systemd' \
+      && make BUILDTAGS='apparmor seccomp selinux' \
       && make install \
       && rm -rf $TMP_DIR
   args:
     executable: "/bin/bash"
   when: get_url_result is changed
-  tags: podman
-
-- name: copy templates
-  template:
-    dest: "{{ item.dest }}"
-    src: "{{ item.src | default('./templates' + item.dest + '.j2') }}"
-    owner: "{{ item.owner | default('root') }}"
-    group: "{{ item.group | default('root') }}"
-    mode: "{{ item.mode | default('0644') }}"
-  loop:
-    - { dest: "/etc/containers/policy.json" }
-    - { dest: "/etc/containers/registries.conf" }
+  register: result
+  until: result is succeeded
   tags: podman
 
 - name: prepare files
@@ -113,7 +102,5 @@
     mode: "{{ item.mode | default('0644') }}"
     state: "{{ item.state | default('file') }}"
   loop:
-    - { dest: "/etc/containers/policy.json" }
-    - { dest: "/etc/containers/registries.conf" }
     - { dest: "/usr/local/bin/podman", mode: "0755" }
   tags: podman

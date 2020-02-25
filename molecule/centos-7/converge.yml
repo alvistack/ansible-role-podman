@@ -21,8 +21,4 @@
     - role: python
     - role: git
     - role: golang
-    - role: runc
-    - role: conmon
-    - role: cri_tools
-    - role: cni_plugins
     - role: podman

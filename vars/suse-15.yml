@@ -17,12 +17,10 @@
 _zypper:
   - { state: "latest", name: "conntrack-tools" }
   - { state: "latest", name: "device-mapper-devel" }
-  - { state: "latest", name: "gcc" }
   - { state: "latest", name: "glib2-devel" }
   - { state: "latest", name: "glibc-devel" }
   - { state: "latest", name: "glibc-static" }
   - { state: "latest", name: "gpgme-devel" }
-  - { state: "latest", name: "iproute" }
   - { state: "latest", name: "iptables" }
   - { state: "latest", name: "libassuan-devel" }
   - { state: "latest", name: "libbtrfs-devel" }
@@ -31,5 +29,3 @@ _zypper:
   - { state: "latest", name: "libselinux-devel" }
   - { state: "latest", name: "make" }
   - { state: "latest", name: "pkgconfig" }
-  - { state: "latest", name: "socat" }
-  - { state: "latest", name: "systemd-devel" }

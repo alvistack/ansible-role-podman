@@ -25,19 +25,3 @@
 - name: golang
   src: https://github.com/alvistack/ansible-role-golang
   version: develop
-
-- name: runc
-  src: https://github.com/alvistack/ansible-role-runc
-  version: develop
-
-- name: conmon
-  src: https://github.com/alvistack/ansible-role-conmon
-  version: develop
-
-- name: cri_tools
-  src: https://github.com/alvistack/ansible-role-cri_tools
-  version: develop
-
-- name: cni_plugins
-  src: https://github.com/alvistack/ansible-role-cni_plugins
-  version: develop
