@@ -25,4 +25,5 @@
     - role: conmon
     - role: skopeo
     - role: buildah
+    - role: cni_plugins
     - role: podman

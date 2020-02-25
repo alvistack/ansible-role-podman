@@ -41,3 +41,7 @@
 - name: buildah
   src: https://github.com/alvistack/ansible-role-buildah
   version: develop
+
+- name: cni_plugins
+  src: https://github.com/alvistack/ansible-role-cni_plugins
+  version: develop
