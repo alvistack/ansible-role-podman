@@ -60,6 +60,7 @@
     - { dest: "/usr/local/bin" }
     - { dest: "/usr/local/lib/systemd/system" }
     - { dest: "/usr/local/lib/systemd/user" }
+    - { dest: "/usr/local/lib/tmpfiles.d" }
     - { dest: "/usr/local/share/bash-completion/completions" }
     - { dest: "/usr/share/containers" }
     - { dest: "{{ podman_download.dest | dirname }}" }
@@ -86,6 +87,9 @@
     set -o pipefail
     TMP_DIR="$(mktemp -d)" \
       && export GOPATH=$TMP_DIR \
+      && export PATH="$GOPATH/bin:$PATH" \
+      && cd $GOPATH \
+      && go get -u github.com/cpuguy83/go-md2man \
       && mkdir -p $GOPATH/src/github.com/containers/libpod \
       && cd $GOPATH/src/github.com/containers/libpod \
       && tar -zx -C . -f {{ podman_download.dest }} --strip-components=1 \
@@ -109,6 +113,7 @@
     group: "{{ item.group | default('root') }}"
     mode: "{{ item.mode | default('0644') }}"
   loop:
+    - { dest: "/usr/local/bin/docker", mode: "0755" }
     - { dest: "/usr/share/containers/libpod.conf" }
   tags: podman
 
@@ -121,11 +126,14 @@
     state: "{{ item.state | default('file') }}"
   loop:
     - { dest: "/etc/cni/net.d/87-podman-bridge.conflist" }
+    - { dest: "/usr/local/bin/docker", mode: "0755" }
     - { dest: "/usr/local/bin/podman", mode: "0755" }
     - { dest: "/usr/local/lib/systemd/system/io.podman.service" }
     - { dest: "/usr/local/lib/systemd/system/io.podman.socket" }
     - { dest: "/usr/local/lib/systemd/user/io.podman.service" }
     - { dest: "/usr/local/lib/systemd/user/io.podman.socket" }
+    - { dest: "/usr/local/lib/tmpfiles.d/podman-docker.conf" }
+    - { dest: "/usr/local/lib/tmpfiles.d/podman.conf" }
     - { dest: "/usr/local/share/bash-completion/completions/podman" }
     - { dest: "/usr/share/containers/libpod.conf" }
   tags: podman
