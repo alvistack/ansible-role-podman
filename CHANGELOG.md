@@ -4,6 +4,8 @@
 
 ### Major Changes
 
+  - Upgrade minimal Molecule support to 3.0.2
+
 ## 4.2.0 - 2020-02-24
 
   - Ininitial release for Ansible 2.9 or higher

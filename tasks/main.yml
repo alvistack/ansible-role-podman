@@ -56,8 +56,13 @@
     mode: "{{ item.mode | default('0755') }}"
     state: "{{ item.state | default('directory') }}"
   loop:
-    - { dest: "/etc/containers" }
+    - { dest: "/etc/cni/net.d" }
     - { dest: "/usr/local/bin" }
+    - { dest: "/usr/local/lib/systemd/system" }
+    - { dest: "/usr/local/lib/systemd/user" }
+    - { dest: "/usr/local/lib/tmpfiles.d" }
+    - { dest: "/usr/local/share/bash-completion/completions" }
+    - { dest: "/usr/share/containers" }
     - { dest: "{{ podman_download.dest | dirname }}" }
   tags: podman
 
@@ -82,15 +87,22 @@
     set -o pipefail
     TMP_DIR="$(mktemp -d)" \
       && export GOPATH=$TMP_DIR \
+      && export PATH="$GOPATH/bin:$PATH" \
+      && cd $GOPATH \
+      && go get -u github.com/cpuguy83/go-md2man \
       && mkdir -p $GOPATH/src/github.com/containers/libpod \
       && cd $GOPATH/src/github.com/containers/libpod \
       && tar -zx -C . -f {{ podman_download.dest }} --strip-components=1 \
-      && make BUILDTAGS='apparmor seccomp selinux systemd' \
+      && make BUILDTAGS='apparmor seccomp selinux' \
       && make install \
+      && make install.docker \
+      && make install.completions \
       && rm -rf $TMP_DIR
   args:
     executable: "/bin/bash"
   when: get_url_result is changed
+  register: result
+  until: result is succeeded
   tags: podman
 
 - name: copy templates
@@ -101,8 +113,8 @@
     group: "{{ item.group | default('root') }}"
     mode: "{{ item.mode | default('0644') }}"
   loop:
-    - { dest: "/etc/containers/policy.json" }
-    - { dest: "/etc/containers/registries.conf" }
+    - { dest: "/usr/local/bin/docker", mode: "0755" }
+    - { dest: "/usr/share/containers/libpod.conf" }
   tags: podman
 
 - name: prepare files
@@ -113,7 +125,15 @@
     mode: "{{ item.mode | default('0644') }}"
     state: "{{ item.state | default('file') }}"
   loop:
-    - { dest: "/etc/containers/policy.json" }
-    - { dest: "/etc/containers/registries.conf" }
+    - { dest: "/etc/cni/net.d/87-podman-bridge.conflist" }
+    - { dest: "/usr/local/bin/docker", mode: "0755" }
     - { dest: "/usr/local/bin/podman", mode: "0755" }
+    - { dest: "/usr/local/lib/systemd/system/io.podman.service" }
+    - { dest: "/usr/local/lib/systemd/system/io.podman.socket" }
+    - { dest: "/usr/local/lib/systemd/user/io.podman.service" }
+    - { dest: "/usr/local/lib/systemd/user/io.podman.socket" }
+    - { dest: "/usr/local/lib/tmpfiles.d/podman-docker.conf" }
+    - { dest: "/usr/local/lib/tmpfiles.d/podman.conf" }
+    - { dest: "/usr/local/share/bash-completion/completions/podman" }
+    - { dest: "/usr/share/containers/libpod.conf" }
   tags: podman

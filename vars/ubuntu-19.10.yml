@@ -15,9 +15,8 @@
 # limitations under the License.
 
 _apt:
+  - { state: "latest", name: "bash-completion" }
   - { state: "latest", name: "conntrack" }
-  - { state: "latest", name: "gcc" }
-  - { state: "latest", name: "iproute2" }
   - { state: "latest", name: "iptables" }
   - { state: "latest", name: "libapparmor-dev" }
   - { state: "latest", name: "libassuan-dev" }
@@ -28,9 +27,7 @@ _apt:
   - { state: "latest", name: "libgpg-error-dev" }
   - { state: "latest", name: "libgpgme11-dev" }
   - { state: "latest", name: "libseccomp-dev" }
-  - { state: "latest", name: "libselinux1-dev" }
-  - { state: "latest", name: "libsystemd-dev" }
+  - { state: "latest", name: "libselinux-dev" }
   - { state: "latest", name: "libudev-dev" }
   - { state: "latest", name: "make" }
   - { state: "latest", name: "pkg-config" }
-  - { state: "latest", name: "socat" }

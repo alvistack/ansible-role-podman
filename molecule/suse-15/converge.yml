@@ -23,6 +23,7 @@
     - role: golang
     - role: runc
     - role: conmon
-    - role: cri_tools
+    - role: skopeo
+    - role: buildah
     - role: cni_plugins
     - role: podman
