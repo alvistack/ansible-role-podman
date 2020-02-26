@@ -60,6 +60,7 @@
     - { dest: "/usr/local/bin" }
     - { dest: "/usr/local/lib/systemd/system" }
     - { dest: "/usr/local/lib/systemd/user" }
+    - { dest: "/usr/share/containers" }
     - { dest: "{{ podman_download.dest | dirname }}" }
   tags: podman
 
@@ -97,6 +98,17 @@
   until: result is succeeded
   tags: podman
 
+- name: copy templates
+  template:
+    dest: "{{ item.dest }}"
+    src: "{{ item.src | default('./templates' + item.dest + '.j2') }}"
+    owner: "{{ item.owner | default('root') }}"
+    group: "{{ item.group | default('root') }}"
+    mode: "{{ item.mode | default('0644') }}"
+  loop:
+    - { dest: "/usr/share/containers/libpod.conf" }
+  tags: podman
+
 - name: prepare files
   file:
     dest: "{{ item.dest }}"
@@ -111,4 +123,5 @@
     - { dest: "/usr/local/lib/systemd/system/io.podman.socket" }
     - { dest: "/usr/local/lib/systemd/user/io.podman.service" }
     - { dest: "/usr/local/lib/systemd/user/io.podman.socket" }
+    - { dest: "/usr/share/containers/libpod.conf" }
   tags: podman
