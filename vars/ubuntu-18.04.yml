@@ -15,6 +15,7 @@
 # limitations under the License.
 
 _apt:
+  - { state: "latest", name: "bash-completion" }
   - { state: "latest", name: "btrfs-tools" }
   - { state: "latest", name: "conntrack" }
   - { state: "latest", name: "iptables" }
