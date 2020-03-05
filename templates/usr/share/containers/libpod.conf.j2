@@ -10,19 +10,19 @@ image_default_transport = "docker://"
 # If the paths are empty or no valid path was found, then the `$PATH`
 # environment variable will be used as the fallback.
 conmon_path = [
-	    "/usr/libexec/podman/conmon",
-	    "/usr/local/libexec/podman/conmon",
-	    "/usr/local/lib/podman/conmon",
-	    "/usr/bin/conmon",
-	    "/usr/sbin/conmon",
-	    "/usr/local/bin/conmon",
-	    "/usr/local/sbin/conmon",
-	    "/run/current-system/sw/bin/conmon",
+        "/usr/libexec/podman/conmon",
+        "/usr/local/libexec/podman/conmon",
+        "/usr/local/lib/podman/conmon",
+        "/usr/bin/conmon",
+        "/usr/sbin/conmon",
+        "/usr/local/bin/conmon",
+        "/usr/local/sbin/conmon",
+        "/run/current-system/sw/bin/conmon",
 ]
 
 # Environment variables to pass into conmon
 conmon_env_vars = [
-		"PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+        "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 ]
 
 # CGroup Manager - valid values are "systemd" and "cgroupfs"
@@ -52,10 +52,10 @@ cni_config_dir = "/etc/cni/net.d/"
 
 # Directories where the CNI plugin binaries may be located
 cni_plugin_dir = [
-	       "/usr/libexec/cni",
-	       "/usr/lib/cni",
-	       "/usr/local/lib/cni",
-	       "/opt/cni/bin"
+           "/usr/libexec/cni",
+           "/usr/lib/cni",
+           "/usr/local/lib/cni",
+           "/opt/cni/bin"
 ]
 
 # Default CNI network for libpod.
@@ -133,24 +133,24 @@ runtime_supports_nocgroups = ["crun"]
 # environment variable will be used as the fallback.
 [runtimes]
 runc = [
-	    "/usr/bin/runc",
-	    "/usr/sbin/runc",
-	    "/usr/local/bin/runc",
-	    "/usr/local/sbin/runc",
-	    "/sbin/runc",
-	    "/bin/runc",
-	    "/usr/lib/cri-o-runc/sbin/runc",
-	    "/run/current-system/sw/bin/runc",
+        "/usr/bin/runc",
+        "/usr/sbin/runc",
+        "/usr/local/bin/runc",
+        "/usr/local/sbin/runc",
+        "/sbin/runc",
+        "/bin/runc",
+        "/usr/lib/cri-o-runc/sbin/runc",
+        "/run/current-system/sw/bin/runc",
 ]
 
 crun = [
-		"/usr/bin/crun",
-		"/usr/sbin/crun",
-		"/usr/local/bin/crun",
-		"/usr/local/sbin/crun",
-		"/sbin/crun",
-		"/bin/crun",
-		"/run/current-system/sw/bin/crun",
+        "/usr/bin/crun",
+        "/usr/sbin/crun",
+        "/usr/local/bin/crun",
+        "/usr/local/sbin/crun",
+        "/sbin/crun",
+        "/bin/crun",
+        "/run/current-system/sw/bin/crun",
 ]
 
 # Kata Containers is an OCI runtime, where containers are run inside lightweight
