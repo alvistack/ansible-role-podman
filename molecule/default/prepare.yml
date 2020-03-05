@@ -21,30 +21,35 @@
   tasks:
     - name: cp -rfT /etc/skel /root
       raw: |
+        set -ex
         cp -rfT /etc/skel /root
       changed_when: false
       ignore_errors: true
 
     - name: setenforce 0
       raw: |
+        set -ex
         setenforce 0
       changed_when: false
       ignore_errors: true
 
     - name: systemctl stop firewalld.service
       raw: |
+        set -ex
         systemctl stop firewalld.service
       changed_when: false
       ignore_errors: true
 
     - name: systemctl stop ufw.service
       raw: |
+        set -ex
         systemctl stop ufw.service
       changed_when: false
       ignore_errors: true
 
     - name: redhat-7 | subscription-manager register
       raw: |
+        set -ex
         subscription-manager register \
           --username={{ lookup('env', 'REDHAT_USERNAME') }} \
           --password={{ lookup('env', 'REDHAT_PASSWORD') }} \
@@ -54,6 +59,7 @@
 
     - name: debian | apt-get install -y ca-certificates curl gcc iproute2 python3 python3-dev sudo
       raw: |
+        set -ex
         apt-get update
         apt-get install -y ca-certificates curl gcc iproute2 python3 python3-dev sudo
       changed_when: false
@@ -61,6 +67,7 @@
 
     - name: redhat | yum install -y ca-certificates curl gcc iproute python3 python3-devel sudo
       raw: |
+        set -ex
         yum makecache fast
         yum install -y ca-certificates curl gcc iproute python3 python3-devel sudo
       changed_when: false
@@ -68,6 +75,7 @@
 
     - name: suse | zypper -n install -y ca-certificates curl gcc iproute2 python3 python3-devel sudo
       raw: |
+        set -ex
         zypper -n --gpg-auto-import-keys refresh
         zypper -n install -y ca-certificates curl gcc iproute2 python3 python3-devel sudo
       changed_when: false
