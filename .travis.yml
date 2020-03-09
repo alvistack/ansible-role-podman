@@ -30,6 +30,7 @@ before_install:
     sudo apt-get update && sudo apt-get install -y bridge-utils dnsmasq-base ebtables libvirt-bin libvirt-dev qemu-kvm qemu-utils ruby-dev
     sudo dpkg -i vagrant_2.2.7_x86_64.deb
     sudo vagrant plugin install vagrant-libvirt
+    rm -rf vagrant_2.2.7_*
 
   - |
     sudo apt-get -y purge python3-openssl && sudo apt-get -y autoremove
