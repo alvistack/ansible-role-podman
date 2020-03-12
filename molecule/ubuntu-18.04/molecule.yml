@@ -33,7 +33,7 @@ platforms:
       - 'volume_cache = "none"'
       - 'storage :file, bus: "virtio", cache: "none"'
 lint: |
-  set -e
+  set -ex
   yamllint .
   ansible-lint
   flake8
