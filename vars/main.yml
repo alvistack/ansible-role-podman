@@ -15,6 +15,10 @@
 # limitations under the License.
 
 _podman_download:
+  v1.8.1:
+    url: "https://github.com/containers/libpod/archive/v1.8.1.tar.gz"
+    dest: "{{ ansible_user_dir }}/.ansible/tmp/libpod-v1.8.1.tar.gz"
+    checksum: "sha1:560ed3d63d5ab21a0d14b0748dece3e53c765657"
   v1.8.0:
     url: "https://github.com/containers/libpod/archive/v1.8.0.tar.gz"
     dest: "{{ ansible_user_dir }}/.ansible/tmp/libpod-v1.8.0.tar.gz"
