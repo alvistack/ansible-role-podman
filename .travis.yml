@@ -16,6 +16,8 @@ env:
 
 jobs:
   allow_failures:
+    - env: MOLECULE_SCENARIO_NAME="ubuntu-19.10"
+    - env: MOLECULE_SCENARIO_NAME="ubuntu-16.04"
     - env: MOLECULE_SCENARIO_NAME="centos-7"
     - env: MOLECULE_SCENARIO_NAME="suse-15"
 
