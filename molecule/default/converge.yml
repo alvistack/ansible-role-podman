@@ -28,19 +28,16 @@
         name: golang
 
     - include_role:
+        name: cni_plugins
+
+    - include_role:
+        name: containers_common
+
+    - include_role:
         name: runc
 
     - include_role:
         name: conmon
-
-    - include_role:
-        name: skopeo
-
-    - include_role:
-        name: buildah
-
-    - include_role:
-        name: cni_plugins
 
     - include_role:
         name: podman
