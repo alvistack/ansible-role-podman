@@ -1,6 +1,6 @@
 # Ansible Role for Podman
 
-[![Travis](https://img.shields.io/travis/alvistack/ansible-role-podman.svg)](https://travis-ci.org/alvistack/ansible-role-podman)
+[![Travis](https://img.shields.io/travis/com/alvistack/ansible-role-podman.svg)](https://travis-ci.com/alvistack/ansible-role-podman)
 [![GitHub release](https://img.shields.io/github/release/alvistack/ansible-role-podman.svg)](https://github.com/alvistack/ansible-role-podman)
 [![GitHub license](https://img.shields.io/github/license/alvistack/ansible-role-podman.svg)](https://github.com/alvistack/ansible-role-podman/blob/master/LICENSE)
 [![Ansible Role](https://img.shields.io/badge/galaxy-alvistack.podman-blue.svg)](https://galaxy.ansible.com/alvistack/podman)
