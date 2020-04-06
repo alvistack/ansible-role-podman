@@ -13,13 +13,3 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-
-- name: yum install
-  yum:
-    name: "{{ item.name }}"
-    enablerepo: "{{ item.enablerepo | default(None) or omit }}"
-    state: "{{ item.state | default(None) or omit }}"
-  loop: "{{ _yum }}"
-  register: result
-  until: result is succeeded
-  tags: podman

@@ -17,14 +17,12 @@
 _zypper:
   - { state: "latest", name: "bash-completion" }
   - { state: "latest", name: "conntrack-tools" }
-  - { state: "latest", name: "device-mapper-devel" }
   - { state: "latest", name: "glib2-devel" }
   - { state: "latest", name: "glibc-devel" }
   - { state: "latest", name: "glibc-static" }
   - { state: "latest", name: "gpgme-devel" }
   - { state: "latest", name: "iptables" }
   - { state: "latest", name: "libassuan-devel" }
-  - { state: "latest", name: "libbtrfs-devel" }
   - { state: "latest", name: "libgpg-error-devel" }
   - { state: "latest", name: "libseccomp-devel" }
   - { state: "latest", name: "libselinux-devel" }

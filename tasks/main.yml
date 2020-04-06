@@ -93,7 +93,8 @@
       && mkdir -p $GOPATH/src/github.com/containers/libpod \
       && cd $GOPATH/src/github.com/containers/libpod \
       && tar -zx -C . -f {{ podman_download.dest }} --strip-components=1 \
-      && make BUILDTAGS='apparmor seccomp selinux' \
+      && export BUILDTAGS="btrfs_noversion exclude_graphdriver_btrfs exclude_graphdriver_devicemapper apparmor seccomp selinux" \
+      && make \
       && make install.bin \
       && make install.remote \
       && make install.completions \
