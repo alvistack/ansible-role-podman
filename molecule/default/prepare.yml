@@ -47,7 +47,7 @@
       changed_when: false
       ignore_errors: true
 
-    - name: redhat-7 | subscription-manager register
+    - name: redhat | subscription-manager register
       raw: |
         set -ex
         subscription-manager register \
