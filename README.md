@@ -1,6 +1,6 @@
 # Ansible Role for Podman
 
-[![Travis](https://img.shields.io/travis/alvistack/ansible-role-podman.svg)](https://travis-ci.org/alvistack/ansible-role-podman)
+[![Travis](https://img.shields.io/travis/com/alvistack/ansible-role-podman.svg)](https://travis-ci.com/alvistack/ansible-role-podman)
 [![GitHub release](https://img.shields.io/github/release/alvistack/ansible-role-podman.svg)](https://github.com/alvistack/ansible-role-podman)
 [![GitHub license](https://img.shields.io/github/license/alvistack/ansible-role-podman.svg)](https://github.com/alvistack/ansible-role-podman/blob/master/LICENSE)
 [![Ansible Role](https://img.shields.io/badge/galaxy-alvistack.podman-blue.svg)](https://galaxy.ansible.com/alvistack/podman)
@@ -11,7 +11,7 @@ Ansible Role for Podman Installation.
 
 This role require Ansible 2.9 or higher.
 
-This role was designed for Ubuntu 18.04/19.10 or RHEL/CentOS 7 or openSUSE Leap 15.1.
+This role was designed for Ubuntu 16.04/18.04/19.10 or RHEL/CentOS 7/8 or openSUSE Leap 15.1.
 
 ## Role Variables
 
@@ -23,7 +23,7 @@ This role was designed for Ubuntu 18.04/19.10 or RHEL/CentOS 7 or openSUSE Leap 
 
 ## Example Playbook
 
-[molecule/ubuntu-18.04/playbook.yml](molecule/ubuntu-18.04/playbook.yml)
+[molecule/default/converge.yml](molecule/default/converge.yml)
 
 ## License
 

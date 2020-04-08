@@ -16,9 +16,7 @@
 
 _yum:
   - { state: "latest", name: "bash-completion" }
-  - { state: "latest", name: "btrfs-progs-devel" }
   - { state: "latest", name: "conntrack-tools" }
-  - { state: "latest", name: "device-mapper-devel" }
   - { state: "latest", name: "glib2-devel" }
   - { state: "latest", name: "glibc-devel" }
   - { state: "latest", name: "glibc-static" }

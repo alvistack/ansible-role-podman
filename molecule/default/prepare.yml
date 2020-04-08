@@ -47,7 +47,7 @@
       changed_when: false
       ignore_errors: true
 
-    - name: redhat-7 | subscription-manager register
+    - name: redhat | subscription-manager register
       raw: |
         set -ex
         subscription-manager register \
@@ -68,7 +68,7 @@
     - name: redhat | yum install -y ca-certificates curl gcc iproute python3 python3-devel sudo
       raw: |
         set -ex
-        yum makecache fast
+        yum makecache
         yum install -y ca-certificates curl gcc iproute python3 python3-devel sudo
       changed_when: false
       ignore_errors: true

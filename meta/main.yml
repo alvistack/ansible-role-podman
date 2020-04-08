@@ -16,7 +16,7 @@
 
 galaxy_info:
   role_name: podman
-  author: Wong Hoi Sing Edison <hswong3i@pantarei-design.com>
+  author: "Wong Hoi Sing Edison <hswong3i@pantarei-design.com>"
   description: Ansible Role for Podman Installation
   company: PantaRei Design
   license: Apache-2.0
@@ -24,11 +24,12 @@ galaxy_info:
   platforms:
     - name: Ubuntu
       versions:
-        - xenial
-        - bionic
         - eoan
+        - bionic
+        - xenial
     - name: EL
       versions:
+        - 8
         - 7
     - name: opensuse
       versions:

@@ -20,9 +20,7 @@ _apt:
   - { state: "latest", name: "iptables" }
   - { state: "latest", name: "libapparmor-dev" }
   - { state: "latest", name: "libassuan-dev" }
-  - { state: "latest", name: "libbtrfs-dev" }
   - { state: "latest", name: "libc6-dev" }
-  - { state: "latest", name: "libdevmapper-dev" }
   - { state: "latest", name: "libglib2.0-dev" }
   - { state: "latest", name: "libgpg-error-dev" }
   - { state: "latest", name: "libgpgme11-dev" }

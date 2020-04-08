@@ -26,22 +26,18 @@
   src: https://github.com/alvistack/ansible-role-golang
   version: develop
 
+- name: cni_plugins
+  src: https://github.com/alvistack/ansible-role-cni_plugins
+  version: develop
+
+- name: containers_common
+  src: https://github.com/alvistack/ansible-role-containers_common
+  version: develop
+
 - name: runc
   src: https://github.com/alvistack/ansible-role-runc
   version: develop
 
 - name: conmon
   src: https://github.com/alvistack/ansible-role-conmon
-  version: develop
-
-- name: skopeo
-  src: https://github.com/alvistack/ansible-role-skopeo
-  version: develop
-
-- name: buildah
-  src: https://github.com/alvistack/ansible-role-buildah
-  version: develop
-
-- name: cni_plugins
-  src: https://github.com/alvistack/ansible-role-cni_plugins
   version: develop
