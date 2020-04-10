@@ -11,7 +11,6 @@ env:
     - MOLECULE_SCENARIO_NAME="ubuntu-20.04"
     - MOLECULE_SCENARIO_NAME="ubuntu-19.10"
     - MOLECULE_SCENARIO_NAME="ubuntu-18.04"
-    - MOLECULE_SCENARIO_NAME="ubuntu-16.04"
     - MOLECULE_SCENARIO_NAME="centos-8"
     - MOLECULE_SCENARIO_NAME="centos-7"
     - MOLECULE_SCENARIO_NAME="suse-15"
@@ -20,7 +19,6 @@ jobs:
   allow_failures:
     - env: MOLECULE_SCENARIO_NAME="ubuntu-20.04"
     - env: MOLECULE_SCENARIO_NAME="ubuntu-19.10"
-    - env: MOLECULE_SCENARIO_NAME="ubuntu-16.04"
     - env: MOLECULE_SCENARIO_NAME="centos-8"
     - env: MOLECULE_SCENARIO_NAME="centos-7"
     - env: MOLECULE_SCENARIO_NAME="suse-15"
