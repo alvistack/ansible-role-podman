@@ -8,6 +8,7 @@ language: shell
 
 env:
   jobs:
+    - MOLECULE_SCENARIO_NAME="ubuntu-20.04"
     - MOLECULE_SCENARIO_NAME="ubuntu-19.10"
     - MOLECULE_SCENARIO_NAME="ubuntu-18.04"
     - MOLECULE_SCENARIO_NAME="ubuntu-16.04"
@@ -17,6 +18,7 @@ env:
 
 jobs:
   allow_failures:
+    - env: MOLECULE_SCENARIO_NAME="ubuntu-20.04"
     - env: MOLECULE_SCENARIO_NAME="ubuntu-19.10"
     - env: MOLECULE_SCENARIO_NAME="ubuntu-16.04"
     - env: MOLECULE_SCENARIO_NAME="centos-8"

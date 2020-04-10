@@ -11,7 +11,7 @@ Ansible Role for Podman Installation.
 
 This role require Ansible 2.9 or higher.
 
-This role was designed for Ubuntu 16.04/18.04/19.10 or RHEL/CentOS 7/8 or openSUSE Leap 15.1.
+This role was designed for Ubuntu 16.04/18.04/19.10/20.04 or RHEL/CentOS 7/8 or openSUSE Leap 15.1.
 
 ## Role Variables
 
