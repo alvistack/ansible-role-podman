@@ -24,9 +24,9 @@ galaxy_info:
   platforms:
     - name: Ubuntu
       versions:
+        - focal
         - eoan
         - bionic
-        - xenial
     - name: EL
       versions:
         - 8

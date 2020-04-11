@@ -15,23 +15,18 @@
 # limitations under the License.
 
 driver:
-  name: vagrant
-  provider:
-    name: libvirt
+  name: docker
 platforms:
   - name: ${MOLECULE_INSTANCE_NAME}-1
-    box: generic/ubuntu1604
-    cpu: 2
-    memory: 2048
-    interfaces:
-      - auto_config: true
-        network_name: private_network
-        type: dhcp
-    provider_raw_config_args:
-      - 'nic_model_type = "virtio"'
-      - 'disk_bus = "virtio"'
-      - 'volume_cache = "none"'
-      - 'storage :file, bus: "virtio", cache: "none"'
+    dockerfile: Dockerfile.j2
+    privileged: true
+    volumes:
+      - "/sys/fs/cgroup:/sys/fs/cgroup:rw"
+    entrypoint: init
+    command: "bash -c 'sleep infinity'"
+    tty: True
+    env:
+      container: docker
 lint: |
   set -ex
   yamllint .
