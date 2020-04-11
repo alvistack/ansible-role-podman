@@ -24,7 +24,7 @@ platforms:
       - "/sys/fs/cgroup:/sys/fs/cgroup:rw"
     entrypoint: init
     command: "bash -c 'sleep infinity'"
-    tty: True
+    tty: true
     env:
       container: docker
 lint: |
