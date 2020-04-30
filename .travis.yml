@@ -55,6 +55,7 @@ script:
       && sudo -E molecule syntax -s $MOLECULE_SCENARIO_NAME \
       && sudo -E molecule converge -s $MOLECULE_SCENARIO_NAME \
       && travis_wait 120 sudo -E molecule idempotence -s $MOLECULE_SCENARIO_NAME \
+      && sudo -E molecule side-effect -s $MOLECULE_SCENARIO_NAME \
       && sudo -E molecule verify -s $MOLECULE_SCENARIO_NAME
 
 notifications:
