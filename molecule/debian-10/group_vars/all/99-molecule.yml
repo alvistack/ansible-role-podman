@@ -13,30 +13,3 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-
-galaxy_info:
-  role_name: podman
-  author: "Wong Hoi Sing Edison <hswong3i@pantarei-design.com>"
-  description: Ansible Role for Podman Installation
-  company: PantaRei Design
-  license: Apache-2.0
-  min_ansible_version: 2.9
-  platforms:
-    - name: Ubuntu
-      versions:
-        - focal
-        - eoan
-        - bionic
-    - name: Debian
-      versions:
-        - buster
-    - name: EL
-      versions:
-        - 8
-        - 7
-    - name: opensuse
-      versions:
-        - 15.1
-  galaxy_tags:
-    - system
-dependencies: []

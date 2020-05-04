@@ -4,6 +4,7 @@
 
 ### Major Changes
 
+  - Support Debian 10
   - `molecule -s default` with delegated to localhost
 
 ## 4.3.0 - 2020-04-22
