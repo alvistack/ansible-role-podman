@@ -11,18 +11,20 @@ env:
     - MOLECULE_SCENARIO_NAME="ubuntu-20.04"
     - MOLECULE_SCENARIO_NAME="ubuntu-19.10"
     - MOLECULE_SCENARIO_NAME="ubuntu-18.04"
-    - MOLECULE_SCENARIO_NAME="debian-10"
     - MOLECULE_SCENARIO_NAME="centos-8"
     - MOLECULE_SCENARIO_NAME="centos-7"
     - MOLECULE_SCENARIO_NAME="suse-15"
+    - MOLECULE_SCENARIO_NAME="debian-10"
+    - MOLECULE_SCENARIO_NAME="fedora-31"
 
 jobs:
   allow_failures:
     - env: MOLECULE_SCENARIO_NAME="ubuntu-19.10"
-    - env: MOLECULE_SCENARIO_NAME="debian-10"
     - env: MOLECULE_SCENARIO_NAME="centos-8"
     - env: MOLECULE_SCENARIO_NAME="centos-7"
     - env: MOLECULE_SCENARIO_NAME="suse-15"
+    - env: MOLECULE_SCENARIO_NAME="debian-10"
+    - env: MOLECULE_SCENARIO_NAME="fedora-31"
 
 before_install:
   - |
