@@ -4,7 +4,7 @@
 
 ### Major Changes
 
-  - Support Fedora 30
+  - Support Fedora 31
   - Support Debian 10
   - `molecule -s default` with delegated to localhost
 

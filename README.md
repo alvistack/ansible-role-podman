@@ -17,7 +17,7 @@ This role was designed for:
   - RHEL/CentOS 7/8
   - openSUSE Leap 15.1
   - Debian 10
-  - Fedora 30
+  - Fedora 31
 
 ## Role Variables
 
