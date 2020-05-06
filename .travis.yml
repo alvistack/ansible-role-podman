@@ -15,7 +15,7 @@ env:
     - MOLECULE_SCENARIO_NAME="centos-7"
     - MOLECULE_SCENARIO_NAME="suse-15"
     - MOLECULE_SCENARIO_NAME="debian-10"
-    - MOLECULE_SCENARIO_NAME="fedora-31"
+    - MOLECULE_SCENARIO_NAME="fedora-32"
 
 jobs:
   allow_failures:
@@ -24,7 +24,7 @@ jobs:
     - env: MOLECULE_SCENARIO_NAME="centos-7"
     - env: MOLECULE_SCENARIO_NAME="suse-15"
     - env: MOLECULE_SCENARIO_NAME="debian-10"
-    - env: MOLECULE_SCENARIO_NAME="fedora-31"
+    - env: MOLECULE_SCENARIO_NAME="fedora-32"
 
 before_install:
   - |
