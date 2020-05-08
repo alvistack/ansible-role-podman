@@ -28,16 +28,16 @@ jobs:
 
 before_install:
   - |
-    curl -Os https://releases.hashicorp.com/vagrant/2.2.8/vagrant_2.2.8_x86_64.deb
-    curl -Os https://releases.hashicorp.com/vagrant/2.2.8/vagrant_2.2.8_SHA256SUMS
-    curl -Os https://releases.hashicorp.com/vagrant/2.2.8/vagrant_2.2.8_SHA256SUMS.sig
+    curl -Os https://releases.hashicorp.com/vagrant/2.2.9/vagrant_2.2.9_x86_64.deb
+    curl -Os https://releases.hashicorp.com/vagrant/2.2.9/vagrant_2.2.9_SHA256SUMS
+    curl -Os https://releases.hashicorp.com/vagrant/2.2.9/vagrant_2.2.9_SHA256SUMS.sig
     gpg --receive-key 51852D87348FFC4C
-    gpg --verify vagrant_2.2.8_SHA256SUMS.sig vagrant_2.2.8_SHA256SUMS
-    sha256sum -c vagrant_2.2.8_SHA256SUMS 2>&1 | grep OK
+    gpg --verify vagrant_2.2.9_SHA256SUMS.sig vagrant_2.2.9_SHA256SUMS
+    sha256sum -c vagrant_2.2.9_SHA256SUMS 2>&1 | grep OK
     sudo apt-get update && sudo apt-get install -y bridge-utils dnsmasq-base ebtables libvirt-bin libvirt-dev qemu-kvm qemu-utils ruby-dev
-    sudo dpkg -i vagrant_2.2.8_x86_64.deb
+    sudo dpkg -i vagrant_2.2.9_x86_64.deb
     sudo vagrant plugin install vagrant-libvirt
-    rm -rf vagrant_2.2.8_*
+    rm -rf vagrant_2.2.9_*
 
   - |
     sudo apt-get -y purge python3-openssl && sudo apt-get -y autoremove
