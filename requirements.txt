@@ -19,6 +19,7 @@ ansible-runner-http
 argcomplete
 docker
 flake8
+jmespath
 molecule>=3.0.2
 molecule-vagrant
 netaddr
