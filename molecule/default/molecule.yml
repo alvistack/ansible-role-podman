@@ -30,9 +30,9 @@ lint: |
 dependency:
   name: galaxy
   options:
-    role-file: requirements.yml
+    role-file: ansible-galaxy-requirements.yml
     roles-path: ~/.ansible/roles
-    requirements-file: requirements.yml
+    requirements-file: ansible-galaxy-requirements.yml
     collections-path: ~/.ansible/collections
     ignore-errors: true
 provisioner:
