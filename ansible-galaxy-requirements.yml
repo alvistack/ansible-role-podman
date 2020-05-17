@@ -44,8 +44,8 @@ roles:
     src: https://github.com/alvistack/ansible-role-containers_common
     version: develop
 
-  - name: runc
-    src: https://github.com/alvistack/ansible-role-runc
+  - name: crun
+    src: https://github.com/alvistack/ansible-role-crun
     version: develop
 
   - name: conmon
