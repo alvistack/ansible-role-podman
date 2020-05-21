@@ -4,7 +4,7 @@
 
 ### Major Changes
 
-  - Compile binary with Nix
+  - Compile static binary with Nix
   - Support Fedora 32
   - Support Debian 10
   - `molecule -s default` with delegated to localhost
