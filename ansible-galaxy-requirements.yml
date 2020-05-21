@@ -32,6 +32,10 @@ roles:
     src: https://github.com/alvistack/ansible-role-git
     version: develop
 
+  - name: nix
+    src: https://github.com/alvistack/ansible-role-nix
+    version: develop
+
   - name: golang
     src: https://github.com/alvistack/ansible-role-golang
     version: develop
@@ -44,8 +48,8 @@ roles:
     src: https://github.com/alvistack/ansible-role-containers_common
     version: develop
 
-  - name: runc
-    src: https://github.com/alvistack/ansible-role-runc
+  - name: crun
+    src: https://github.com/alvistack/ansible-role-crun
     version: develop
 
   - name: conmon

@@ -27,6 +27,10 @@
       tags: git
 
     - include_role:
+        name: nix
+      tags: nix
+
+    - include_role:
         name: golang
       tags: golang
 
@@ -39,8 +43,8 @@
       tags: containers_common
 
     - include_role:
-        name: runc
-      tags: runc
+        name: crun
+      tags: crun
 
     - include_role:
         name: conmon
