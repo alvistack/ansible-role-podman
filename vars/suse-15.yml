@@ -27,4 +27,4 @@ _zypper:
   - { state: "latest", name: "libseccomp-devel" }
   - { state: "latest", name: "libselinux-devel" }
   - { state: "latest", name: "make" }
-  - { state: "latest", name: "pkgconfig" }
+  - { state: "latest", name: "pkg-config" }
