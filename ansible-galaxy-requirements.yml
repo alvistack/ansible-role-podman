@@ -36,10 +36,6 @@ roles:
     src: https://github.com/alvistack/ansible-role-nix
     version: develop
 
-  - name: golang
-    src: https://github.com/alvistack/ansible-role-golang
-    version: develop
-
   - name: cni_plugins
     src: https://github.com/alvistack/ansible-role-cni_plugins
     version: develop

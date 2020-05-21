@@ -86,17 +86,17 @@
   shell: |
     set -o pipefail
     TMP_DIR="$(mktemp -d)" \
-      && export GOPATH=$TMP_DIR \
-      && export PATH="$GOPATH/bin:$PATH" \
-      && cd $GOPATH \
-      && go get -u github.com/cpuguy83/go-md2man \
-      && mkdir -p $GOPATH/src/github.com/containers/libpod \
-      && cd $GOPATH/src/github.com/containers/libpod \
-      && tar -zx -C . -f {{ podman_download.dest }} --strip-components=1 \
-      && export BUILDTAGS="btrfs_noversion exclude_graphdriver_btrfs exclude_graphdriver_devicemapper apparmor seccomp selinux" \
-      && make \
-      && make install.bin \
-      && make install.remote \
+      && tar -zx -C $TMP_DIR -f {{ podman_download.dest }} --strip-components=1 \
+      && cd $TMP_DIR \
+      && git clone --branch master --depth 1 https://github.com/containers/libpod.git libpod-master \
+      && rm -rf nix \
+      && mv libpod-master/nix . \
+      && rm -rf libpod-master \
+      && nix build -f nix/ \
+      && chown -Rf root:root result*/bin/* \
+      && chmod 0755 result*/bin/* \
+      && for i in result*/bin/*; do mv "$i" "${i/-static/}"; done || true \
+      && mv result*/bin/* /usr/local/bin/ \
       && make install.completions \
       && rm -rf $TMP_DIR
   args:
