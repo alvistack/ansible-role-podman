@@ -27,8 +27,8 @@
       tags: git
 
     - include_role:
-        name: nix
-      tags: nix
+        name: golang
+      tags: golang
 
     - include_role:
         name: cni_plugins
