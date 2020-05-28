@@ -18,7 +18,6 @@
   yum:
     name: "{{ item.name }}"
     state: "{{ item.state }}"
-    enablerepo: "{{ item.enablerepo | default(None) or omit }}"
   loop: "{{ _yum }}"
   register: result
   until: result is succeeded

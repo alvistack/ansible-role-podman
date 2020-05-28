@@ -23,14 +23,6 @@
       tags: python
 
     - include_role:
-        name: git
-      tags: git
-
-    - include_role:
-        name: golang
-      tags: golang
-
-    - include_role:
         name: cni_plugins
       tags: cni_plugins
 

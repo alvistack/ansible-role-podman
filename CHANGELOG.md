@@ -4,6 +4,7 @@
 
 ### Major Changes
 
+  - Install with static binary archive
   - Support Fedora 32
   - Support Debian 10
   - `molecule -s default` with delegated to localhost

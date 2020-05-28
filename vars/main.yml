@@ -16,30 +16,6 @@
 
 _podman_download:
   v1.9.3:
-    url: "https://github.com/containers/libpod/archive/v1.9.3.tar.gz"
-    dest: "{{ ansible_user_dir }}/.ansible/tmp/libpod-v1.9.3.tar.gz"
-    checksum: "sha1:3468c4e070020b68bbb85f9f249fc24673fd5f8a"
-  v1.9.2:
-    url: "https://github.com/containers/libpod/archive/v1.9.2.tar.gz"
-    dest: "{{ ansible_user_dir }}/.ansible/tmp/libpod-v1.9.2.tar.gz"
-    checksum: "sha1:4c8b007a6fe37cde3689318f72260c998973b069"
-  v1.9.1:
-    url: "https://github.com/containers/libpod/archive/v1.9.1.tar.gz"
-    dest: "{{ ansible_user_dir }}/.ansible/tmp/libpod-v1.9.1.tar.gz"
-    checksum: "sha1:7802ccda2418259ac83fde196d7280014b601fb4"
-  v1.9.0:
-    url: "https://github.com/containers/libpod/archive/v1.9.0.tar.gz"
-    dest: "{{ ansible_user_dir }}/.ansible/tmp/libpod-v1.9.0.tar.gz"
-    checksum: "sha1:87fd7a347e043713018055ffdef7324eb5da1feb"
-  v1.8.2:
-    url: "https://github.com/containers/libpod/archive/v1.8.2.tar.gz"
-    dest: "{{ ansible_user_dir }}/.ansible/tmp/libpod-v1.8.2.tar.gz"
-    checksum: "sha1:9d5ed4d288fcfb538a5f46297e6b12d435d0fc7a"
-  v1.8.1:
-    url: "https://github.com/containers/libpod/archive/v1.8.1.tar.gz"
-    dest: "{{ ansible_user_dir }}/.ansible/tmp/libpod-v1.8.1.tar.gz"
-    checksum: "sha1:560ed3d63d5ab21a0d14b0748dece3e53c765657"
-  v1.8.0:
-    url: "https://github.com/containers/libpod/archive/v1.8.0.tar.gz"
-    dest: "{{ ansible_user_dir }}/.ansible/tmp/libpod-v1.8.0.tar.gz"
-    checksum: "sha1:91dfaa3e2c56f29e99083d6020340e46fc54e9b2"
+    url: "https://github.com/alvistack/libpod/releases/download/v1.9.3/podman-v1.9.3-linux-amd64"
+    dest: "{{ ansible_user_dir }}/.ansible/tmp/podman-v1.9.3-linux-amd64"
+    checksum: "sha1:5ae2cd121adcdf3f336a7ea0ebe5b0d2dffb6838"
