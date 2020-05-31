@@ -18,4 +18,4 @@ _podman_download:
   v1.9.3:
     url: "https://github.com/alvistack/libpod/releases/download/v1.9.3/podman-v1.9.3-linux-amd64"
     dest: "{{ ansible_user_dir }}/.ansible/tmp/podman-v1.9.3-linux-amd64"
-    checksum: "sha1:d12fc4dbc3a93336c47aa17adf7ceb452727b4f1"
+    checksum: "sha1:afa5f5a062b88d8392904b93309c2be04c53a90e"
