@@ -1,9 +1,15 @@
 # Ansible Role for Podman
 
-## 4.4.0 - TBC
+## 4.5.0 - TBC
 
 ### Major Changes
 
+## 4.4.0 - 2020-06-04
+
+### Major Changes
+
+  - Install bash completion
+  - Install with static binary archive
   - Support Fedora 32
   - Support Debian 10
   - `molecule -s default` with delegated to localhost
