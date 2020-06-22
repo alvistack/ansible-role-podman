@@ -15,10 +15,10 @@
 # limitations under the License.
 
 containers_common_engine_runtime: >-
-  {%- set _params = '' -%}
-  {%- if "{{ ansible_os_family | lower }}-{{ ansible_distribution_major_version | lower }}" == "redhat-7" -%}
-  {%-   set _params = 'runc' -%}
+  {%- set _params = "" -%}
+  {%- if ansible_os_family | lower == "redhat" and ansible_distribution_major_version | lower == "7" -%}
+  {%-   set _params = "runc" -%}
   {%- else -%}
-  {%-   set _params = 'crun' -%}
+  {%-   set _params = "crun" -%}
   {%- endif -%}
   {{ _params }}
