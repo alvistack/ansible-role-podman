@@ -13,3 +13,12 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+
+containers_common_engine_runtime: >-
+  {%- set _params = '' -%}
+  {%- if "{{ ansible_os_family | lower }}-{{ ansible_distribution_major_version | lower }}" == "redhat-7" -%}
+  {%-   set _params = 'runc' -%}
+  {%- else -%}
+  {%-   set _params = 'crun' -%}
+  {%- endif -%}
+  {{ _params }}
