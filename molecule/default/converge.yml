@@ -31,10 +31,6 @@
       tags: containers_common
 
     - include_role:
-        name: runc
-      tags: runc
-
-    - include_role:
         name: crun
       tags: crun
 
