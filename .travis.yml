@@ -9,7 +9,6 @@ language: shell
 env:
   jobs:
     - MOLECULE_SCENARIO_NAME="ubuntu-20.04"
-    - MOLECULE_SCENARIO_NAME="ubuntu-19.10"
     - MOLECULE_SCENARIO_NAME="ubuntu-18.04"
     - MOLECULE_SCENARIO_NAME="centos-8"
     - MOLECULE_SCENARIO_NAME="centos-7"
@@ -19,7 +18,6 @@ env:
 
 jobs:
   allow_failures:
-    - env: MOLECULE_SCENARIO_NAME="ubuntu-19.10"
     - env: MOLECULE_SCENARIO_NAME="centos-8"
     - env: MOLECULE_SCENARIO_NAME="centos-7"
     - env: MOLECULE_SCENARIO_NAME="suse-15"
@@ -56,12 +54,14 @@ install:
 script:
   - |
     source ./scripts/run-tests.sh \
+      && sudo -E molecule dependency -s $MOLECULE_SCENARIO_NAME \
       && sudo -E molecule lint -s $MOLECULE_SCENARIO_NAME \
       && sudo -E molecule syntax -s $MOLECULE_SCENARIO_NAME \
       && sudo -E molecule converge -s $MOLECULE_SCENARIO_NAME \
       && travis_wait 120 sudo -E molecule idempotence -s $MOLECULE_SCENARIO_NAME \
       && sudo -E molecule side-effect -s $MOLECULE_SCENARIO_NAME \
-      && sudo -E molecule verify -s $MOLECULE_SCENARIO_NAME
+      && sudo -E molecule verify -s $MOLECULE_SCENARIO_NAME \
+      && sudo -E molecule destroy -s $MOLECULE_SCENARIO_NAME
 
 notifications:
   webhooks: https://galaxy.ansible.com/api/v1/notifications/?branch=master

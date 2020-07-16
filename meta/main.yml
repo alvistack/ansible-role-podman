@@ -25,7 +25,6 @@ galaxy_info:
     - name: Ubuntu
       versions:
         - focal
-        - eoan
         - bionic
     - name: EL
       versions:

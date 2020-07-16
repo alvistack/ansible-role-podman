@@ -15,7 +15,19 @@
 # limitations under the License.
 
 _podman_download:
+  v2.0.2:
+    url: "https://github.com/alvistack/podman/releases/download/v2.0.2/podman-v2.0.2-linux-amd64"
+    dest: "{{ ansible_user_dir }}/.ansible/tmp/podman-v2.0.2-linux-amd64"
+    checksum: "sha1:f49146d8ef3c166c69a0a26a74128dbbc0fc4450"
+  v2.0.1:
+    url: "https://github.com/alvistack/podman/releases/download/v2.0.1/podman-v2.0.1-linux-amd64"
+    dest: "{{ ansible_user_dir }}/.ansible/tmp/podman-v2.0.1-linux-amd64"
+    checksum: "sha1:f7564c5a77cdbb30e17010c54d28fa94cfed88eb"
+  v2.0.0:
+    url: "https://github.com/alvistack/podman/releases/download/v2.0.0/podman-v2.0.0-linux-amd64"
+    dest: "{{ ansible_user_dir }}/.ansible/tmp/podman-v2.0.0-linux-amd64"
+    checksum: "sha1:ef421d24a7568a3ee9444137d453ffa2bf252fa2"
   v1.9.3:
-    url: "https://github.com/alvistack/libpod/releases/download/v1.9.3/podman-v1.9.3-linux-amd64"
+    url: "https://github.com/alvistack/podman/releases/download/v1.9.3/podman-v1.9.3-linux-amd64"
     dest: "{{ ansible_user_dir }}/.ansible/tmp/podman-v1.9.3-linux-amd64"
     checksum: "sha1:afa5f5a062b88d8392904b93309c2be04c53a90e"
