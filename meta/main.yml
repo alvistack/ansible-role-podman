@@ -32,7 +32,7 @@ galaxy_info:
         - 7
     - name: opensuse
       versions:
-        - 15.1
+        - 15.2
     - name: Debian
       versions:
         - buster
