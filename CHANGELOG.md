@@ -4,6 +4,7 @@
 
 ### Major Changes
 
+  - Support openSUSE Leap 15.2
   - Remove Ubuntu 19.10 support
 
 ## 4.4.0 - 2020-06-04

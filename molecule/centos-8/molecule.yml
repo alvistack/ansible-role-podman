@@ -28,6 +28,7 @@ platforms:
         network_name: private_network
         type: dhcp
     provider_raw_config_args:
+      - 'video_type = "virtio"'
       - 'nic_model_type = "virtio"'
       - 'disk_bus = "virtio"'
       - 'volume_cache = "none"'
