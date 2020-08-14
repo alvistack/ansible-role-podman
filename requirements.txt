@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-ansible>=2.9.5
+ansible~=2.9.5
 ansible-lint
 ansible-runner
 ansible-runner-http
@@ -20,7 +20,7 @@ argcomplete
 docker
 flake8
 jmespath
-molecule>=3.0.2
+molecule~=3.0.2
 molecule-vagrant
 netaddr
 openshift
