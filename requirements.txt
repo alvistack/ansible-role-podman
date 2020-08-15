@@ -12,8 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-ansible~=2.9.5
-ansible-lint
+ansible~=2.10.0a9
+ansible-lint~=4.3.0a6
 ansible-runner
 ansible-runner-http
 argcomplete

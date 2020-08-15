@@ -40,4 +40,4 @@ fi
 curl -skL https://bootstrap.pypa.io/get-pip.py | python3
 
 # Install PIP dependencies
-pip3 install --upgrade --ignore-installed  --requirement requirements.txt
+pip3 install --prefix=/usr/local --upgrade --ignore-installed --requirement requirements.txt
