@@ -2,7 +2,7 @@
 
 os: linux
 
-dist: bionic
+dist: focal
 
 language: shell
 
@@ -32,7 +32,7 @@ before_install:
     gpg --receive-key 51852D87348FFC4C
     gpg --verify vagrant_2.2.9_SHA256SUMS.sig vagrant_2.2.9_SHA256SUMS
     sha256sum -c vagrant_2.2.9_SHA256SUMS 2>&1 | grep OK
-    sudo apt-get update && sudo apt-get install -y bridge-utils dnsmasq-base ebtables libvirt-bin libvirt-dev qemu-kvm qemu-utils ruby-dev
+    sudo apt-get update && sudo apt-get install -y bridge-utils dnsmasq-base ebtables libvirt-clients libvirt-daemon-system libvirt-dev qemu-kvm qemu-utils ruby-dev
     sudo dpkg -i vagrant_2.2.9_x86_64.deb
     sudo vagrant plugin install vagrant-libvirt
     rm -rf vagrant_2.2.9_*
