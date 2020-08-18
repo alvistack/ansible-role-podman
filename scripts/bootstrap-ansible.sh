@@ -37,7 +37,7 @@ if [ -x "$(command -v zypper)" ]; then
 fi
 
 # Install PIP
-curl -skL https://bootstrap.pypa.io/get-pip.py | python3
+curl -skL https://bootstrap.pypa.io/get-pip.py | python3 - --prefix=/usr/local
 
 # Install PIP dependencies
 pip3 install --prefix=/usr/local --upgrade --ignore-installed --requirement requirements.txt
