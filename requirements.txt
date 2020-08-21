@@ -13,7 +13,7 @@
 # limitations under the License.
 
 ansible~=2.10.0a9
-ansible-lint~=4.3.0a6
+ansible-lint~=4.3.1
 ansible-runner
 ansible-runner-http
 argcomplete
