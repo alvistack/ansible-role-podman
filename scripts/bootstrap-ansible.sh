@@ -37,7 +37,10 @@ if [ -x "$(command -v zypper)" ]; then
 fi
 
 # Install PIP
-curl -skL https://bootstrap.pypa.io/get-pip.py | python3
+curl -skL https://bootstrap.pypa.io/get-pip.py | python3 - --prefix=/usr/local
 
 # Install PIP dependencies
-pip3 install --upgrade --ignore-installed  --requirement requirements.txt
+pip3 install --prefix=/usr/local --upgrade --ignore-installed --requirement requirements.txt
+
+# Install Ansible Collection dependencies
+ansible-galaxy collection install --force --requirements-file ansible-galaxy-requirements.yml
