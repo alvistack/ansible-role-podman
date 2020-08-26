@@ -1,6 +1,10 @@
 # Ansible Role for Podman
 
-## 4.5.0 - TBC
+## 4.6.0 - TBC
+
+### Major Changes
+
+## 4.5.0 - 2020-08-26
 
 ### Major Changes
 
