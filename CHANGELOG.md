@@ -5,6 +5,7 @@
 ### Major Changes
 
   - Support Podman v2.0 `podman.socket` service
+  - Upgrade minimal Podman support to 2.0.0
   - Upgrade Travis CI test as Ubuntu Focal based
   - Upgrade minimal Ansible support to 2.10.0
   - Support openSUSE Leap 15.2
