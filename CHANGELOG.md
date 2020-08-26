@@ -4,12 +4,11 @@
 
 ### Major Changes
 
-  - Upgrade minimal Ansible Lint support to 4.3.2
-
 ## 4.5.0 - 2020-08-26
 
 ### Major Changes
 
+  - Upgrade minimal Ansible Lint support to 4.3.2
   - Support Podman v2.0 `podman.socket` service
   - Upgrade minimal Podman support to 2.0.0
   - Upgrade Travis CI test as Ubuntu Focal based
