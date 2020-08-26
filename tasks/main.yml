@@ -58,10 +58,9 @@
   loop:
     - { dest: "/etc/bash_completion.d" }
     - { dest: "/etc/cni/net.d" }
+    - { dest: "/lib/systemd/system" }
+    - { dest: "/lib/tmpfiles.d" }
     - { dest: "/usr/local/bin" }
-    - { dest: "/usr/local/lib/systemd/system" }
-    - { dest: "/usr/local/lib/systemd/user" }
-    - { dest: "/usr/local/lib/tmpfiles.d" }
     - { dest: "/usr/share/containers" }
     - { dest: "{{ podman_download.dest | dirname }}" }
   tags: podman
@@ -94,6 +93,9 @@
   args:
     executable: "/bin/bash"
   when: get_url_result is changed
+  notify:
+    - podman | systemctl daemon-reload
+    - podman | systemctl restart podman.socket
   tags: podman
 
 - name: copy templates
@@ -106,11 +108,12 @@
   loop:
     - { dest: "/etc/bash_completion.d/podman" }
     - { dest: "/etc/cni/net.d/87-podman-bridge.conflist" }
-    - { dest: "/usr/local/lib/systemd/system/io.podman.service" }
-    - { dest: "/usr/local/lib/systemd/system/io.podman.socket" }
-    - { dest: "/usr/local/lib/systemd/user/io.podman.service" }
-    - { dest: "/usr/local/lib/systemd/user/io.podman.socket" }
-    - { dest: "/usr/local/lib/tmpfiles.d/podman.conf" }
+    - { dest: "/lib/systemd/system/podman.service" }
+    - { dest: "/lib/systemd/system/podman.socket" }
+    - { dest: "/lib/tmpfiles.d/podman.conf" }
+  notify:
+    - podman | systemctl daemon-reload
+    - podman | systemctl restart podman.socket
   tags: podman
 
 - name: prepare files
@@ -123,10 +126,30 @@
   loop:
     - { dest: "/etc/bash_completion.d/podman" }
     - { dest: "/etc/cni/net.d/87-podman-bridge.conflist" }
+    - { dest: "/lib/systemd/system/io.podman.service", state: "absent" }
+    - { dest: "/lib/systemd/system/io.podman.socket", state: "absent" }
+    - { dest: "/lib/systemd/system/podman.service" }
+    - { dest: "/lib/systemd/system/podman.socket" }
+    - { dest: "/lib/systemd/user/io.podman.service", state: "absent" }
+    - { dest: "/lib/systemd/user/io.podman.socket", state: "absent" }
+    - { dest: "/lib/tmpfiles.d/podman.conf" }
     - { dest: "/usr/local/bin/podman", mode: "0755" }
-    - { dest: "/usr/local/lib/systemd/system/io.podman.service" }
-    - { dest: "/usr/local/lib/systemd/system/io.podman.socket" }
-    - { dest: "/usr/local/lib/systemd/user/io.podman.service" }
-    - { dest: "/usr/local/lib/systemd/user/io.podman.socket" }
-    - { dest: "/usr/local/lib/tmpfiles.d/podman.conf" }
+    - { dest: "/usr/local/lib/systemd/system/io.podman.service", state: "absent" }
+    - { dest: "/usr/local/lib/systemd/system/io.podman.socket", state: "absent" }
+    - { dest: "/usr/local/lib/systemd/user/io.podman.service", state: "absent" }
+    - { dest: "/usr/local/lib/systemd/user/io.podman.socket", state: "absent" }
+    - { dest: "/usr/local/lib/tmpfiles.d/podman.conf", state: "absent" }
+  tags: podman
+
+- name: systemctl start podman.socket
+  service:
+    name: "podman.socket"
+    state: "started"
+    enabled: true
+  changed_when: false
+  ignore_errors: true
+  tags: podman
+
+- name: flush handlers
+  meta: flush_handlers
   tags: podman
