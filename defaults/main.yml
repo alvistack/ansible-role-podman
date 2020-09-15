@@ -15,7 +15,7 @@
 # limitations under the License.
 
 # Podman version.
-podman_version: "v2.0.6"
+podman_version: "v2.1.0-rc1"
 
 # Podman download details.
 podman_download: "{{ _podman_download[podman_version] }}"
