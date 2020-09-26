@@ -15,6 +15,10 @@
 # limitations under the License.
 
 _podman_download:
+  v2.1.1:
+    url: "https://github.com/alvistack/containers-podman/releases/download/v2.1.1/podman-v2.1.1-linux-amd64"
+    dest: "{{ ansible_user_dir }}/.ansible/tmp/podman-v2.1.1-linux-amd64"
+    checksum: "sha1:ebb6b3577443e8d624782660e3d77375d6e98c05"
   v2.1.0:
     url: "https://github.com/alvistack/containers-podman/releases/download/v2.1.0/podman-v2.1.0-linux-amd64"
     dest: "{{ ansible_user_dir }}/.ansible/tmp/podman-v2.1.0-linux-amd64"
