@@ -21,4 +21,3 @@
   loop: "{{ _yum }}"
   register: result
   until: result is succeeded
-  tags: podman
