@@ -136,6 +136,9 @@
     - podman | systemctl daemon-reload
     - podman | systemctl restart podman.socket
 
+- name: flush handlers
+  meta: flush_handlers
+
 - name: systemctl start podman.socket
   service:
     name: "podman.socket"
@@ -143,6 +146,3 @@
     enabled: true
   changed_when: false
   ignore_errors: true
-
-- name: flush handlers
-  meta: flush_handlers
