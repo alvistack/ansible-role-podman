@@ -16,7 +16,6 @@
 
 - name: include default variables
   include_vars: "../vars/main.yml"
-  tags: podman
 
 - name: include release specific variables
   include_vars: "{{ lookup('first_found', _params) }}"
@@ -31,7 +30,6 @@
       paths:
         - "../vars"
   ignore_errors: true
-  tags: podman
 
 - name: include release specific tasks
   include_tasks: "{{ lookup('first_found', _params) }}"
@@ -46,7 +44,6 @@
       paths:
         - "."
   ignore_errors: true
-  tags: podman
 
 - name: prepare directories
   file:
@@ -63,7 +60,6 @@
     - { dest: "/usr/local/bin" }
     - { dest: "/usr/share/containers" }
     - { dest: "{{ podman_download.dest | dirname }}" }
-  tags: podman
 
 - name: download archive
   vars:
@@ -78,7 +74,6 @@
     - "{{ podman_download }}"
   register: get_url_result
   until: get_url_result is succeeded
-  tags: podman
 
 - name: unarchive package
   shell: |
@@ -96,7 +91,6 @@
   notify:
     - podman | systemctl daemon-reload
     - podman | systemctl restart podman.socket
-  tags: podman
 
 - name: copy templates
   template:
@@ -114,7 +108,6 @@
   notify:
     - podman | systemctl daemon-reload
     - podman | systemctl restart podman.socket
-  tags: podman
 
 - name: prepare files
   file:
@@ -142,7 +135,9 @@
   notify:
     - podman | systemctl daemon-reload
     - podman | systemctl restart podman.socket
-  tags: podman
+
+- name: flush handlers
+  meta: flush_handlers
 
 - name: systemctl start podman.socket
   service:
@@ -151,8 +146,3 @@
     enabled: true
   changed_when: false
   ignore_errors: true
-  tags: podman
-
-- name: flush handlers
-  meta: flush_handlers
-  tags: podman

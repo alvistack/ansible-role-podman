@@ -21,4 +21,3 @@
   loop: "{{ _apt }}"
   register: result
   until: result is succeeded
-  tags: podman
