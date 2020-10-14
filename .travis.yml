@@ -32,7 +32,7 @@ before_install:
     curl -skL https://keybase.io/hashicorp/pgp_keys.asc | sudo gpg --import
     gpg --verify vagrant_2.2.10_SHA256SUMS.sig vagrant_2.2.10_SHA256SUMS
     sha256sum -c vagrant_2.2.10_SHA256SUMS 2>&1 | grep OK
-    sudo apt-get update && sudo apt-get install -y bridge-utils dnsmasq-base ebtables libvirt-clients libvirt-daemon-system libvirt-dev qemu-kvm qemu-utils ruby-dev
+    sudo apt-get update && sudo apt-get install -y bridge-utils dnsmasq-base ebtables libguestfs-tools libvirt-clients libvirt-daemon-system libvirt-dev qemu-kvm qemu-utils ruby-dev
     sudo dpkg -i vagrant_2.2.10_x86_64.deb
     sudo vagrant plugin install vagrant-libvirt
     rm -rf vagrant_2.2.10_*
