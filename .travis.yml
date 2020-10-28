@@ -26,20 +26,24 @@ jobs:
 
 before_install:
   - |
+    sudo apt-get update
+    sudo apt-get -y install bridge-utils dnsmasq-base ebtables libguestfs-tools libvirt-clients libvirt-daemon-system libvirt-dev qemu-kvm qemu-utils ruby-dev
+
+  - |
     curl -Os https://releases.hashicorp.com/vagrant/2.2.10/vagrant_2.2.10_x86_64.deb
     curl -Os https://releases.hashicorp.com/vagrant/2.2.10/vagrant_2.2.10_SHA256SUMS
     curl -Os https://releases.hashicorp.com/vagrant/2.2.10/vagrant_2.2.10_SHA256SUMS.sig
     curl -skL https://keybase.io/hashicorp/pgp_keys.asc | sudo gpg --import
     gpg --verify vagrant_2.2.10_SHA256SUMS.sig vagrant_2.2.10_SHA256SUMS
     sha256sum -c vagrant_2.2.10_SHA256SUMS 2>&1 | grep OK
-    sudo apt-get update && sudo apt-get install -y bridge-utils dnsmasq-base ebtables libguestfs-tools libvirt-clients libvirt-daemon-system libvirt-dev qemu-kvm qemu-utils ruby-dev
     sudo dpkg -i vagrant_2.2.10_x86_64.deb
     sudo vagrant plugin install vagrant-libvirt
     rm -rf vagrant_2.2.10_*
 
   - |
-    sudo apt-get -y purge python3-openssl && sudo apt-get -y autoremove
-    sudo apt-get update && sudo apt-get install -y ca-certificates curl gcc iproute2 pwgen python3 python3-dev sudo
+    sudo apt-get update
+    sudo apt-get -y purge python3-openssl
+    sudo apt-get -y install ca-certificates curl gcc iproute2 pwgen python3 python3-dev sudo
     curl -skL https://bootstrap.pypa.io/get-pip.py | sudo -H python3 - --prefix=/usr/local
     sudo -H pip3 install --prefix=/usr/local --upgrade --ignore-installed --requirement requirements.txt
 
@@ -49,7 +53,6 @@ install:
     mkdir -p $HOME/.ansible/roles
     mkdir -p $HOME/.ansible/collections/alvistack
     ln -s $TRAVIS_BUILD_DIR $HOME/.ansible/roles/$ROLE
-    molecule dependency
 
 script:
   - |
