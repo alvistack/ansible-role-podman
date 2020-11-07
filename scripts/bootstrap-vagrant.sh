@@ -22,27 +22,27 @@ cd "$(cd "$(dirname "$0")"; pwd -P)/../"
 if [ -x "$(command -v apt-get)" ]; then
     apt-get update
     apt-get install -y binutils bridge-utils dnsmasq-base ebtables libguestfs-tools libvirt-clients libvirt-daemon-system libvirt-dev make qemu-kvm qemu-utils ruby-dev
-    curl -Os https://releases.hashicorp.com/vagrant/2.2.10/vagrant_2.2.10_x86_64.deb
-    dpkg -i vagrant_2.2.10_x86_64.deb
-    rm -rf vagrant_2.2.10_*
+    curl -Os https://releases.hashicorp.com/vagrant/2.2.13/vagrant_2.2.13_x86_64.deb
+    dpkg -i vagrant_2.2.13_x86_64.deb
+    rm -rf vagrant_2.2.13_*
 fi
 
 # Prepare YUM dependencies
 if [ -x "$(command -v yum)" ]; then
     yum makecache
     yum install -y binutils dnsmasq ebtables libguestfs-tools-c libvirt libvirt-client libvirt-devel make qemu-img qemu-kvm ruby-devel virt-install
-    curl -Os https://releases.hashicorp.com/vagrant/2.2.10/vagrant_2.2.10_x86_64.rpm
-    yum localinstall vagrant_2.2.10_x86_64.rpm
-    rm -rf vagrant_2.2.10_*
+    curl -Os https://releases.hashicorp.com/vagrant/2.2.13/vagrant_2.2.13_x86_64.rpm
+    yum localinstall vagrant_2.2.13_x86_64.rpm
+    rm -rf vagrant_2.2.13_*
 fi
 
 # Prepare Zypper dependencies
 if [ -x "$(command -v zypper)" ]; then
     zypper -n --gpg-auto-import-keys refresh
     zypper -n install -y binutils-gold bridge-utils dnsmasq ebtables guestfs-tools libvirt libvirt-client libvirt-devel make qemu-kvm qemu-tools ruby-devel virt-install
-    curl -Os https://releases.hashicorp.com/vagrant/2.2.10/vagrant_2.2.10_x86_64.rpm
-    zypper install vagrant_2.2.10_x86_64.rpm
-    rm -rf vagrant_2.2.10_*
+    curl -Os https://releases.hashicorp.com/vagrant/2.2.13/vagrant_2.2.13_x86_64.rpm
+    zypper install vagrant_2.2.13_x86_64.rpm
+    rm -rf vagrant_2.2.13_*
 fi
 
 # Install vagrant-libvirt
