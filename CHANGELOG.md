@@ -4,6 +4,7 @@
 
 ### Major Changes
 
+  - Support Ubuntu 20.10
   - Remove redundant tags from tasks
 
 ## 4.5.0 - 2020-08-26
