@@ -39,7 +39,7 @@ galaxy_info:
         - buster
     - name: Fedora
       versions:
-        - "32"
+        - "33"
   galaxy_tags:
     - system
 dependencies: []
