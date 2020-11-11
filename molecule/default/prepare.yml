@@ -64,7 +64,7 @@
       raw: |
         set -ex
         apt-get update
-        apt-get dist-upgade -y
+        apt-get dist-upgrade -y
         apt-get install -y ca-certificates curl gcc iproute2 python3 python3-dev sudo
       changed_when: false
       ignore_errors: true
