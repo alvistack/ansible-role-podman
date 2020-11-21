@@ -20,7 +20,7 @@ argcomplete
 docker
 flake8
 jmespath
-molecule>=3.2.0a0,<3.3.0
+molecule==3.2.0a0
 molecule-docker
 molecule-podman
 molecule-vagrant
