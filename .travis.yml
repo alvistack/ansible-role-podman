@@ -28,19 +28,19 @@ jobs:
 
 before_install:
   - |
-    sudo apt-get update
-    sudo apt-get -y install bridge-utils dnsmasq-base ebtables libguestfs-tools libvirt-clients libvirt-daemon-system libvirt-dev qemu-kvm qemu-utils ruby-dev
-
-  - |
     curl -Os https://releases.hashicorp.com/vagrant/2.2.14/vagrant_2.2.14_x86_64.deb
     curl -Os https://releases.hashicorp.com/vagrant/2.2.14/vagrant_2.2.14_SHA256SUMS
     curl -Os https://releases.hashicorp.com/vagrant/2.2.14/vagrant_2.2.14_SHA256SUMS.sig
     curl -skL https://keybase.io/hashicorp/pgp_keys.asc | sudo gpg --import
-    gpg --verify vagrant_2.2.14_SHA256SUMS.sig vagrant_2.2.14_SHA256SUMS
+    sudo gpg --verify vagrant_2.2.14_SHA256SUMS.sig vagrant_2.2.14_SHA256SUMS
     sha256sum -c vagrant_2.2.14_SHA256SUMS 2>&1 | grep OK
     sudo dpkg -i vagrant_2.2.14_x86_64.deb
-    sudo vagrant plugin install vagrant-libvirt
     rm -rf vagrant_2.2.14_*
+
+  - |
+    sudo apt-get update
+    sudo apt-get install -y binutils bridge-utils dnsmasq-base ebtables gcc libguestfs-tools libvirt-clients libvirt-daemon-system libvirt-dev make qemu-kvm qemu-utils ruby-dev
+    sudo vagrant plugin install vagrant-libvirt
 
   - |
     sudo apt-get update
