@@ -4,6 +4,7 @@
 
 ### Major Changes
 
+  - Migrate from Travis CI to GitLab CI
   - Support Fedora 33
   - Remove Fedora 32 support
   - Support Ubuntu 20.10
