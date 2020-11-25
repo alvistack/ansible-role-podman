@@ -24,6 +24,7 @@ galaxy_info:
   platforms:
     - name: Ubuntu
       versions:
+        - groovy
         - focal
         - bionic
     - name: EL
@@ -38,7 +39,7 @@ galaxy_info:
         - buster
     - name: Fedora
       versions:
-        - "32"
+        - "33"
   galaxy_tags:
     - system
 dependencies: []

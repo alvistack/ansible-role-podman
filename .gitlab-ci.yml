@@ -1,0 +1,78 @@
+---
+
+default:
+  before_script:
+    - |
+      curl -Os https://releases.hashicorp.com/vagrant/2.2.14/vagrant_2.2.14_x86_64.deb
+      sudo dpkg -i vagrant_2.2.14_x86_64.deb
+      rm -rf vagrant_2.2.14_*
+
+    - |
+      sudo apt-get update
+      sudo apt-get install -y binutils bridge-utils dnsmasq-base ebtables gcc libguestfs-tools libvirt-clients libvirt-daemon-system libvirt-dev make qemu-kvm qemu-utils ruby-dev
+      vagrant plugin install vagrant-libvirt
+
+    - |
+      sudo apt-get update
+      sudo apt-get -y install ca-certificates curl gcc iproute2 pwgen python3 python3-dev sudo
+      curl -skL https://bootstrap.pypa.io/get-pip.py | sudo -H python3 - --prefix=/usr/local
+      sudo -H pip3 install --prefix=/usr/local --upgrade --ignore-installed --requirement requirements.txt
+
+    - |
+      export ROLE=$(echo $CI_PROJECT_NAME | sed 's/^ansible-role-//g')
+      mkdir -p $HOME/.ansible/roles
+      ln -s $CI_PROJECT_DIR $HOME/.ansible/roles/$ROLE
+
+ubuntu-20.04:
+  script:
+    - |
+      source ./scripts/run-tests.sh
+      sudo -E molecule test -s ubuntu-20.04
+
+ubuntu-18.04:
+  script:
+    - |
+      source ./scripts/run-tests.sh
+      sudo -E molecule test -s ubuntu-18.04
+
+ubuntu-20.10:
+  allow_failure: true
+  script:
+    - |
+      source ./scripts/run-tests.sh
+      sudo -E molecule test -s ubuntu-20.10
+
+centos-8:
+  allow_failure: true
+  script:
+    - |
+      source ./scripts/run-tests.sh
+      sudo -E molecule test -s centos-8
+
+centos-7:
+  allow_failure: true
+  script:
+    - |
+      source ./scripts/run-tests.sh
+      sudo -E molecule test -s centos-7
+
+suse-15:
+  allow_failure: true
+  script:
+    - |
+      source ./scripts/run-tests.sh
+      sudo -E molecule test -s suse-15
+
+debian-10:
+  allow_failure: true
+  script:
+    - |
+      source ./scripts/run-tests.sh
+      sudo -E molecule test -s debian-10
+
+fedora-33:
+  allow_failure: true
+  script:
+    - |
+      source ./scripts/run-tests.sh
+      sudo -E molecule test -s fedora-33

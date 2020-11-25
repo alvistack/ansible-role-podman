@@ -21,18 +21,21 @@ cd "$(cd "$(dirname "$0")"; pwd -P)/../"
 # Prepare APT dependencies
 if [ -x "$(command -v apt-get)" ]; then
     apt-get update
+    apt-get dist-upgrade -y
     apt-get install -y ca-certificates curl gcc iproute2 python3 python3-dev sudo
 fi
 
 # Prepare YUM dependencies
 if [ -x "$(command -v yum)" ]; then
     yum makecache
+    yum update -y
     yum install -y ca-certificates curl gcc iproute python3 python3-devel sudo
 fi
 
 # Prepare Zypper dependencies
 if [ -x "$(command -v zypper)" ]; then
     zypper -n --gpg-auto-import-keys refresh
+    zypper -n update -y
     zypper -n install -y ca-certificates curl gcc iproute2 python3 python3-devel sudo
 fi
 

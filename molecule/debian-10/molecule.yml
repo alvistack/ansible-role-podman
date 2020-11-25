@@ -22,7 +22,7 @@ platforms:
   - name: ${MOLECULE_INSTANCE_NAME}-1
     box: generic/debian10
     cpu: 2
-    memory: 2048
+    memory: 4096
     interfaces:
       - auto_config: true
         network_name: private_network
@@ -46,6 +46,7 @@ dependency:
     requirements-file: ansible-galaxy-requirements.yml
     collections-path: ${HOME}/.ansible/collections
     ignore-errors: true
+    force: false
 provisioner:
   name: ansible
   config_options:

@@ -35,6 +35,7 @@ dependency:
     requirements-file: ansible-galaxy-requirements.yml
     collections-path: ${HOME}/.ansible/collections
     ignore-errors: true
+    force: false
 provisioner:
   name: ansible
   config_options:
