@@ -27,12 +27,16 @@ platforms:
       - auto_config: true
         network_name: private_network
         type: dhcp
+    provider_options:
+      cpu_mode: "'host-model'"
+      disk_bus: "'sata'"
+      driver: "'kvm'"
+      nested: "'true'"
+      nic_model_type: "'virtio'"
+      video_type: "'virtio'"
+      volume_cache: "'none'"
     provider_raw_config_args:
-      - 'video_type = "virtio"'
-      - 'nic_model_type = "virtio"'
-      - 'disk_bus = "sata"'
-      - 'volume_cache = "none"'
-      - 'storage :file, bus: "sata", cache: "none"'
+      - "storage :file, bus: 'sata', cache: 'none'"
 lint: |
   set -ex
   yamllint .
