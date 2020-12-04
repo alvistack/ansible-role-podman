@@ -89,4 +89,4 @@ ansible-galaxy:
   stage: deploy
   script:
     - |
-      ansible-galaxy role import --no-wait --token $ANSIBLE_GALAXY_API_KEY $CI_PROJECT_NAMESPACE $CI_PROJECT_NAME
+      sudo ansible-galaxy role import --token $ANSIBLE_GALAXY_API_KEY $CI_PROJECT_NAMESPACE $CI_PROJECT_NAME
