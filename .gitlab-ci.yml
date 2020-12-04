@@ -23,6 +23,10 @@ default:
       mkdir -p $HOME/.ansible/roles
       ln -s $CI_PROJECT_DIR $HOME/.ansible/roles/$ROLE
 
+    - |
+      git submodule sync --recursive
+      git submodule update --init --recursive
+
 ubuntu-20.04:
   stage: build
   script:
