@@ -34,9 +34,9 @@ platforms:
       nested: "'true'"
       nic_model_type: "'virtio'"
       video_type: "'virtio'"
-      volume_cache: "'writethrough'"
+      volume_cache: "'writeback'"
     provider_raw_config_args:
-      - "storage :file, bus: 'sata', cache: 'writethrough'"
+      - "storage :file, bus: 'sata', cache: 'writeback'"
 lint: |
   set -ex
   yamllint .
