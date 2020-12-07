@@ -23,7 +23,7 @@
 .script-molecule-test: &script-molecule-test
   - |
     source ./scripts/run-tests.sh
-    sudo -E molecule test -s $MOLECULE_SCENARIO_NAME
+    sudo -E molecule test -s $_MOLECULE_SCENARIO_NAME
 
 .script-ansible-galaxy-role-import: &script-ansible-galaxy-role-import
   - |
@@ -56,55 +56,55 @@ ubuntu-20.04:
   <<: *job-molecule
   stage: build
   variables:
-    MOLECULE_SCENARIO_NAME: "ubuntu-20.04"
+    _MOLECULE_SCENARIO_NAME: "ubuntu-20.04"
 
 ubuntu-18.04:
   <<: *job-molecule
   stage: build
   variables:
-    MOLECULE_SCENARIO_NAME: "ubuntu-18.04"
+    _MOLECULE_SCENARIO_NAME: "ubuntu-18.04"
 
 ubuntu-20.10:
   <<: *job-molecule
   stage: test
   allow_failure: true
   variables:
-    MOLECULE_SCENARIO_NAME: "ubuntu-20.10"
+    _MOLECULE_SCENARIO_NAME: "ubuntu-20.10"
 
 centos-8:
   <<: *job-molecule
   stage: test
   allow_failure: true
   variables:
-    MOLECULE_SCENARIO_NAME: "centos-8"
+    _MOLECULE_SCENARIO_NAME: "centos-8"
 
 centos-7:
   <<: *job-molecule
   stage: test
   allow_failure: true
   variables:
-    MOLECULE_SCENARIO_NAME: "centos-7"
+    _MOLECULE_SCENARIO_NAME: "centos-7"
 
 suse-15:
   <<: *job-molecule
   stage: test
   allow_failure: true
   variables:
-    MOLECULE_SCENARIO_NAME: "suse-15"
+    _MOLECULE_SCENARIO_NAME: "suse-15"
 
 debian-10:
   <<: *job-molecule
   stage: test
   allow_failure: true
   variables:
-    MOLECULE_SCENARIO_NAME: "debian-10"
+    _MOLECULE_SCENARIO_NAME: "debian-10"
 
 fedora-33:
   <<: *job-molecule
   stage: test
   allow_failure: true
   variables:
-    MOLECULE_SCENARIO_NAME: "fedora-33"
+    _MOLECULE_SCENARIO_NAME: "fedora-33"
 
 ansible-galaxy:
   <<: *job-ansible-galaxy
