@@ -1,46 +1,56 @@
 ---
 
-.script-vagrant: &script-vagrant
+.script-bootstrap-vagrant: &script-bootstrap-vagrant
   - |
     curl -Os https://releases.hashicorp.com/vagrant/2.2.14/vagrant_2.2.14_x86_64.deb
     sudo dpkg -i vagrant_2.2.14_x86_64.deb
     rm -rf vagrant_2.2.14_*
 
-.script-libvirt: &script-libvirt
+.script-bootstrap-libvirt: &script-bootstrap-libvirt
   - |
     sudo apt-get update
     sudo apt-get install -y binutils bridge-utils dnsmasq-base ebtables gcc libguestfs-tools libvirt-clients libvirt-daemon-system libvirt-dev make qemu-kvm qemu-utils ruby-dev
     vagrant plugin install vagrant-libvirt
+    sudo systemctl start libvirtd
 
-.script-ansible: &script-ansible
+.script-bootstrap-ansible: &script-bootstrap-ansible
   - |
     sudo apt-get update
     sudo apt-get -y install ca-certificates curl gcc iproute2 pwgen python3 python3-dev sudo
     curl -skL https://bootstrap.pypa.io/get-pip.py | sudo -H python3 - --prefix=/usr/local
     sudo -H pip3 install --prefix=/usr/local --upgrade --ignore-installed --requirement requirements.txt
 
-.script-molecule: &script-molecule
+.script-molecule-test: &script-molecule-test
   - |
     source ./scripts/run-tests.sh
     sudo -E molecule test -s $MOLECULE_SCENARIO_NAME
 
+.script-ansible-galaxy-role-import: &script-ansible-galaxy-role-import
+  - |
+    sudo ansible-galaxy role import --token $ANSIBLE_GALAXY_TOKEN $CI_PROJECT_NAMESPACE $CI_PROJECT_NAME
+
 .job-molecule: &job-molecule
   script:
-    - *script-vagrant
-    - *script-libvirt
-    - *script-ansible
-    - *script-molecule
+    - *script-bootstrap-vagrant
+    - *script-bootstrap-libvirt
+    - *script-bootstrap-ansible
+    - *script-molecule-test
+
+.job-ansible-galaxy: &job-ansible-galaxy
+  script:
+    - *script-bootstrap-ansible
+    - *script-ansible-galaxy-role-import
 
 default:
   before_script:
     - |
       git submodule sync --recursive
       git submodule update --init --recursive
-    
+
     - |
-      export ROLE=$(echo $CI_PROJECT_NAME | sed 's/^ansible-role-//g')
+      export _ROLE=$(echo $CI_PROJECT_NAME | sed 's/^ansible-role-//g')
       mkdir -p $HOME/.ansible/roles
-      ln -s $CI_PROJECT_DIR $HOME/.ansible/roles/$ROLE
+      ln -s $CI_PROJECT_DIR $HOME/.ansible/roles/$_ROLE
 
 ubuntu-20.04:
   <<: *job-molecule
@@ -97,8 +107,5 @@ fedora-33:
     MOLECULE_SCENARIO_NAME: "fedora-33"
 
 ansible-galaxy:
+  <<: *job-ansible-galaxy
   stage: deploy
-  script:
-    - *script-ansible
-    - |
-      sudo ansible-galaxy role import --token $ANSIBLE_GALAXY_API_KEY $CI_PROJECT_NAMESPACE $CI_PROJECT_NAME
