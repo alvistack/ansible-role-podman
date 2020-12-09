@@ -21,14 +21,14 @@
   tasks:
     - name: cp -rfT /etc/skel /root
       raw: |
-        set -ex
+        set -euo pipefail
         cp -rfT /etc/skel /root
       changed_when: false
       ignore_errors: true
 
     - name: setenforce 0
       raw: |
-        set -ex
+        set -euo pipefail
         setenforce 0
         sed -i 's/^SELINUX=.*$/SELINUX=permissive/g' /etc/selinux/config
       changed_when: false
@@ -36,7 +36,7 @@
 
     - name: systemctl stop firewalld.service
       raw: |
-        set -ex
+        set -euo pipefail
         systemctl stop firewalld.service
         systemctl disable firewalld.service
       changed_when: false
@@ -44,7 +44,7 @@
 
     - name: systemctl stop ufw.service
       raw: |
-        set -ex
+        set -euo pipefail
         systemctl stop ufw.service
         systemctl disable ufw.service
       changed_when: false
@@ -52,7 +52,7 @@
 
     - name: redhat | subscription-manager register
       raw: |
-        set -ex
+        set -euo pipefail
         subscription-manager register \
           --username={{ lookup('env', 'REDHAT_USERNAME') }} \
           --password={{ lookup('env', 'REDHAT_PASSWORD') }} \
@@ -62,7 +62,7 @@
 
     - name: debian | apt-get install -y ca-certificates curl gcc iproute2 python3 python3-dev sudo
       raw: |
-        set -ex
+        set -euo pipefail
         apt-get update
         apt-get dist-upgrade -y
         apt-get install -y ca-certificates curl gcc iproute2 python3 python3-dev sudo
@@ -71,7 +71,7 @@
 
     - name: redhat | yum install -y ca-certificates curl gcc iproute python3 python3-devel sudo
       raw: |
-        set -ex
+        set -euo pipefail
         yum makecache
         yum update -y
         yum install -y ca-certificates curl gcc iproute python3 python3-devel sudo
@@ -80,7 +80,7 @@
 
     - name: suse | zypper -n install -y ca-certificates curl gcc iproute2 python3 python3-devel sudo
       raw: |
-        set -ex
+        set -euo pipefail
         zypper -n --gpg-auto-import-keys refresh
         zypper -n update -y
         zypper -n install -y ca-certificates curl gcc iproute2 python3 python3-devel sudo

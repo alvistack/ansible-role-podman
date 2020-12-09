@@ -38,7 +38,7 @@ platforms:
     provider_raw_config_args:
       - "storage :file, bus: 'sata', cache: 'writeback'"
 lint: |
-  set -ex
+  set -euo pipefail
   yamllint .
   ansible-lint
   flake8
