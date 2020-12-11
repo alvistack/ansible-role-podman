@@ -38,7 +38,13 @@
 
 .script-ansible-galaxy-role-import: &script-ansible-galaxy-role-import
   - |
-    sudo ansible-galaxy role import --token $ANSIBLE_GALAXY_TOKEN $CI_PROJECT_NAMESPACE $CI_PROJECT_NAME
+    if [[ -n "$CI_COMMIT_TAG" ]]; then
+      export _USER=$CI_PROJECT_USER
+      export _REPO=$CI_PROJECT_NAME
+    else
+      exit 0
+    fi
+    ansible-galaxy role import --token $ANSIBLE_GALAXY_TOKEN $_USER $_REPO
 
 .job-molecule: &job-molecule
   script:
