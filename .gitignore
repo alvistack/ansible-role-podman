@@ -9,5 +9,6 @@ inventory/*/
 !inventory/default/
 
 packer/*/*/
+packer/*/packer-provisioner-*
 !packer/*/group_vars/
 !packer/*/host_vars/
