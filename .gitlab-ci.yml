@@ -63,60 +63,60 @@ default:
     - *script-git-submodule
     - *script-symlink-ansible-role
 
-ubuntu-20.04:
+build:ubuntu-20.04:
   <<: *job-molecule
   stage: build
   variables:
     _MOLECULE_SCENARIO_NAME: "ubuntu-20.04"
 
-ubuntu-18.04:
+build:ubuntu-18.04:
   <<: *job-molecule
   stage: build
   variables:
     _MOLECULE_SCENARIO_NAME: "ubuntu-18.04"
 
-ubuntu-20.10:
+test:ubuntu-20.10:
   <<: *job-molecule
   stage: test
   allow_failure: true
   variables:
     _MOLECULE_SCENARIO_NAME: "ubuntu-20.10"
 
-centos-8:
+test:centos-8:
   <<: *job-molecule
   stage: test
   allow_failure: true
   variables:
     _MOLECULE_SCENARIO_NAME: "centos-8"
 
-centos-7:
+test:centos-7:
   <<: *job-molecule
   stage: test
   allow_failure: true
   variables:
     _MOLECULE_SCENARIO_NAME: "centos-7"
 
-suse-15:
+test:suse-15:
   <<: *job-molecule
   stage: test
   allow_failure: true
   variables:
     _MOLECULE_SCENARIO_NAME: "suse-15"
 
-debian-10:
+test:debian-10:
   <<: *job-molecule
   stage: test
   allow_failure: true
   variables:
     _MOLECULE_SCENARIO_NAME: "debian-10"
 
-fedora-33:
+test:fedora-33:
   <<: *job-molecule
   stage: test
   allow_failure: true
   variables:
     _MOLECULE_SCENARIO_NAME: "fedora-33"
 
-ansible-galaxy:
+deploy:ansible-galaxy:
   <<: *job-ansible-galaxy
   stage: deploy
