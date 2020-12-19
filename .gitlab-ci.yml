@@ -78,45 +78,48 @@ build:ubuntu-18.04:
 test:ubuntu-20.10:
   <<: *job-molecule
   stage: test
-  allow_failure: true
   variables:
     _MOLECULE_SCENARIO_NAME: "ubuntu-20.10"
+  allow_failure: true
 
 test:centos-8:
   <<: *job-molecule
   stage: test
-  allow_failure: true
   variables:
     _MOLECULE_SCENARIO_NAME: "centos-8"
+  allow_failure: true
 
 test:centos-7:
   <<: *job-molecule
   stage: test
-  allow_failure: true
   variables:
     _MOLECULE_SCENARIO_NAME: "centos-7"
+  allow_failure: true
 
 test:suse-15:
   <<: *job-molecule
   stage: test
-  allow_failure: true
   variables:
     _MOLECULE_SCENARIO_NAME: "suse-15"
+  allow_failure: true
 
 test:debian-10:
   <<: *job-molecule
   stage: test
-  allow_failure: true
   variables:
     _MOLECULE_SCENARIO_NAME: "debian-10"
+  allow_failure: true
 
 test:fedora-33:
   <<: *job-molecule
   stage: test
-  allow_failure: true
   variables:
     _MOLECULE_SCENARIO_NAME: "fedora-33"
+  allow_failure: true
 
 deploy:ansible-galaxy:
   <<: *job-ansible-galaxy
   stage: deploy
+  needs:
+    - build:ubuntu-20.04
+    - build:ubuntu-18.04
