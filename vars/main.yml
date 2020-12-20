@@ -18,7 +18,7 @@ _podman_download:
   "v2.2.1":
     url: "https://github.com/alvistack/containers-podman/releases/download/v2.2.1/podman-v2.2.1-linux-amd64"
     dest: "{{ ansible_user_dir }}/.ansible/tmp/podman-v2.2.1-linux-amd64"
-    checksum: "sha1:0514d022c71351871c41d78c9d224d0862ddd299"
+    checksum: "sha1:5fdd13a8d35c6607d44c0e86a27377d3b8932d64"
   "v2.2.0":
     url: "https://github.com/alvistack/containers-podman/releases/download/v2.2.0/podman-v2.2.0-linux-amd64"
     dest: "{{ ansible_user_dir }}/.ansible/tmp/podman-v2.2.0-linux-amd64"
