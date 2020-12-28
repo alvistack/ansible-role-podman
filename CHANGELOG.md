@@ -1,9 +1,14 @@
 # Ansible Role for Podman
 
-## 4.6.0 - TBC
+## 4.7.0 - TBC
 
 ### Major Changes
 
+## 4.6.0 - 2020-12-28
+
+### Major Changes
+
+  - Simplify Molecule scenario for vagrant-libvirt
   - Migrate from Travis CI to GitLab CI
   - Support Fedora 33
   - Remove Fedora 32 support
