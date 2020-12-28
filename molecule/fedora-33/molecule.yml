@@ -23,19 +23,11 @@ platforms:
     box: generic/fedora33
     cpu: 2
     memory: 4096
-    interfaces:
-      - auto_config: true
-        network_name: private_network
-        type: dhcp
-    provider_options:
-      cpu_mode: "'host-model'"
-      disk_bus: "'virtio'"
-      driver: "'kvm'"
-      nested: "'true'"
-      nic_model_type: "'virtio'"
-      video_type: "'virtio'"
-      volume_cache: "'writeback'"
     provider_raw_config_args:
+      - "disk_bus = 'virtio'"
+      - "nic_model_type = 'virtio'"
+      - "video_type = 'virtio'"
+      - "volume_cache = 'writeback'"
       - "storage :file, bus: 'virtio', cache: 'writeback'"
 lint: |
   set -euo pipefail
