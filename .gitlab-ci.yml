@@ -59,6 +59,7 @@
     - *script-ansible-galaxy-role-import
 
 default:
+  retry: 3
   before_script:
     - *script-git-submodule
     - *script-symlink-ansible-role
