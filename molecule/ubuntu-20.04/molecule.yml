@@ -20,7 +20,7 @@ driver:
     name: libvirt
 platforms:
   - name: ${MOLECULE_INSTANCE_NAME}-1
-    box: generic/ubuntu2004
+    box: alvistack/ubuntu-20.04
     cpu: 2
     memory: 4096
     provider_raw_config_args:

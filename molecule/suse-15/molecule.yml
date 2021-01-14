@@ -20,15 +20,15 @@ driver:
     name: libvirt
 platforms:
   - name: ${MOLECULE_INSTANCE_NAME}-1
-    box: generic/opensuse15
+    box: alvistack/opensuse-leap-15.2
     cpu: 2
     memory: 4096
     provider_raw_config_args:
-      - "disk_bus = 'sata'"
+      - "disk_bus = 'virtio'"
       - "nic_model_type = 'virtio'"
       - "video_type = 'virtio'"
       - "volume_cache = 'writeback'"
-      - "storage :file, bus: 'sata', cache: 'writeback'"
+      - "storage :file, bus: 'virtio', cache: 'writeback'"
 lint: |
   set -euo pipefail
   yamllint .
