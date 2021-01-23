@@ -4,6 +4,8 @@
 
 ### Major Changes
 
+  - Support CentOS 8 Stream
+  - Support openSUSE Tumbleweed
   - Migrate base Vagrant box from `generic/*` to `alvistack/*`
 
 ## 4.6.0 - 2020-12-28

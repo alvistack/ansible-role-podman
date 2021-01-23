@@ -83,6 +83,13 @@ test:ubuntu-20.10:
     _MOLECULE_SCENARIO_NAME: "ubuntu-20.10"
   allow_failure: true
 
+test:centos-8-stream:
+  <<: *job-molecule
+  stage: test
+  variables:
+    _MOLECULE_SCENARIO_NAME: "centos-8-stream"
+  allow_failure: true
+
 test:centos-8:
   <<: *job-molecule
   stage: test
@@ -97,11 +104,18 @@ test:centos-7:
     _MOLECULE_SCENARIO_NAME: "centos-7"
   allow_failure: true
 
-test:suse-15:
+test:opensuse-tumbleweed:
   <<: *job-molecule
   stage: test
   variables:
-    _MOLECULE_SCENARIO_NAME: "suse-15"
+    _MOLECULE_SCENARIO_NAME: "opensuse-tumbleweed"
+  allow_failure: true
+
+test:opensuse-leap-15.2:
+  <<: *job-molecule
+  stage: test
+  variables:
+    _MOLECULE_SCENARIO_NAME: "opensuse-leap-15.2"
   allow_failure: true
 
 test:debian-10:
