@@ -13,11 +13,12 @@ This role require Ansible 2.10 or higher.
 
 This role was designed for:
 
-  - Ubuntu 18.04/20.04/20.10
-  - RHEL/CentOS 7/8
-  - openSUSE Leap 15.2
+  - Ubuntu 18.04, 20.04, 20.10
+  - CentOS 7, 8, 8 Stream
+  - openSUSE Leap 15.2, Tumbleweed
   - Debian 10
   - Fedora 33
+  - RHEL 7, 8
 
 ## Role Variables
 

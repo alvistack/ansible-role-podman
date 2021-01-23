@@ -13,23 +13,30 @@
 
 .script-bootstrap-vagrant: &script-bootstrap-vagrant
   - |
-    curl -skL -O https://releases.hashicorp.com/vagrant/2.2.14/vagrant_2.2.14_x86_64.deb
-    sudo dpkg -i vagrant_2.2.14_x86_64.deb
-    rm -rf vagrant_2.2.14_*
+    if ! [[ -x "$(command -v vagrant)" ]]; then
+      curl -skL -O https://releases.hashicorp.com/vagrant/2.2.14/vagrant_2.2.14_x86_64.deb
+      sudo dpkg -i vagrant_2.2.14_x86_64.deb
+      rm -rf vagrant_2.2.14_*
+    fi
+    vagrant cloud auth login --token $VAGRANT_CLOUD_TOKEN
 
 .script-bootstrap-libvirt: &script-bootstrap-libvirt
   - |
-    sudo apt-get update
-    sudo apt-get install -y binutils bridge-utils dnsmasq-base ebtables gcc libguestfs-tools libvirt-clients libvirt-daemon-system libvirt-dev make qemu-kvm qemu-utils ruby-dev
-    vagrant plugin install vagrant-libvirt
+    if ! [[ -x "$(command -v kvm)" ]]; then
+      sudo apt-get update
+      sudo apt-get install -y binutils bridge-utils dnsmasq-base ebtables gcc libguestfs-tools libvirt-clients libvirt-daemon-system libvirt-dev make qemu-kvm qemu-utils ruby-dev
+      vagrant plugin install vagrant-libvirt
+    fi
     sudo systemctl start libvirtd.service
 
 .script-bootstrap-ansible: &script-bootstrap-ansible
   - |
-    sudo apt-get update
-    sudo apt-get -y install ca-certificates curl gcc iproute2 pwgen python3 python3-dev sudo
-    curl -skL https://bootstrap.pypa.io/get-pip.py | sudo -H python3 - --prefix=/usr/local
-    sudo -H pip3 install --prefix=/usr/local --upgrade --requirement requirements.txt
+    if ! [[ -x "$(command -v ansible)" ]]; then
+      sudo apt-get update
+      sudo apt-get -y install ca-certificates curl gcc iproute2 pwgen python3 python3-dev sudo
+      curl -skL https://bootstrap.pypa.io/get-pip.py | sudo -H python3 - --prefix=/usr/local
+      sudo -H pip3 install --prefix=/usr/local --upgrade --requirement requirements.txt
+    fi
 
 .script-molecule-test: &script-molecule-test
   - |
@@ -83,6 +90,13 @@ test:ubuntu-20.10:
     _MOLECULE_SCENARIO_NAME: "ubuntu-20.10"
   allow_failure: true
 
+test:centos-8-stream:
+  <<: *job-molecule
+  stage: test
+  variables:
+    _MOLECULE_SCENARIO_NAME: "centos-8-stream"
+  allow_failure: true
+
 test:centos-8:
   <<: *job-molecule
   stage: test
@@ -97,11 +111,18 @@ test:centos-7:
     _MOLECULE_SCENARIO_NAME: "centos-7"
   allow_failure: true
 
-test:suse-15:
+test:opensuse-tumbleweed:
   <<: *job-molecule
   stage: test
   variables:
-    _MOLECULE_SCENARIO_NAME: "suse-15"
+    _MOLECULE_SCENARIO_NAME: "opensuse-tumbleweed"
+  allow_failure: true
+
+test:opensuse-leap-15.2:
+  <<: *job-molecule
+  stage: test
+  variables:
+    _MOLECULE_SCENARIO_NAME: "opensuse-leap-15.2"
   allow_failure: true
 
 test:debian-10:
