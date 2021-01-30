@@ -4,6 +4,7 @@
 
 ### Major Changes
 
+  - Improve download archive logic
   - Support CentOS 8 Stream
   - Support openSUSE Tumbleweed
   - Migrate base Vagrant box from `generic/*` to `alvistack/*`

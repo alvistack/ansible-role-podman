@@ -60,6 +60,7 @@
     - { dest: "/usr/local/bin" }
     - { dest: "/usr/share/containers" }
     - { dest: "{{ podman_download.dest | dirname }}" }
+  register: file_result
 
 - name: download archive
   vars:
@@ -72,12 +73,14 @@
     timeout: 300
   loop:
     - "{{ podman_download }}"
+  when: file_result is changed
   register: get_url_result
   until: get_url_result is succeeded
 
 - name: unarchive package
   shell: |
     set -euo pipefail
+    exec &> >(tee -a {{ podman_download.dest }}.log)
     cd /usr/local/bin
     TMP_DIR="$(mktemp -d)" \
       && cp {{ podman_download.dest }} $TMP_DIR/podman \
@@ -87,7 +90,7 @@
       && rm -rf $TMP_DIR
   args:
     executable: "/bin/bash"
-  when: get_url_result is changed
+    creates: "{{ podman_download.dest }}.log"
   notify:
     - podman | systemctl daemon-reload
     - podman | systemctl restart podman.socket
