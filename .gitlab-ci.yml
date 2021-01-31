@@ -46,7 +46,7 @@
 .script-ansible-galaxy-role-import: &script-ansible-galaxy-role-import
   - |
     if [[ -n "$CI_COMMIT_BRANCH" ]] && [[ "$CI_COMMIT_BRANCH" =~ master ]]; then
-      export _USER=$CI_PROJECT_USER
+      export _USER=$CI_PROJECT_NAMESPACE
       export _REPO=$CI_PROJECT_NAME
     else
       exit 0
