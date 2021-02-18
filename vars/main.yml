@@ -16,14 +16,14 @@
 
 _podman_download:
   "v3.0.0":
-    url: "https://github.com/alvistack/containers-podman/releases/download/v3.0.0/podman-v3.0.0-linux-amd64"
+    url: "http://github.com/alvistack/containers-podman/releases/download/v3.0.0/podman-v3.0.0-linux-amd64"
     dest: "/var/cache/ansible/0e3d94d5f63d99325efa99bf9dca76efb516ee2409093b0687fd7ffae2d62864/podman-v3.0.0-linux-amd64"
     checksum: "sha256:0e3d94d5f63d99325efa99bf9dca76efb516ee2409093b0687fd7ffae2d62864"
   "v2.2.1":
-    url: "https://github.com/alvistack/containers-podman/releases/download/v2.2.1/podman-v2.2.1-linux-amd64"
+    url: "http://github.com/alvistack/containers-podman/releases/download/v2.2.1/podman-v2.2.1-linux-amd64"
     dest: "/var/cache/ansible/b5b0ea7dedf8fa72a7bececfd57087662184c47c5fa457b7113442f26bb1e261/podman-v2.2.1-linux-amd64"
     checksum: "sha256:b5b0ea7dedf8fa72a7bececfd57087662184c47c5fa457b7113442f26bb1e261"
   "v2.2.0":
-    url: "https://github.com/alvistack/containers-podman/releases/download/v2.2.0/podman-v2.2.0-linux-amd64"
+    url: "http://github.com/alvistack/containers-podman/releases/download/v2.2.0/podman-v2.2.0-linux-amd64"
     dest: "/var/cache/ansible/5cea7d729499f70a079a3609b9aa0e96feac761cbd467acc17534a1177954408/podman-v2.2.0-linux-amd64"
     checksum: "sha256:5cea7d729499f70a079a3609b9aa0e96feac761cbd467acc17534a1177954408"
