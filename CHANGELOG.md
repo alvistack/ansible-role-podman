@@ -4,6 +4,7 @@
 
 ### Major Changes
 
+  - Improve HTTP transparent proxy support
   - Improve download archive logic
   - Support CentOS 8 Stream
   - Support openSUSE Tumbleweed
