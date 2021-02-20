@@ -45,7 +45,10 @@
 
 .script-ansible-galaxy-role-import: &script-ansible-galaxy-role-import
   - |
-    if [[ -n "$CI_COMMIT_BRANCH" ]] && [[ "$CI_COMMIT_BRANCH" =~ master ]]; then
+    if [[ -n "$CI_COMMIT_TAG" ]] && [[ "$CI_COMMIT_TAG" =~ ^[0-9]+\.[0-9]+\.[0-9]+ ]]; then
+      export _USER=$CI_PROJECT_NAMESPACE
+      export _REPO=$CI_PROJECT_NAME
+    elif [[ -n "$CI_COMMIT_BRANCH" ]] && [[ "$CI_COMMIT_BRANCH" =~ master ]]; then
       export _USER=$CI_PROJECT_NAMESPACE
       export _REPO=$CI_PROJECT_NAME
     else
