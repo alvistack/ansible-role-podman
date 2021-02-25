@@ -4,6 +4,9 @@
 
 ### Major Changes
 
+  - Support RHEL 8 with Molecule
+  - Support RHEL 7 with Molecule
+  - Remove CentOS 8 support
   - Improve HTTP transparent proxy support
   - Improve download archive logic
   - Support CentOS 8 Stream
