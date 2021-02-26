@@ -45,7 +45,10 @@
 
 .script-ansible-galaxy-role-import: &script-ansible-galaxy-role-import
   - |
-    if [[ -n "$CI_COMMIT_BRANCH" ]] && [[ "$CI_COMMIT_BRANCH" =~ master ]]; then
+    if [[ -n "$CI_COMMIT_TAG" ]] && [[ "$CI_COMMIT_TAG" =~ ^[0-9]+\.[0-9]+\.[0-9]+ ]]; then
+      export _USER=$CI_PROJECT_NAMESPACE
+      export _REPO=$CI_PROJECT_NAME
+    elif [[ -n "$CI_COMMIT_BRANCH" ]] && [[ "$CI_COMMIT_BRANCH" =~ master ]]; then
       export _USER=$CI_PROJECT_NAMESPACE
       export _REPO=$CI_PROJECT_NAME
     else
@@ -66,7 +69,6 @@
     - *script-ansible-galaxy-role-import
 
 default:
-  retry: 2
   before_script:
     - *script-git-submodule
     - *script-symlink-ansible-role
@@ -74,12 +76,14 @@ default:
 build:ubuntu-20.04:
   <<: *job-molecule
   stage: build
+  retry: 2
   variables:
     _MOLECULE_SCENARIO_NAME: "ubuntu-20.04"
 
 build:ubuntu-18.04:
   <<: *job-molecule
   stage: build
+  retry: 2
   variables:
     _MOLECULE_SCENARIO_NAME: "ubuntu-18.04"
 
@@ -95,13 +99,6 @@ test:centos-8-stream:
   stage: test
   variables:
     _MOLECULE_SCENARIO_NAME: "centos-8-stream"
-  allow_failure: true
-
-test:centos-8:
-  <<: *job-molecule
-  stage: test
-  variables:
-    _MOLECULE_SCENARIO_NAME: "centos-8"
   allow_failure: true
 
 test:centos-7:
@@ -139,9 +136,24 @@ test:fedora-33:
     _MOLECULE_SCENARIO_NAME: "fedora-33"
   allow_failure: true
 
+test:rhel-8:
+  <<: *job-molecule
+  stage: test
+  variables:
+    _MOLECULE_SCENARIO_NAME: "rhel-8"
+  allow_failure: true
+
+test:rhel-7:
+  <<: *job-molecule
+  stage: test
+  variables:
+    _MOLECULE_SCENARIO_NAME: "rhel-7"
+  allow_failure: true
+
 deploy:ansible-galaxy:
   <<: *job-ansible-galaxy
   stage: deploy
+  retry: 2
   needs:
     - build:ubuntu-20.04
     - build:ubuntu-18.04
