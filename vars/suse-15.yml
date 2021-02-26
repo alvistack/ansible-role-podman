@@ -18,3 +18,4 @@ _zypper:
   - { state: "latest", name: "bash-completion" }
   - { state: "latest", name: "conntrack-tools" }
   - { state: "latest", name: "iptables" }
+  - { state: "latest", name: "tar" }
