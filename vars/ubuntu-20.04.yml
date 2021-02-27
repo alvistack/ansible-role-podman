@@ -18,4 +18,3 @@ _apt:
   - { state: "latest", name: "bash-completion" }
   - { state: "latest", name: "conntrack" }
   - { state: "latest", name: "iptables" }
-  - { state: "latest", name: "tar" }
