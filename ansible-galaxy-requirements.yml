@@ -32,10 +32,6 @@ collections:
     version: ">=0.0.0,<1.0.0"
 
 roles:
-  - name: python
-    src: https://github.com/alvistack/ansible-role-python
-    version: develop
-
   - name: cni_plugins
     src: https://github.com/alvistack/ansible-role-cni_plugins
     version: develop

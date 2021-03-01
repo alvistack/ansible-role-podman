@@ -19,10 +19,6 @@
   become: true
   tasks:
     - include_role:
-        name: python
-      tags: python
-
-    - include_role:
         name: cni_plugins
       tags: cni_plugins
 

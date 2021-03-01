@@ -3,6 +3,7 @@
 *.pyc
 *.rej
 *.retry
+.cache
 __pycache__
 
 inventory/*/
