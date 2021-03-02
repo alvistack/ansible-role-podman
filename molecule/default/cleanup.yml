@@ -25,5 +25,6 @@
         subscription-manager remove --all
         subscription-manager unregister
         subscription-manager clean
+      when: inventory_hostname != ansible_host
       changed_when: false
       ignore_errors: true
