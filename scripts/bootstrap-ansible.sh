@@ -20,6 +20,7 @@ cd "$(cd "$(dirname "$0")"; pwd -P)/../"
 
 # Prepare APT dependencies
 if [ -x "$(command -v apt-get)" ]; then
+    DEBIAN_FRONTEND=noninteractive
     apt-get update
     apt-get dist-upgrade -y
     apt-get install -y bzip2 ca-certificates curl gcc gnupg gzip iproute2 procps python3 python3-apt python3-cryptography python3-dev python3-jmespath python3-lxml python3-pip python3-setuptools python3-venv python3-virtualenv python3-wheel sudo tar unzip xz-utils zip
