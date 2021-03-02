@@ -41,7 +41,7 @@ fi
 
 # Install PIP dependencies
 pip3 install --prefix=/usr/local --upgrade pipx
-PIPX_HOME=/usr/local/share/pipx PIPX_BIN_DIR=/usr/local/bin pipx install --include-deps --pip-args "--upgrade --requirement requirements.txt" ansible
+PIPX_HOME=/usr/local/share/pipx PIPX_BIN_DIR=/usr/local/bin pipx install --force --include-deps --pip-args "--requirement requirements.txt" ansible
 
 # Install Ansible Collection dependencies
 ansible-galaxy collection install --force --requirements-file ansible-galaxy-requirements.yml
