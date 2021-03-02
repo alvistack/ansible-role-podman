@@ -32,10 +32,9 @@
     - name: debian | apt-get install python3 python3-dev
       raw: |
         set -eu
-        DEBIAN_FRONTEND=noninteractive
         apt-get update
-        apt-get dist-upgrade -y
-        apt-get install -y python3 python3-dev
+        DEBIAN_FRONTEND=noninteractive apt-get dist-upgrade -y
+        DEBIAN_FRONTEND=noninteractive apt-get install -y python3 python3-dev
       changed_when: false
       ignore_errors: true
 
@@ -95,8 +94,7 @@
     - name: debian | apt-get install *.deb
       raw: |
         set -eu
-        DEBIAN_FRONTEND=noninteractive
-        apt-get install -y bzip2 ca-certificates curl gcc gnupg gzip iproute2 procps python3 python3-apt python3-cryptography python3-dev python3-jmespath python3-lxml python3-pip python3-setuptools python3-venv python3-virtualenv python3-wheel sudo tar unzip xz-utils zip
+        DEBIAN_FRONTEND=noninteractive apt-get install -y bzip2 ca-certificates curl gcc gnupg gzip iproute2 procps python3 python3-apt python3-cryptography python3-dev python3-jmespath python3-lxml python3-pip python3-setuptools python3-venv python3-virtualenv python3-wheel sudo tar unzip xz-utils zip
       when: ansible_os_family | lower == "debian"
       changed_when: false
       ignore_errors: true
