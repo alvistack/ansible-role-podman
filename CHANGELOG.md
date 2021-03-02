@@ -4,6 +4,7 @@
 
 ### Major Changes
 
+  - Simplify Python dependency with system packages
   - Support RHEL 8 with Molecule
   - Support RHEL 7 with Molecule
   - Remove CentOS 8 support
