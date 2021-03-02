@@ -19,7 +19,17 @@
   become: true
   gather_facts: false
   tasks:
-    - name: debian | apt-get install -y python3 python3-dev
+    - name: redhat | subscription-manager register
+      raw: |
+        set -eu
+        subscription-manager register \
+          --username={{ lookup('env', 'REDHAT_USERNAME') }} \
+          --password={{ lookup('env', 'REDHAT_PASSWORD') }} \
+          --auto-attach
+      changed_when: false
+      ignore_errors: true
+
+    - name: debian | apt-get install python3 python3-dev
       raw: |
         set -eu
         apt-get update
@@ -28,7 +38,7 @@
       changed_when: false
       ignore_errors: true
 
-    - name: redhat | yum install -y python3 python3-devel
+    - name: redhat | yum install python3 python3-devel
       raw: |
         set -eu
         yum makecache
@@ -37,7 +47,7 @@
       changed_when: false
       ignore_errors: true
 
-    - name: suse | zypper -n install -y python3 python3-devel
+    - name: suse | zypper install python3 python3-devel
       raw: |
         set -eu
         zypper -n --gpg-auto-import-keys refresh
@@ -81,54 +91,44 @@
       changed_when: false
       ignore_errors: true
 
-    - name: redhat | subscription-manager register
+    - name: debian | apt-get install *.deb
       raw: |
         set -eu
-        subscription-manager register \
-          --username={{ lookup('env', 'REDHAT_USERNAME') }} \
-          --password={{ lookup('env', 'REDHAT_PASSWORD') }} \
-          --auto-attach
-      changed_when: false
-      ignore_errors: true
-
-    - name: debian | apt-get install -y bzip2 ca-certificates curl gcc gnupg gzip iproute2 procps python3 python3-apt python3-cryptography python3-dev python3-lxml python3-pip sudo tar unzip xz-utils zip
-      raw: |
-        set -eu
-        apt-get install -y bzip2 ca-certificates curl gcc gnupg gzip iproute2 procps python3 python3-apt python3-cryptography python3-dev python3-lxml python3-pip sudo tar unzip xz-utils zip
+        apt-get install -y bzip2 ca-certificates curl gcc gnupg gzip iproute2 procps python3 python3-apt python3-cryptography python3-dev python3-jmespath python3-lxml python3-pip sudo tar unzip xz-utils zip
       when: ansible_os_family | lower == "debian"
       changed_when: false
       ignore_errors: true
 
-    - name: fedora-33 | yum install -y bzip2 gnupg2 gzip procps-ng python3-cryptography python3-libselinux python3-lxml python3-pip tar unzip xz yum-utils zip
+    - name: fedora-33 | yum install *.rpm
       raw: |
         set -eu
-        yum install -y bzip2 ca-certificates curl gcc gnupg2 gzip iproute procps-ng python3 python3-cryptography python3-devel python3-libselinux python3-lxml python3-pip sudo tar unzip xz yum-utils zip
+        yum install -y bzip2 ca-certificates curl gcc gnupg2 gzip iproute procps-ng python3 python3-cryptography python3-devel python3-jmespath python3-libselinux python3-lxml python3-pip sudo tar unzip xz yum-utils zip
       when: ansible_distribution | lower == "fedora" and ansible_distribution_major_version | lower == "33"
       changed_when: false
       ignore_errors: true
 
-    - name: redhat-8 | yum install -y bzip2 ca-certificates curl gcc gnupg2 gzip iproute procps-ng python3 python3-cryptography python3-devel python3-libselinux python3-lxml python3-pip sudo tar unzip xz yum-utils zip
+    - name: redhat-8 | yum install *.rpm
       raw: |
         set -eu
         yum install -y http://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
-        yum install -y bzip2 ca-certificates curl gcc gnupg2 gzip iproute procps-ng python3 python3-cryptography python3-devel python3-libselinux python3-lxml python3-pip sudo tar unzip xz yum-utils zip
+        yum install -y bzip2 ca-certificates curl gcc gnupg2 gzip iproute procps-ng python3 python3-cryptography python3-devel python3-jmespath python3-libselinux python3-lxml python3-pip sudo tar unzip xz yum-utils zip
       when: ansible_os_family | lower == "redhat" and ansible_distribution_major_version | lower == "8"
       changed_when: false
       ignore_errors: true
 
-    - name: redhat-7 | yum install -y bzip2 ca-certificates curl gcc gnupg2 gzip iproute procps-ng python3 python3-devel python3-libselinux python3-lxml python3-pip python36-cryptography sudo tar unzip xz yum-utils zip
+    - name: redhat-7 | yum install *.rpm
       raw: |
         set -eu
         yum install -y http://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
-        yum install -y bzip2 ca-certificates curl gcc gnupg2 gzip iproute procps-ng python3 python3-devel python3-libselinux python3-lxml python3-pip python36-cryptography sudo tar unzip xz yum-utils zip
+        yum install -y bzip2 ca-certificates curl gcc gnupg2 gzip iproute procps-ng python3 python36-cryptography python3-devel python36-jmespath python3-libselinux python3-lxml python3-pip sudo tar unzip xz yum-utils zip
       when: ansible_os_family | lower == "redhat" and ansible_distribution_major_version | lower == "7"
       changed_when: false
       ignore_errors: true
 
-    - name: suse | zypper -n install -y bzip2 ca-certificates curl gcc gpg2 gzip iproute2 procps python3 python3-cryptography python3-devel python3-lxml python3-pip sudo tar unzip xz zip
+    - name: suse | zypper -n install *.rpm
       raw: |
         set -eu
-        zypper -n install -y bzip2 ca-certificates curl gcc gpg2 gzip iproute2 procps python3 python3-cryptography python3-devel python3-lxml python3-pip sudo tar unzip xz zip
+        zypper -n install -y bzip2 ca-certificates curl gcc gpg2 gzip iproute2 procps python3 python3-cryptography python3-devel python3-jmespath python3-lxml python3-pip sudo tar unzip xz zip
       when: ansible_os_family | lower == "suse"
       changed_when: false
       ignore_errors: true
