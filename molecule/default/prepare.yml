@@ -94,7 +94,7 @@
     - name: debian | apt-get install *.deb
       raw: |
         set -eu
-        apt-get install -y bzip2 ca-certificates curl gcc gnupg gzip iproute2 procps python3 python3-apt python3-cryptography python3-dev python3-jmespath python3-lxml python3-pip sudo tar unzip xz-utils zip
+        apt-get install -y bzip2 ca-certificates curl gcc gnupg gzip iproute2 procps python3 python3-apt python3-cryptography python3-dev python3-jmespath python3-lxml python3-pip python3-setuptools python3-venv python3-virtualenv python3-wheel sudo tar unzip xz-utils zip
       when: ansible_os_family | lower == "debian"
       changed_when: false
       ignore_errors: true
@@ -102,7 +102,7 @@
     - name: fedora-33 | yum install *.rpm
       raw: |
         set -eu
-        yum install -y bzip2 ca-certificates curl gcc gnupg2 gzip iproute procps-ng python3 python3-cryptography python3-devel python3-jmespath python3-libselinux python3-lxml python3-pip sudo tar unzip xz yum-utils zip
+        yum install -y bzip2 ca-certificates curl gcc gnupg2 gzip iproute procps-ng python3 python3-cryptography python3-devel python3-jmespath python3-libselinux python3-lxml python3-pip python3-setuptools python3-virtualenv python3-wheel sudo tar unzip xz yum-utils zip
       when: ansible_distribution | lower == "fedora" and ansible_distribution_major_version | lower == "33"
       changed_when: false
       ignore_errors: true
@@ -111,7 +111,7 @@
       raw: |
         set -eu
         yum install -y http://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
-        yum install -y bzip2 ca-certificates curl gcc gnupg2 gzip iproute procps-ng python3 python3-cryptography python3-devel python3-jmespath python3-libselinux python3-lxml python3-pip sudo tar unzip xz yum-utils zip
+        yum install -y bzip2 ca-certificates curl gcc gnupg2 gzip iproute procps-ng python3 python3-cryptography python3-devel python3-jmespath python3-libselinux python3-lxml python3-pip python3-setuptools python3-virtualenv python3-wheel sudo tar unzip xz yum-utils zip
       when: ansible_os_family | lower == "redhat" and ansible_distribution_major_version | lower == "8"
       changed_when: false
       ignore_errors: true
@@ -120,7 +120,7 @@
       raw: |
         set -eu
         yum install -y http://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
-        yum install -y bzip2 ca-certificates curl gcc gnupg2 gzip iproute procps-ng python3 python36-cryptography python3-devel python36-jmespath python3-libselinux python3-lxml python3-pip sudo tar unzip xz yum-utils zip
+        yum install -y bzip2 ca-certificates curl gcc gnupg2 gzip iproute procps-ng python3 python3-devel python3-libselinux python3-lxml python3-pip python3-setuptools python3-virtualenv python3-wheel python36-cryptography python3-jmespath sudo tar unzip xz yum-utils zip
       when: ansible_os_family | lower == "redhat" and ansible_distribution_major_version | lower == "7"
       changed_when: false
       ignore_errors: true
@@ -128,7 +128,7 @@
     - name: suse | zypper -n install *.rpm
       raw: |
         set -eu
-        zypper -n install -y bzip2 ca-certificates curl gcc gpg2 gzip iproute2 procps python3 python3-cryptography python3-devel python3-jmespath python3-lxml python3-pip sudo tar unzip xz zip
+        zypper -n install -y bzip2 ca-certificates curl gcc gpg2 gzip iproute2 procps python3 python3-cryptography python3-devel python3-jmespath python3-lxml python3-pip python3-setuptools python3-virtualenv python3-wheel sudo tar unzip xz zip
       when: ansible_os_family | lower == "suse"
       changed_when: false
       ignore_errors: true
