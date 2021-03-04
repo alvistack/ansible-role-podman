@@ -20,9 +20,10 @@ cd "$(cd "$(dirname "$0")"; pwd -P)/../"
 
 # Prepare APT dependencies
 if [ -x "$(command -v apt-get)" ]; then
+    export DEBIAN_FRONTEND=noninteractive
     apt-get update
-    DEBIAN_FRONTEND=noninteractive apt-get dist-upgrade -y
-    DEBIAN_FRONTEND=noninteractive apt-get install -y bzip2 ca-certificates curl gcc gnupg gzip iproute2 procps python3 python3-apt python3-cryptography python3-dev python3-jmespath python3-lxml python3-netaddr python3-pip python3-setuptools python3-venv python3-virtualenv python3-wheel sudo tar unzip xz-utils zip
+    apt-get dist-upgrade -y
+    apt-get install -y bzip2 ca-certificates curl gcc gnupg gzip iproute2 procps python3 python3-apt python3-cryptography python3-dev python3-jmespath python3-lxml python3-netaddr python3-pip python3-setuptools python3-venv python3-virtualenv python3-wheel sudo tar unzip xz-utils zip
 fi
 
 # Prepare YUM dependencies
@@ -41,7 +42,15 @@ fi
 
 # Install PIP dependencies
 pip3 install --prefix=/usr/local --upgrade pipx
-PIPX_HOME=/usr/local/share/pipx PIPX_BIN_DIR=/usr/local/bin pipx install --force --include-deps --pip-args "--requirement requirements.txt" ansible
+
+# Install Ansible dependencies
+export PIPX_HOME=/usr/local/share/pipx
+export PIPX_BIN_DIR=/usr/local/bin
+pipx install --force flake8
+pipx install --force yamllint
+pipx install --force --include-deps 'ansible>=2.10.3,<2.11.0'
+pipx inject --force --include-apps ansible ansible-lint ansible-runner molecule
+pipx inject --force ansible ansible-runner-http docker molecule-docker molecule-podman molecule-vagrant openshift python-vagrant
 
 # Install Ansible Collection dependencies
 ansible-galaxy collection install --force --requirements-file ansible-galaxy-requirements.yml
