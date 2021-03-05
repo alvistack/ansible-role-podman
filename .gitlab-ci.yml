@@ -43,7 +43,7 @@
       sudo -E pipx install --force yamllint
       sudo -E pipx install --force --include-deps 'ansible>=2.10.3,<2.11.0'
       sudo -E pipx inject --force --include-apps ansible ansible-lint ansible-runner molecule
-      sudo -E pipx inject --force ansible ansible-runner-http docker molecule-docker molecule-podman molecule-vagrant openshift python-vagrant
+      sudo -E pipx inject --force ansible ansible-runner-http docker molecule-docker molecule-podman molecule-vagrant netaddr openshift python-vagrant
     fi
 
 .script-molecule-test: &script-molecule-test
