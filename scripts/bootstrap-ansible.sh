@@ -49,8 +49,8 @@ export PIPX_BIN_DIR=/usr/local/bin
 pipx install --force flake8
 pipx install --force yamllint
 pipx install --force --include-deps 'ansible>=2.10.3,<2.11.0'
-pipx inject --force --include-apps ansible ansible-lint ansible-runner molecule
-pipx inject --force ansible ansible-runner-http docker molecule-docker molecule-podman molecule-vagrant netaddr openshift python-vagrant
+pipx inject --force --include-apps ansible ansible-lint
+pipx inject --force ansible docker netaddr openshift python-vagrant
 
 # Install Ansible Collection dependencies
 ansible-galaxy collection install --force --requirements-file ansible-galaxy-requirements.yml

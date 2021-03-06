@@ -42,8 +42,17 @@
       sudo -E pipx install --force flake8
       sudo -E pipx install --force yamllint
       sudo -E pipx install --force --include-deps 'ansible>=2.10.3,<2.11.0'
-      sudo -E pipx inject --force --include-apps ansible ansible-lint ansible-runner molecule
-      sudo -E pipx inject --force ansible ansible-runner-http docker molecule-docker molecule-podman molecule-vagrant netaddr openshift python-vagrant
+      sudo -E pipx inject --force --include-apps ansible ansible-lint
+      sudo -E pipx inject --force ansible docker netaddr openshift pyhon-vagrant
+    fi
+
+.script-bootstrap-molecule: &script-bootstrap-molecule
+  - |
+    if ! [[ -x "$(command -v molecule)" ]]; then
+      export PIPX_HOME=/usr/local/share/pipx
+      export PIPX_BIN_DIR=/usr/local/bin
+      sudo -E pipx inject --force --include-apps ansible molecule
+      sudo -E pipx inject --force ansible molecule-docker molecule-vagrant
     fi
 
 .script-molecule-test: &script-molecule-test
@@ -69,6 +78,7 @@
     - *script-bootstrap-vagrant
     - *script-bootstrap-libvirt
     - *script-bootstrap-ansible
+    - *script-bootstrap-molecule
     - *script-molecule-test
 
 .job-ansible-galaxy: &job-ansible-galaxy

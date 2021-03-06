@@ -22,7 +22,6 @@ flake8
 jmespath
 molecule
 molecule-docker
-molecule-podman
 molecule-vagrant
 netaddr
 openshift
