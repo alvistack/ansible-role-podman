@@ -20,28 +20,37 @@ cd "$(cd "$(dirname "$0")"; pwd -P)/../"
 
 # Prepare APT dependencies
 if [ -x "$(command -v apt-get)" ]; then
+    export DEBIAN_FRONTEND=noninteractive
     apt-get update
     apt-get dist-upgrade -y
-    apt-get install -y bzip2 ca-certificates curl gcc gnupg gzip iproute2 procps python3 python3-apt python3-cryptography python3-dev python3-jmespath python3-lxml python3-pip python3-setuptools python3-venv python3-virtualenv python3-wheel sudo tar unzip xz-utils zip
+    apt-get install -y bzip2 ca-certificates curl gcc gnupg gzip iproute2 procps python3 python3-apt python3-cryptography python3-dev python3-jmespath python3-lxml python3-netaddr python3-pip python3-setuptools python3-venv python3-virtualenv python3-wheel sudo tar unzip xz-utils zip
 fi
 
 # Prepare YUM dependencies
 if [ -x "$(command -v yum)" ]; then
     yum makecache
     yum update -y
-    yum install -y bzip2 ca-certificates curl gcc gnupg2 gzip iproute procps-ng python3 python3-cryptography python3-devel python3-jmespath python3-libselinux python3-lxml python3-pip python3-setuptools python3-virtualenv python3-wheel sudo tar unzip xz yum-utils zip
+    yum install -y bzip2 ca-certificates curl gcc gnupg2 gzip iproute procps-ng python3 python3-cryptography python3-devel python3-jmespath python3-libselinux python3-lxml python3-netaddr python3-pip python3-setuptools python3-virtualenv python3-wheel sudo tar unzip xz yum-utils zip
 fi
 
 # Prepare Zypper dependencies
 if [ -x "$(command -v zypper)" ]; then
     zypper -n --gpg-auto-import-keys refresh
     zypper -n update -y
-    zypper -n install -y bzip2 ca-certificates curl gcc gpg2 gzip iproute2 procps python3 python3-cryptography python3-devel python3-jmespath python3-lxml python3-pip python3-setuptools python3-virtualenv python3-wheel sudo tar unzip xz zip
+    zypper -n install -y bzip2 ca-certificates curl gcc gpg2 gzip iproute2 procps python3 python3-cryptography python3-devel python3-jmespath python3-lxml python3-netaddr python3-pip python3-setuptools python3-virtualenv python3-wheel sudo tar unzip xz zip
 fi
 
 # Install PIP dependencies
 pip3 install --prefix=/usr/local --upgrade pipx
-PIPX_HOME=/usr/local/share/pipx PIPX_BIN_DIR=/usr/local/bin pipx install --include-deps --pip-args "--upgrade --requirement requirements.txt" ansible
+
+# Install Ansible dependencies
+export PIPX_HOME=/usr/local/share/pipx
+export PIPX_BIN_DIR=/usr/local/bin
+pipx install --force flake8
+pipx install --force yamllint
+pipx install --force --include-deps 'ansible>=2.10.3,<2.11.0'
+pipx inject --force --include-apps ansible ansible-lint
+pipx inject --force ansible docker netaddr openshift python-vagrant
 
 # Install Ansible Collection dependencies
 ansible-galaxy collection install --force --requirements-file ansible-galaxy-requirements.yml
