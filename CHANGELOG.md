@@ -1,9 +1,16 @@
 # Ansible Role for Podman
 
-## 4.7.0 - TBC
+## 4.8.0 - TBC
 
 ### Major Changes
 
+## 4.7.0 - 2021-03-13
+
+### Major Changes
+
+  - Bugfix [ansible-lint `namespace`](https://github.com/ansible-community/ansible-lint/pull/1451)
+  - Bugfix [ansible-lint `no-handler`](https://github.com/ansible-community/ansible-lint/pull/1402)
+  - Bugfix [ansible-lint `unnamed-task`](https://github.com/ansible-community/ansible-lint/pull/1413)
   - Simplify Python dependency with system packages
   - Support RHEL 8 with Molecule
   - Support RHEL 7 with Molecule
