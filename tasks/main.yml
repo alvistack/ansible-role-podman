@@ -59,12 +59,25 @@
     - { dest: "/lib/tmpfiles.d" }
     - { dest: "/usr/local/bin" }
     - { dest: "/usr/share/containers" }
-    - { dest: "{{ podman_download.dest | dirname }}" }
-  notify:
-    - podman | download archive
 
-- name: flush handlers
-  meta: flush_handlers
+- name: download archive
+  shell: |
+    set -euo pipefail
+    TMP_DIR="$(mktemp -d)" \
+      && cd $TMP_DIR \
+      && mkdir -p ./{{ item.dest | dirname }} \
+      && curl -skL -m 300 {{ item.url }} > ./{{ item.dest }} \
+      && echo -n "{{ item.sha256sum }} ./{{ item.dest }}" | sha256sum -c - \
+      && mkdir -p {{ item.dest | dirname }} \
+      && mv ./{{ item.dest }} {{ item.dest }} \
+      && rm -rf $TMP_DIR
+  args:
+    executable: "/bin/bash"
+    creates: "{{ item.dest | dirname }}"
+  loop:
+    - "{{ podman_download }}"
+  register: result
+  until: result is succeeded
 
 - name: unarchive package
   shell: |

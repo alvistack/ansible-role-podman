@@ -4,6 +4,8 @@
 
 ### Major Changes
 
+  - Simplify download archive logic
+
 ## 4.7.0 - 2021-03-13
 
 ### Major Changes
