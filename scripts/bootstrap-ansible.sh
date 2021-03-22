@@ -47,11 +47,11 @@ pip3 install --prefix=/usr/local --upgrade openshift
 # Install Ansible dependencies
 export PIPX_HOME=/usr/local/share/pipx
 export PIPX_BIN_DIR=/usr/local/bin
-pipx install --force flake8
-pipx install --force yamllint
-pipx install --force --include-deps 'ansible>=2.10.3,<2.11.0'
-pipx inject --force --include-apps ansible ansible-lint
-pipx inject --force ansible docker netaddr python-vagrant
+pipx install --force --pip-args='--upgrade' flake8
+pipx install --force --pip-args='--upgrade' yamllint
+pipx install --force --pip-args='--upgrade' --include-deps 'ansible>=2.10.3,<2.11.0'
+pipx inject --force --pip-args='--upgrade' --include-apps ansible ansible-lint
+pipx inject --force --pip-args='--upgrade' ansible docker netaddr python-vagrant
 
 # Install Ansible Collection dependencies
 ansible-galaxy collection install --force --requirements-file ansible-galaxy-requirements.yml
