@@ -42,7 +42,6 @@ fi
 
 # Install PIP dependencies
 pip3 install --prefix=/usr/local --upgrade pipx
-pip3 install --prefix=/usr/local --upgrade openshift
 
 # Install Ansible dependencies
 export PIPX_HOME=/usr/local/share/pipx
