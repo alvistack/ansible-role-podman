@@ -27,7 +27,7 @@ platforms:
       - "disk_bus = 'virtio'"
       - "nic_model_type = 'virtio'"
       - "video_type = 'virtio'"
-      - "volume_cache = 'writeback'"
+      - "disk_driver :cache => 'writeback'"
       - "storage :file, bus: 'virtio', cache: 'writeback'"
 lint: |
   set -euo pipefail
