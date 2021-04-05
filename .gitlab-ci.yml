@@ -14,9 +14,9 @@
 .script-bootstrap-vagrant: &script-bootstrap-vagrant
   - |
     if ! [[ -x "$(command -v vagrant)" ]]; then
-      curl -skL -O https://releases.hashicorp.com/vagrant/2.2.14/vagrant_2.2.14_x86_64.deb
-      sudo dpkg -i vagrant_2.2.14_x86_64.deb
-      rm -rf vagrant_2.2.14_*
+      curl -skL -O https://releases.hashicorp.com/vagrant/2.2.15/vagrant_2.2.15_x86_64.deb
+      sudo dpkg -i vagrant_2.2.15_x86_64.deb
+      rm -rf vagrant_2.2.15_*
     fi
     vagrant cloud auth login --token $VAGRANT_CLOUD_TOKEN
 
