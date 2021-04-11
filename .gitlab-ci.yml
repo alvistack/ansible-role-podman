@@ -105,6 +105,13 @@ build:ubuntu-18.04:
   variables:
     _MOLECULE_SCENARIO_NAME: "ubuntu-18.04"
 
+test:ubuntu-21.04:
+  <<: *job-molecule
+  stage: test
+  variables:
+    _MOLECULE_SCENARIO_NAME: "ubuntu-21.04"
+  allow_failure: true
+
 test:ubuntu-20.10:
   <<: *job-molecule
   stage: test
