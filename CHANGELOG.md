@@ -4,6 +4,7 @@
 
 ### Major Changes
 
+  - Support Fedora 34
   - Support Ubuntu 21.04
 
   - Simplify download archive logic
