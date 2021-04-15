@@ -99,7 +99,7 @@
       changed_when: false
       ignore_errors: true
 
-    - name: fedora-33 | yum install *.rpm
+    - name: fedora | yum install *.rpm
       raw: |
         set -eu
         yum install -y bzip2 ca-certificates curl gcc gnupg2 gzip iproute procps-ng python3 python3-cryptography python3-devel python3-jmespath python3-libselinux python3-lxml python3-netaddr python3-pip python3-setuptools python3-virtualenv python3-wheel sudo tar unzip xz yum-utils zip
