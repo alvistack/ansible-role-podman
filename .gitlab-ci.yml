@@ -18,7 +18,7 @@
       sudo dpkg -i vagrant_2.2.15_x86_64.deb
       rm -rf vagrant_2.2.15_*
     fi
-    vagrant --version
+    sh -x vagrant --version
     vagrant cloud auth login --token $VAGRANT_CLOUD_TOKEN
 
 .script-bootstrap-libvirt: &script-bootstrap-libvirt
@@ -28,12 +28,13 @@
       sudo -E apt-get update
       sudo -E apt-get install -y binutils bridge-utils dnsmasq-base ebtables gcc libguestfs-tools libvirt-clients libvirt-daemon-system libvirt-dev make qemu-system qemu-utils ruby-dev
     fi
-    qemu-system-x86_64 --version
+    sh -x qemu-system-x86_64 --version
+    sh -x virsh --version
     sudo systemctl start libvirtd.service
     if ! [[ -n "$(vagrant plugin list | grep vagrant-libvirt)" ]]; then
       vagrant plugin install vagrant-libvirt
     fi
-    vagrant plugin list | grep vagrant-libvirt
+    sh -x vagrant plugin list
 
 .script-bootstrap-python: &script-bootstrap-python
   - |
@@ -47,10 +48,10 @@
       sudo -E pipx install --force --pip-args='--upgrade' flake8
       sudo -E pipx install --force --pip-args='--upgrade' yamllint
     fi
-    python3 --version
-    pipx --version
-    flake8 --version
-    yamllint --version
+    sh -x python3 --version
+    sh -x pipx --version
+    sh -x flake8 --version
+    sh -x yamllint --version
 
 .script-bootstrap-ansible: &script-bootstrap-ansible
   - |
@@ -59,8 +60,8 @@
       sudo -E pipx inject --force --pip-args='--upgrade' --include-apps ansible ansible-lint
       sudo -E pipx inject --force --pip-args='--upgrade' ansible docker netaddr python-vagrant
     fi
-    ansible --version
-    ansible-lint --version
+    sh -x ansible --version
+    sh -x ansible-lint --version
 
 .script-bootstrap-molecule: &script-bootstrap-molecule
   - |
@@ -70,7 +71,7 @@
       sudo -E pipx inject --force --include-apps ansible molecule
       sudo -E pipx inject --force ansible molecule-docker molecule-vagrant
     fi
-    molecule --version
+    sh -x molecule --version
 
 .script-molecule-test: &script-molecule-test
   - |
