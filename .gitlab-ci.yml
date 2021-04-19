@@ -18,21 +18,26 @@
       sudo dpkg -i vagrant_2.2.15_x86_64.deb
       rm -rf vagrant_2.2.15_*
     fi
+    vagrant --version
     vagrant cloud auth login --token $VAGRANT_CLOUD_TOKEN
 
 .script-bootstrap-libvirt: &script-bootstrap-libvirt
   - |
-    if ! [[ -x "$(command -v kvm)" ]]; then
+    if ! [[ -x "$(command -v qemu-system-x86_64)" ]]; then
       export DEBIAN_FRONTEND=noninteractive
       sudo -E apt-get update
-      sudo -E apt-get install -y binutils bridge-utils dnsmasq-base ebtables gcc libguestfs-tools libvirt-clients libvirt-daemon-system libvirt-dev make qemu-kvm qemu-utils ruby-dev
+      sudo -E apt-get install -y binutils bridge-utils dnsmasq-base ebtables gcc libguestfs-tools libvirt-clients libvirt-daemon-system libvirt-dev make qemu-system qemu-utils ruby-dev
+    fi
+    qemu-system-x86_64 --version
+    sudo systemctl start libvirtd.service
+    if ! [[ -n "$(vagrant plugin list | grep vagrant-libvirt)" ]]; then
       vagrant plugin install vagrant-libvirt
     fi
-    sudo systemctl start libvirtd.service
+    vagrant plugin list | grep vagrant-libvirt
 
-.script-bootstrap-ansible: &script-bootstrap-ansible
+.script-bootstrap-python: &script-bootstrap-python
   - |
-    if ! [[ -x "$(command -v ansible)" ]]; then
+    if ! [[ -x "$(command -v pipx)" ]]; then
       export DEBIAN_FRONTEND=noninteractive
       export PIPX_HOME=/usr/local/share/pipx
       export PIPX_BIN_DIR=/usr/local/bin
@@ -41,10 +46,21 @@
       sudo -E pip3 install --prefix=/usr/local --upgrade pipx
       sudo -E pipx install --force --pip-args='--upgrade' flake8
       sudo -E pipx install --force --pip-args='--upgrade' yamllint
+    fi
+    python3 --version
+    pipx --version
+    flake8 --version
+    yamllint --version
+
+.script-bootstrap-ansible: &script-bootstrap-ansible
+  - |
+    if ! [[ -x "$(command -v ansible)" ]]; then
       sudo -E pipx install --force --pip-args='--upgrade' --include-deps 'ansible>=2.10.3,<2.11.0'
       sudo -E pipx inject --force --pip-args='--upgrade' --include-apps ansible ansible-lint
       sudo -E pipx inject --force --pip-args='--upgrade' ansible docker netaddr python-vagrant
     fi
+    ansible --version
+    ansible-lint --version
 
 .script-bootstrap-molecule: &script-bootstrap-molecule
   - |
@@ -54,6 +70,7 @@
       sudo -E pipx inject --force --include-apps ansible molecule
       sudo -E pipx inject --force ansible molecule-docker molecule-vagrant
     fi
+    molecule --version
 
 .script-molecule-test: &script-molecule-test
   - |
@@ -77,12 +94,14 @@
   script:
     - *script-bootstrap-vagrant
     - *script-bootstrap-libvirt
+    - *script-bootstrap-python
     - *script-bootstrap-ansible
     - *script-bootstrap-molecule
     - *script-molecule-test
 
 .job-ansible-galaxy: &job-ansible-galaxy
   script:
+    - *script-bootstrap-python
     - *script-bootstrap-ansible
     - *script-ansible-galaxy-role-import
 
