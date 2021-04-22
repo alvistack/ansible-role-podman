@@ -30,8 +30,8 @@
 
     - name: include role
       include_role:
-        name: runc
-      tags: runc
+        name: crun
+      tags: crun
 
     - name: include role
       include_role:
