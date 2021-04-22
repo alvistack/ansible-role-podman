@@ -15,6 +15,10 @@
 # limitations under the License.
 
 _podman_download:
+  "v3.1.2":
+    url: "http://github.com/alvistack/containers-podman/releases/download/v3.1.2/podman-v3.1.2-linux-amd64"
+    dest: "/var/cache/ansible/90e2f01ff3fe0e7d6c3dfb63af8f83f3f0972725a088a37209709a16e6246aee/podman-v3.1.2-linux-amd64"
+    sha256sum: "90e2f01ff3fe0e7d6c3dfb63af8f83f3f0972725a088a37209709a16e6246aee"
   "v3.1.1":
     url: "http://github.com/alvistack/containers-podman/releases/download/v3.1.1/podman-v3.1.1-linux-amd64"
     dest: "/var/cache/ansible/00ef5e03595c4e61de9b51472bf4e85991b4f76c90c58a3cc26135f29a336ae5/podman-v3.1.1-linux-amd64"
