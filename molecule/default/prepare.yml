@@ -27,7 +27,7 @@
           --password={{ lookup('env', 'REDHAT_PASSWORD') }} \
           --auto-attach
       changed_when: false
-      ignore_errors: true
+      failed_when: false
 
     - name: debian | apt-get install python3 python3-dev
       raw: |
@@ -36,7 +36,7 @@
         DEBIAN_FRONTEND=noninteractive apt-get dist-upgrade -y
         DEBIAN_FRONTEND=noninteractive apt-get install -y python3 python3-dev
       changed_when: false
-      ignore_errors: true
+      failed_when: false
 
     - name: redhat | yum install python3 python3-devel
       raw: |
@@ -45,7 +45,7 @@
         yum update -y
         yum install -y python3 python3-devel
       changed_when: false
-      ignore_errors: true
+      failed_when: false
 
     - name: suse | zypper install python3 python3-devel
       raw: |
@@ -54,7 +54,7 @@
         zypper -n update -y
         zypper -n install -y python3 python3-devel
       changed_when: false
-      ignore_errors: true
+      failed_when: false
 
 - hosts: all
   remote_user: root
@@ -65,7 +65,7 @@
         set -eu
         cp -rfT /etc/skel /root
       changed_when: false
-      ignore_errors: true
+      failed_when: false
 
     - name: setenforce 0
       raw: |
@@ -73,7 +73,7 @@
         setenforce 0
         sed -i 's/^SELINUX=.*$/SELINUX=permissive/g' /etc/selinux/config
       changed_when: false
-      ignore_errors: true
+      failed_when: false
 
     - name: systemctl stop firewalld.service
       raw: |
@@ -81,7 +81,7 @@
         systemctl stop firewalld.service
         systemctl disable firewalld.service
       changed_when: false
-      ignore_errors: true
+      failed_when: false
 
     - name: systemctl stop ufw.service
       raw: |
@@ -89,7 +89,7 @@
         systemctl stop ufw.service
         systemctl disable ufw.service
       changed_when: false
-      ignore_errors: true
+      failed_when: false
 
     - name: debian | apt-get install *.deb
       raw: |
@@ -97,7 +97,7 @@
         DEBIAN_FRONTEND=noninteractive apt-get install -y bzip2 ca-certificates curl gcc gnupg gzip iproute2 procps python3 python3-apt python3-cryptography python3-dev python3-jmespath python3-lxml python3-netaddr python3-pip python3-setuptools python3-venv python3-virtualenv python3-wheel sudo tar unzip xz-utils zip
       when: ansible_os_family | lower == "debian"
       changed_when: false
-      ignore_errors: true
+      failed_when: false
 
     - name: fedora | yum install *.rpm
       raw: |
@@ -105,7 +105,7 @@
         yum install -y bzip2 ca-certificates curl gcc gnupg2 gzip iproute procps-ng python3 python3-cryptography python3-devel python3-jmespath python3-libselinux python3-lxml python3-netaddr python3-pip python3-setuptools python3-virtualenv python3-wheel sudo tar unzip xz yum-utils zip
       when: ansible_distribution | lower == "fedora"
       changed_when: false
-      ignore_errors: true
+      failed_when: false
 
     - name: redhat-8 | yum install *.rpm
       raw: |
@@ -114,7 +114,7 @@
         yum install -y bzip2 ca-certificates curl gcc gnupg2 gzip iproute procps-ng python3 python3-cryptography python3-devel python3-jmespath python3-libselinux python3-lxml python3-netaddr python3-pip python3-setuptools python3-virtualenv python3-wheel sudo tar unzip xz yum-utils zip
       when: ansible_os_family | lower == "redhat" and ansible_distribution_major_version | lower == "8"
       changed_when: false
-      ignore_errors: true
+      failed_when: false
 
     - name: redhat-7 | yum install *.rpm
       raw: |
@@ -124,7 +124,7 @@
         yum install -y bzip2 ca-certificates curl gcc gnupg2 gzip iproute procps-ng python3 python36-cryptography python3-devel python3-jmespath python3-libselinux python36-netaddr python3-lxml python3-pip python3-setuptools python3-virtualenv python3-wheel sudo tar unzip xz yum-utils zip
       when: ansible_os_family | lower == "redhat" and ansible_distribution_major_version | lower == "7"
       changed_when: false
-      ignore_errors: true
+      failed_when: false
 
     - name: suse | zypper -n install *.rpm
       raw: |
@@ -132,4 +132,4 @@
         zypper -n install -y bzip2 ca-certificates curl gcc gpg2 gzip iproute2 procps python3 python3-cryptography python3-devel python3-jmespath python3-lxml python3-netaddr python3-pip python3-setuptools python3-virtualenv python3-wheel sudo tar unzip xz zip
       when: ansible_os_family | lower == "suse"
       changed_when: false
-      ignore_errors: true
+      failed_when: false

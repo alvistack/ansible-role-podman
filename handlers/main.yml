@@ -18,7 +18,7 @@
   systemd:
     daemon_reload: true
   changed_when: false
-  ignore_errors: true
+  failed_when: false
 
 - name: podman | systemctl restart podman.socket
   service:
@@ -29,4 +29,4 @@
   delegate_to: "{{ item }}"
   run_once: true
   changed_when: false
-  ignore_errors: true
+  failed_when: false

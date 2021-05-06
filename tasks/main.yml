@@ -29,7 +29,6 @@
         - "{{ ansible_os_family | lower }}.yml"
       paths:
         - "../vars"
-  ignore_errors: true
 
 - name: include release specific tasks
   include_tasks: "{{ lookup('first_found', _params) }}"
@@ -43,7 +42,6 @@
         - "{{ ansible_os_family | lower }}.yml"
       paths:
         - "."
-  ignore_errors: true
 
 - name: prepare directories
   file:
@@ -150,4 +148,4 @@
     state: "started"
     enabled: true
   changed_when: false
-  ignore_errors: true
+  failed_when: false

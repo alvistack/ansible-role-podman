@@ -27,4 +27,4 @@
         subscription-manager clean
       when: inventory_hostname != ansible_host
       changed_when: false
-      ignore_errors: true
+      failed_when: false
