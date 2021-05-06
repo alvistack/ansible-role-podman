@@ -28,9 +28,9 @@
       sudo -E apt-get update
       sudo -E apt-get install -y binutils bridge-utils dnsmasq-base ebtables gcc libguestfs-tools libvirt-clients libvirt-daemon-system libvirt-dev make qemu-system qemu-utils ruby-dev
     fi
+    sudo systemctl start libvirtd.service
     sh -x -c "qemu-system-x86_64 --version"
     sh -x -c "virsh --version"
-    sudo systemctl start libvirtd.service
     if ! [[ -n "$(vagrant plugin list | grep vagrant-libvirt)" ]]; then
       vagrant plugin install vagrant-libvirt
     fi
