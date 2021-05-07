@@ -18,7 +18,7 @@
   include_vars: "../vars/main.yml"
 
 - name: include release specific variables
-  include_vars: "{{ lookup('first_found', _params) }}"
+  include_vars: "{{ lookup('first_found', _params, errors='ignore') }}"
   vars:
     _params:
       files:
@@ -31,7 +31,7 @@
         - "../vars"
 
 - name: include release specific tasks
-  include_tasks: "{{ lookup('first_found', _params) }}"
+  include_tasks: "{{ lookup('first_found', _params, errors='ignore') }}"
   vars:
     _params:
       files:
