@@ -18,8 +18,10 @@
   include_vars: "../vars/main.yml"
 
 - name: include release specific variables
-  include_vars: "{{ item }}"
+  include_vars: "{{ _loop_var }}"
   loop: "{{ query('first_found', _params) }}"
+  loop_control:
+    loop_var: _loop_var
   vars:
     _params:
       files:
@@ -33,8 +35,10 @@
       skip: true
 
 - name: include release specific tasks
-  include_tasks: "{{ item }}"
+  include_tasks: "{{ _loop_var }}"
   loop: "{{ query('first_found', _params) }}"
+  loop_control:
+    loop_var: _loop_var
   vars:
     _params:
       files:
