@@ -18,7 +18,10 @@
   include_vars: "../vars/main.yml"
 
 - name: include release specific variables
-  include_vars: "{{ lookup('first_found', _params) }}"
+  include_vars: "{{ _loop_var }}"
+  loop: "{{ query('first_found', _params) }}"
+  loop_control:
+    loop_var: _loop_var
   vars:
     _params:
       files:
@@ -29,9 +32,13 @@
         - "{{ ansible_os_family | lower }}.yml"
       paths:
         - "../vars"
+      skip: true
 
 - name: include release specific tasks
-  include_tasks: "{{ lookup('first_found', _params) }}"
+  include_tasks: "{{ _loop_var }}"
+  loop: "{{ query('first_found', _params) }}"
+  loop_control:
+    loop_var: _loop_var
   vars:
     _params:
       files:
@@ -42,6 +49,7 @@
         - "{{ ansible_os_family | lower }}.yml"
       paths:
         - "."
+      skip: true
 
 - name: prepare directories
   file:
