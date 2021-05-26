@@ -26,8 +26,10 @@
   - |
     if ! [[ -x "$(command -v qemu-system-x86_64)" ]]; then
       export DEBIAN_FRONTEND=noninteractive
+      curl -skL "http://keyserver.ubuntu.com/pks/lookup?op=get&search=0xE996735927E427A733BB653E374C7797FB006459" | sudo apt-key add -
+      sudo add-apt-repository -y "deb http://ppa.launchpad.net/savoury1/virtualisation/ubuntu $(lsb_release -cs) main"
       sudo -E apt-get update
-      sudo -E apt-get install -y binutils bridge-utils dnsmasq-base ebtables gcc libguestfs-tools libvirt-clients libvirt-daemon-system libvirt-dev make qemu-system qemu-utils ruby-dev
+      sudo -E apt-get install -y binutils bridge-utils dnsmasq-base ebtables gcc libarchive-tools libguestfs-tools libvirt-clients libvirt-daemon-system libvirt-dev make qemu-system qemu-utils ruby-dev virt-manager
     fi
     sudo systemctl start libvirtd.service
     sh -x -c "qemu-system-x86_64 --version"
