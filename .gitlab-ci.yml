@@ -14,12 +14,13 @@
 .script-bootstrap-vagrant: &script-bootstrap-vagrant
   - |
     if ! [[ -x "$(command -v vagrant)" ]]; then
-      curl -skL -O https://releases.hashicorp.com/vagrant/2.2.16/vagrant_2.2.16_x86_64.deb
-      sudo dpkg -i vagrant_2.2.16_x86_64.deb
-      rm -rf vagrant_2.2.16_*
+      export DEBIAN_FRONTEND=noninteractive
+      curl -skL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -
+      sudo add-apt-repository -y "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main"
+      sudo -E apt-get update
+      sudo -E apt-get install -y vagrant
     fi
     sh -x -c "vagrant --version"
-    vagrant cloud auth login --token $VAGRANT_CLOUD_TOKEN
 
 .script-bootstrap-libvirt: &script-bootstrap-libvirt
   - |
