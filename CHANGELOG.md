@@ -4,6 +4,8 @@
 
 ### Major Changes
 
+  - Improve download archive logic
+
 ## 5.0.0 - 2021-06-02
 
 ### Major Changes
