@@ -15,7 +15,7 @@
 # limitations under the License.
 
 # Podman release.
-podman_release: "v3.1"
+podman_release: "v3.2"
 
 # Podman version.
 podman_version: "{{ _podman_version[podman_release] }}"
