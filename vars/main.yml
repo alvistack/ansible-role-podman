@@ -14,24 +14,24 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+_podman_version:
+  "v3.2": "v3.2.0"
+  "v3.1": "v3.1.2"
+
 _podman_download:
+  "v3.2.0":
+    url: "http://github.com/alvistack/containers-podman/releases/download/v3.2.0/podman-v3.2.0-linux-amd64"
+    dest: "/tmp/118404d002d11dce110c9739a038d8bb8d6a6574e93801cb05e9bf959fb4db8f/podman-v3.2.0-linux-amd64"
+    checksum: "118404d002d11dce110c9739a038d8bb8d6a6574e93801cb05e9bf959fb4db8f"
   "v3.1.2":
     url: "http://github.com/alvistack/containers-podman/releases/download/v3.1.2/podman-v3.1.2-linux-amd64"
-    dest: "/var/cache/ansible/90e2f01ff3fe0e7d6c3dfb63af8f83f3f0972725a088a37209709a16e6246aee/podman-v3.1.2-linux-amd64"
-    sha256sum: "90e2f01ff3fe0e7d6c3dfb63af8f83f3f0972725a088a37209709a16e6246aee"
+    dest: "/tmp/90e2f01ff3fe0e7d6c3dfb63af8f83f3f0972725a088a37209709a16e6246aee/podman-v3.1.2-linux-amd64"
+    checksum: "90e2f01ff3fe0e7d6c3dfb63af8f83f3f0972725a088a37209709a16e6246aee"
   "v3.1.1":
     url: "http://github.com/alvistack/containers-podman/releases/download/v3.1.1/podman-v3.1.1-linux-amd64"
-    dest: "/var/cache/ansible/00ef5e03595c4e61de9b51472bf4e85991b4f76c90c58a3cc26135f29a336ae5/podman-v3.1.1-linux-amd64"
-    sha256sum: "00ef5e03595c4e61de9b51472bf4e85991b4f76c90c58a3cc26135f29a336ae5"
+    dest: "/tmp/00ef5e03595c4e61de9b51472bf4e85991b4f76c90c58a3cc26135f29a336ae5/podman-v3.1.1-linux-amd64"
+    checksum: "00ef5e03595c4e61de9b51472bf4e85991b4f76c90c58a3cc26135f29a336ae5"
   "v3.1.0":
     url: "http://github.com/alvistack/containers-podman/releases/download/v3.1.0/podman-v3.1.0-linux-amd64"
-    dest: "/var/cache/ansible/ac9dfeca5a043e1ae3e236fc6cf05e97d5c9e6e8bc9e85e46a9c607ed96af531/podman-v3.1.0-linux-amd64"
-    sha256sum: "ac9dfeca5a043e1ae3e236fc6cf05e97d5c9e6e8bc9e85e46a9c607ed96af531"
-  "v3.0.1":
-    url: "http://github.com/alvistack/containers-podman/releases/download/v3.0.1/podman-v3.0.1-linux-amd64"
-    dest: "/var/cache/ansible/b847e6aa2715223a7b7a96b5d32b7c526615a831ac8eb1fd231e1e72011777f9/podman-v3.0.1-linux-amd64"
-    sha256sum: "b847e6aa2715223a7b7a96b5d32b7c526615a831ac8eb1fd231e1e72011777f9"
-  "v3.0.0":
-    url: "http://github.com/alvistack/containers-podman/releases/download/v3.0.0/podman-v3.0.0-linux-amd64"
-    dest: "/var/cache/ansible/0e3d94d5f63d99325efa99bf9dca76efb516ee2409093b0687fd7ffae2d62864/podman-v3.0.0-linux-amd64"
-    sha256sum: "0e3d94d5f63d99325efa99bf9dca76efb516ee2409093b0687fd7ffae2d62864"
+    dest: "/tmp/ac9dfeca5a043e1ae3e236fc6cf05e97d5c9e6e8bc9e85e46a9c607ed96af531/podman-v3.1.0-linux-amd64"
+    checksum: "ac9dfeca5a043e1ae3e236fc6cf05e97d5c9e6e8bc9e85e46a9c607ed96af531"

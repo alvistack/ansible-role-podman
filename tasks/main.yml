@@ -27,8 +27,9 @@
       files:
         - "{{ ansible_distribution | lower }}-{{ ansible_distribution_version | lower }}.yml"
         - "{{ ansible_distribution | lower }}-{{ ansible_distribution_major_version | lower }}.yml"
-        - "{{ ansible_os_family | lower }}-{{ ansible_distribution_major_version | lower }}.yml"
         - "{{ ansible_distribution | lower }}.yml"
+        - "{{ ansible_os_family | lower }}-{{ ansible_distribution_version | lower }}.yml"
+        - "{{ ansible_os_family | lower }}-{{ ansible_distribution_major_version | lower }}.yml"
         - "{{ ansible_os_family | lower }}.yml"
       paths:
         - "../vars"
@@ -44,8 +45,9 @@
       files:
         - "{{ ansible_distribution | lower }}-{{ ansible_distribution_version | lower }}.yml"
         - "{{ ansible_distribution | lower }}-{{ ansible_distribution_major_version | lower }}.yml"
-        - "{{ ansible_os_family | lower }}-{{ ansible_distribution_major_version | lower }}.yml"
         - "{{ ansible_distribution | lower }}.yml"
+        - "{{ ansible_os_family | lower }}-{{ ansible_distribution_version | lower }}.yml"
+        - "{{ ansible_os_family | lower }}-{{ ansible_distribution_major_version | lower }}.yml"
         - "{{ ansible_os_family | lower }}.yml"
       paths:
         - "."
@@ -71,11 +73,11 @@
     set -euo pipefail
     TMP_DIR="$(mktemp -d)" \
       && cd $TMP_DIR \
-      && mkdir -p ./{{ item.dest | dirname }} \
-      && curl -skL -m 300 {{ item.url }} > ./{{ item.dest }} \
-      && echo -n "{{ item.sha256sum }} ./{{ item.dest }}" | sha256sum -c - \
+      && mkdir -p .{{ item.dest | dirname }} \
+      && curl -skL -m 300 {{ item.url }} > .{{ item.dest }} \
+      && echo -n "{{ item.checksum }} .{{ item.dest }}" | sha256sum -c - \
       && mkdir -p {{ item.dest | dirname }} \
-      && mv ./{{ item.dest }} {{ item.dest }} \
+      && mv .{{ item.dest }} {{ item.dest }} \
       && rm -rf $TMP_DIR
   args:
     executable: "/bin/bash"
@@ -88,7 +90,8 @@
 - name: unarchive package
   shell: |
     set -euo pipefail
-    exec &> >(tee -a {{ podman_download.dest }}.log)
+    mkdir -p /var/log/ansible
+    exec &> >(tee -a /var/log/ansible/{{ podman_download.checksum }}.log)
     cd /usr/local/bin
     TMP_DIR="$(mktemp -d)" \
       && cp {{ podman_download.dest }} $TMP_DIR/podman \
@@ -98,7 +101,7 @@
       && rm -rf $TMP_DIR
   args:
     executable: "/bin/bash"
-    creates: "{{ podman_download.dest }}.log"
+    creates: "/var/log/ansible/{{ podman_download.checksum }}.log"
   notify:
     - podman | systemctl daemon-reload
     - podman | systemctl restart podman.socket

@@ -25,6 +25,7 @@ galaxy_info:
   platforms:
     - name: Ubuntu
       versions:
+        - hirsute
         - groovy
         - focal
         - bionic
@@ -34,6 +35,7 @@ galaxy_info:
         - "7"
     - name: opensuse
       versions:
+        - "15.3"
         - "15.2"
     - name: Debian
       versions:
