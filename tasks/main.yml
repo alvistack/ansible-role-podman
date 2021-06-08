@@ -70,28 +70,28 @@
 
 - name: download archive
   shell: |
-    set -euo pipefail
+    set -euxo pipefail
+    mkdir -p /var/log/ansible
+    exec &> >(tee -a /var/log/ansible/{{ podman_download.checksum }}-get_url.log)
     TMP_DIR="$(mktemp -d)" \
       && cd $TMP_DIR \
-      && mkdir -p .{{ item.dest | dirname }} \
-      && curl -skL -m 300 {{ item.url }} > .{{ item.dest }} \
-      && echo -n "{{ item.checksum }} .{{ item.dest }}" | sha256sum -c - \
-      && mkdir -p {{ item.dest | dirname }} \
-      && mv .{{ item.dest }} {{ item.dest }} \
+      && mkdir -p .{{ podman_download.dest | dirname }} \
+      && curl -skL -m 300 {{ podman_download.url }} > .{{ podman_download.dest }} \
+      && echo -n "{{ podman_download.checksum }} .{{ podman_download.dest }}" | sha256sum -c - \
+      && mkdir -p {{ podman_download.dest | dirname }} \
+      && mv .{{ podman_download.dest }} {{ podman_download.dest }} \
       && rm -rf $TMP_DIR
   args:
     executable: "/bin/bash"
-    creates: "{{ item.dest | dirname }}"
-  loop:
-    - "{{ podman_download }}"
+    creates: "/var/log/ansible/{{ podman_download.checksum }}-get_url.log"
   register: result
   until: result is succeeded
 
 - name: unarchive package
   shell: |
-    set -euo pipefail
+    set -euxo pipefail
     mkdir -p /var/log/ansible
-    exec &> >(tee -a /var/log/ansible/{{ podman_download.checksum }}.log)
+    exec &> >(tee -a /var/log/ansible/{{ podman_download.checksum }}-unarchive.log)
     cd /usr/local/bin
     TMP_DIR="$(mktemp -d)" \
       && cp {{ podman_download.dest }} $TMP_DIR/podman \
@@ -101,7 +101,7 @@
       && rm -rf $TMP_DIR
   args:
     executable: "/bin/bash"
-    creates: "/var/log/ansible/{{ podman_download.checksum }}.log"
+    creates: "/var/log/ansible/{{ podman_download.checksum }}-unarchive.log"
   notify:
     - podman | systemctl daemon-reload
     - podman | systemctl restart podman.socket

@@ -23,7 +23,7 @@ driver:
 platforms:
   - name: localhost
 lint: |
-  set -euo pipefail
+  set -euxo pipefail
   yamllint .
   ansible-lint
   flake8

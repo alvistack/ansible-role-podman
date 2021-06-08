@@ -39,6 +39,7 @@ galaxy_info:
         - "15.2"
     - name: Debian
       versions:
+        - bullseye
         - buster
     - name: Fedora
       versions:

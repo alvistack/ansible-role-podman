@@ -30,7 +30,7 @@ platforms:
       - "disk_driver :cache => 'writeback'"
       - "storage :file, bus: 'virtio', cache: 'writeback'"
 lint: |
-  set -euo pipefail
+  set -euxo pipefail
   yamllint .
   ansible-lint
   flake8
