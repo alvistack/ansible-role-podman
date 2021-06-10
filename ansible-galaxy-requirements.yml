@@ -32,8 +32,8 @@ collections:
     version: ">=0.0.0,<1.0.0"
 
 roles:
-  - name: cni_plugins
-    src: https://github.com/alvistack/ansible-role-cni_plugins
+  - name: containernetworking_plugins
+    src: https://github.com/alvistack/ansible-role-containernetworking_plugins
     version: develop
 
   - name: containers_common
