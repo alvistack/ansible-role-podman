@@ -15,18 +15,6 @@
 # limitations under the License.
 
 collections:
-  - name: community.general
-    src: https://galaxy.ansible.com
-    version: ">=3.0.0,<4.0.0"
-
-  - name: community.kubernetes
-    src: https://galaxy.ansible.com
-    version: ">=1.0.0,<2.0.0"
-
-  - name: containers.podman
-    src: https://galaxy.ansible.com
-    version: ">=1.0.0,<2.0.0"
-
   - name: operator_sdk.util
     src: https://galaxy.ansible.com
     version: ">=0.0.0,<1.0.0"
