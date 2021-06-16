@@ -15,25 +15,17 @@
 # limitations under the License.
 
 collections:
-  - name: community.general
-    src: https://galaxy.ansible.com
-    version: ">=3.0.0,<4.0.0"
-
-  - name: community.kubernetes
-    src: https://galaxy.ansible.com
-    version: ">=1.0.0,<2.0.0"
-
-  - name: containers.podman
-    src: https://galaxy.ansible.com
-    version: ">=1.0.0,<2.0.0"
-
   - name: operator_sdk.util
     src: https://galaxy.ansible.com
     version: ">=0.0.0,<1.0.0"
 
 roles:
-  - name: cni_plugins
-    src: https://github.com/alvistack/ansible-role-cni_plugins
+  - name: containernetworking_plugins
+    src: https://github.com/alvistack/ansible-role-containernetworking_plugins
+    version: develop
+
+  - name: fuse_overlayfs
+    src: https://github.com/alvistack/ansible-role-fuse_overlayfs
     version: develop
 
   - name: containers_common
