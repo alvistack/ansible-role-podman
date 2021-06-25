@@ -22,7 +22,7 @@ platforms:
   - name: ${MOLECULE_INSTANCE_NAME}-1
     box: alvistack/debian-11
     cpu: 2
-    memory: 4096
+    memory: 8192
     provider_raw_config_args:
       - "disk_bus = 'virtio'"
       - "nic_model_type = 'virtio'"
