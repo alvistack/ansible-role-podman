@@ -14,6 +14,11 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+collections:
+  - name: operator_sdk.util
+    src: https://galaxy.ansible.com
+    version: ">=0.0.0,<1.0.0"
+
 roles:
   - name: containernetworking_plugins
     src: https://github.com/alvistack/ansible-role-containernetworking_plugins
