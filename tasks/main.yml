@@ -63,7 +63,7 @@
   loop:
     - { dest: "/etc/bash_completion.d" }
     - { dest: "/etc/cni/net.d" }
-    - { dest: "/lib/systemd/system" }
+    - { dest: "/etc/systemd/system" }
     - { dest: "/lib/tmpfiles.d" }
     - { dest: "/usr/local/bin" }
     - { dest: "/usr/share/containers" }
@@ -117,8 +117,8 @@
     - { dest: "/etc/bash_completion.d/podman" }
     - { dest: "/etc/cni/net.d/87-podman-bridge.conflist" }
     - { dest: "/lib/tmpfiles.d/podman.conf" }
-    - { dest: "/lib/systemd/system/podman.service" }
-    - { dest: "/lib/systemd/system/podman.socket" }
+    - { dest: "/etc/systemd/system/podman.service" }
+    - { dest: "/etc/systemd/system/podman.socket" }
   notify:
     - podman | systemctl daemon-reload
     - podman | systemctl restart podman.socket
@@ -133,8 +133,8 @@
   loop:
     - { dest: "/etc/bash_completion.d/podman" }
     - { dest: "/etc/cni/net.d/87-podman-bridge.conflist" }
-    - { dest: "/lib/systemd/system/podman.service" }
-    - { dest: "/lib/systemd/system/podman.socket" }
+    - { dest: "/etc/systemd/system/podman.service" }
+    - { dest: "/etc/systemd/system/podman.socket" }
     - { dest: "/lib/tmpfiles.d/podman.conf" }
     - { dest: "/usr/local/bin/podman", mode: "0755" }
   notify:

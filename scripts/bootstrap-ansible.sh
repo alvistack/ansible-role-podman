@@ -30,7 +30,7 @@ fi
 if [ -x "$(command -v yum)" ]; then
     yum makecache
     yum update -y
-    yum install -y bzip2 ca-certificates curl gcc gnupg2 gzip iproute procps-ng python3 python3-cryptography python3-devel python3-jmespath python3-libselinux python3-lxml python3-netaddr python3-pip python3-setuptools python3-virtualenv python3-wheel sudo tar unzip xz yum-utils zip
+    yum install -y bzip2 ca-certificates curl gcc gnupg2 gzip iproute procps-ng python3 python3-cryptography python3-devel python3-dnf-plugin-versionlock python3-jmespath python3-libselinux python3-lxml python3-netaddr python3-pip python3-setuptools python3-virtualenv python3-wheel sudo tar unzip xz yum-utils zip
 fi
 
 # Prepare Zypper dependencies
