@@ -15,31 +15,31 @@
 # limitations under the License.
 
 _podman_version:
-  "v3.2": "v3.2.3"
-  "v3.1": "v3.1.2"
+  "3.2": "3.2.3"
+  "3.1": "3.1.2"
 
 _podman_download:
-  "v3.2.3":
+  "3.2.3":
     url: "http://github.com/alvistack/containers-podman/releases/download/v3.2.3/podman-v3.2.3-linux-amd64"
     dest: "/var/cache/ansible/9cb0aa4aa80d010c0e3488d86fbf8180ec14c7b4670754f229fd748e7b74277a/podman-v3.2.3-linux-amd64"
     checksum: "9cb0aa4aa80d010c0e3488d86fbf8180ec14c7b4670754f229fd748e7b74277a"
-  "v3.2.2":
+  "3.2.2":
     url: "http://github.com/alvistack/containers-podman/releases/download/v3.2.2/podman-v3.2.2-linux-amd64"
     dest: "/var/cache/ansible/fe957eeb46d48ec327ef732a010c866a1ebf2d306717f950087abe449cdc7b24/podman-v3.2.2-linux-amd64"
     checksum: "fe957eeb46d48ec327ef732a010c866a1ebf2d306717f950087abe449cdc7b24"
-  "v3.2.1":
+  "3.2.1":
     url: "http://github.com/alvistack/containers-podman/releases/download/v3.2.1/podman-v3.2.1-linux-amd64"
     dest: "/var/cache/ansible/2ef4a5297c3faa1de75f91c746ae836492e1bfcbb6916d67c377756a6aafd69c/podman-v3.2.1-linux-amd64"
     checksum: "2ef4a5297c3faa1de75f91c746ae836492e1bfcbb6916d67c377756a6aafd69c"
-  "v3.1.2":
+  "3.1.2":
     url: "http://github.com/alvistack/containers-podman/releases/download/v3.1.2/podman-v3.1.2-linux-amd64"
     dest: "/var/cache/ansible/90e2f01ff3fe0e7d6c3dfb63af8f83f3f0972725a088a37209709a16e6246aee/podman-v3.1.2-linux-amd64"
     checksum: "90e2f01ff3fe0e7d6c3dfb63af8f83f3f0972725a088a37209709a16e6246aee"
-  "v3.1.1":
+  "3.1.1":
     url: "http://github.com/alvistack/containers-podman/releases/download/v3.1.1/podman-v3.1.1-linux-amd64"
     dest: "/var/cache/ansible/00ef5e03595c4e61de9b51472bf4e85991b4f76c90c58a3cc26135f29a336ae5/podman-v3.1.1-linux-amd64"
     checksum: "00ef5e03595c4e61de9b51472bf4e85991b4f76c90c58a3cc26135f29a336ae5"
-  "v3.1.0":
+  "3.1.0":
     url: "http://github.com/alvistack/containers-podman/releases/download/v3.1.0/podman-v3.1.0-linux-amd64"
     dest: "/var/cache/ansible/ac9dfeca5a043e1ae3e236fc6cf05e97d5c9e6e8bc9e85e46a9c607ed96af531/podman-v3.1.0-linux-amd64"
     checksum: "ac9dfeca5a043e1ae3e236fc6cf05e97d5c9e6e8bc9e85e46a9c607ed96af531"

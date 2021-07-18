@@ -4,6 +4,7 @@
 
 ### Major Changes
 
+  - Move systemd service to `/etc/systemd` which generally available
   - Upgrade minimal Ansible community package support to 4.1.0
   - Support Debian 11
   - Support openSUSE Leap 15.3
