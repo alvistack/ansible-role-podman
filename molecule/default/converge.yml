@@ -18,15 +18,16 @@
   remote_user: root
   become: true
   tasks:
-    - name: include role
-      include_role:
-        name: containernetworking_plugins
-      tags: containernetworking_plugins
 
     - name: include role
       include_role:
-        name: fuse_overlayfs
-      tags: fuse_overlayfs
+        name: runc
+      tags: runc
+
+    - name: include role
+      include_role:
+        name: crun
+      tags: crun
 
     - name: include role
       include_role:
@@ -35,8 +36,8 @@
 
     - name: include role
       include_role:
-        name: crun
-      tags: crun
+        name: containernetworking_plugins
+      tags: containernetworking_plugins
 
     - name: include role
       include_role:

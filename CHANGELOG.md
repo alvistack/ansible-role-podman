@@ -4,6 +4,8 @@
 
 ### Major Changes
 
+  - Install package with upstream repository
+
 ## 5.1.0 - 2021-07-18
 
 ### Major Changes

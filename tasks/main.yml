@@ -53,100 +53,12 @@
         - "."
       skip: true
 
-- name: prepare directories
-  file:
-    dest: "{{ item.dest }}"
-    owner: "{{ item.owner | default('root') }}"
-    group: "{{ item.group | default('root') }}"
-    mode: "{{ item.mode | default('0755') }}"
-    state: "{{ item.state | default('directory') }}"
-  loop:
-    - { dest: "/etc/bash_completion.d" }
-    - { dest: "/etc/cni/net.d" }
-    - { dest: "/etc/systemd/system" }
-    - { dest: "/lib/tmpfiles.d" }
-    - { dest: "/usr/local/bin" }
-    - { dest: "/usr/share/containers" }
-
-- name: download archive
-  shell: |
-    set -euxo pipefail
-    mkdir -p /var/log/ansible
-    exec &> >(tee -a /var/log/ansible/{{ podman_download.checksum }}-get_url.log)
-    TMP_DIR="$(mktemp -d)" \
-      && cd $TMP_DIR \
-      && mkdir -p .{{ podman_download.dest | dirname }} \
-      && curl -skL -m 300 {{ podman_download.url }} > .{{ podman_download.dest }} \
-      && echo -n "{{ podman_download.checksum }} .{{ podman_download.dest }}" | sha256sum -c - \
-      && mkdir -p {{ podman_download.dest | dirname }} \
-      && mv .{{ podman_download.dest }} {{ podman_download.dest }} \
-      && rm -rf $TMP_DIR
-  args:
-    executable: "/bin/bash"
-    creates: "/var/log/ansible/{{ podman_download.checksum }}-get_url.log"
-  register: result
-  until: result is succeeded
-
-- name: unarchive package
-  shell: |
-    set -euxo pipefail
-    mkdir -p /var/log/ansible
-    exec &> >(tee -a /var/log/ansible/{{ podman_download.checksum }}-unarchive.log)
-    cd /usr/local/bin
-    TMP_DIR="$(mktemp -d)" \
-      && cp {{ podman_download.dest }} $TMP_DIR/podman \
-      && chown root:root $TMP_DIR/podman \
-      && chmod 0755 $TMP_DIR/podman \
-      && mv $TMP_DIR/podman . \
-      && rm -rf $TMP_DIR
-  args:
-    executable: "/bin/bash"
-    creates: "/var/log/ansible/{{ podman_download.checksum }}-unarchive.log"
-  notify:
-    - podman | systemctl daemon-reload
-    - podman | systemctl restart podman.socket
-
-- name: copy templates
-  template:
-    dest: "{{ item.dest }}"
-    src: "{{ item.src | default('./templates' + item.dest + '.j2') }}"
-    owner: "{{ item.owner | default('root') }}"
-    group: "{{ item.group | default('root') }}"
-    mode: "{{ item.mode | default('0644') }}"
-  loop:
-    - { dest: "/etc/bash_completion.d/podman" }
-    - { dest: "/etc/cni/net.d/87-podman-bridge.conflist" }
-    - { dest: "/lib/tmpfiles.d/podman.conf" }
-    - { dest: "/etc/systemd/system/podman.service" }
-    - { dest: "/etc/systemd/system/podman.socket" }
-  notify:
-    - podman | systemctl daemon-reload
-    - podman | systemctl restart podman.socket
-
-- name: prepare files
-  file:
-    dest: "{{ item.dest }}"
-    owner: "{{ item.owner | default('root') }}"
-    group: "{{ item.group | default('root') }}"
-    mode: "{{ item.mode | default('0644') }}"
-    state: "{{ item.state | default('file') }}"
-  loop:
-    - { dest: "/etc/bash_completion.d/podman" }
-    - { dest: "/etc/cni/net.d/87-podman-bridge.conflist" }
-    - { dest: "/etc/systemd/system/podman.service" }
-    - { dest: "/etc/systemd/system/podman.socket" }
-    - { dest: "/lib/tmpfiles.d/podman.conf" }
-    - { dest: "/usr/local/bin/podman", mode: "0755" }
-  notify:
-    - podman | systemctl daemon-reload
-    - podman | systemctl restart podman.socket
-
 - name: flush handlers
   meta: flush_handlers
 
-- name: systemctl start podman.socket
+- name: systemctl start podman.service
   service:
-    name: "podman.socket"
+    name: "podman.service"
     state: "started"
     enabled: true
   changed_when: false
