@@ -31,6 +31,11 @@
 
     - name: include role
       include_role:
+        name: fuse_overlayfs
+      tags: fuse_overlayfs
+
+    - name: include role
+      include_role:
         name: containers_common
       tags: containers_common
 
