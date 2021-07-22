@@ -13,7 +13,7 @@ Ansible Role for Podman Installation.
 
 ## Requirements
 
-This role require Ansible community package 4.2 or higher.
+This role require Ansible community package 4.3 or higher.
 
 This role was designed for:
 
@@ -43,8 +43,8 @@ This role could simply deploy to `localhost` as below:
 ## License
 
   - Code released under [Apache License 2.0](LICENSE)
-  - Docs released under [CC
-    BY 4.0](http://creativecommons.org/licenses/by/4.0/)
+  - Docs released under [CC BY
+    4.0](http://creativecommons.org/licenses/by/4.0/)
 
 ## Author Information
 
