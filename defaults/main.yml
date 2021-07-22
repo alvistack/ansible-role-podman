@@ -13,12 +13,3 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-
-# Podman release.
-podman_release: "3.2"
-
-# Podman version.
-podman_version: "{{ _podman_version[podman_release] }}"
-
-# Podman download details.
-podman_download: "{{ _podman_download[podman_version] }}"

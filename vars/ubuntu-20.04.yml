@@ -14,7 +14,14 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+_apt_key:
+  - url: "https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/xUbuntu_20.04/Release.key"
+    id: "2472D6D0D2F66AF87ABA8DA34D64390375060AA4"
+    state: "present"
+
+_apt_repository:
+  - repo: "deb https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/xUbuntu_20.04 /"
+    state: "present"
+
 _apt:
-  - { state: "latest", name: "bash-completion" }
-  - { state: "latest", name: "conntrack" }
-  - { state: "latest", name: "iptables" }
+  - { state: "latest", name: "podman" }

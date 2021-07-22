@@ -19,8 +19,6 @@
   become: true
   tasks:
     - name: podman version
-      environment:
-        PATH: "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
       command: podman version
       register: result
       changed_when: result is not succeeded

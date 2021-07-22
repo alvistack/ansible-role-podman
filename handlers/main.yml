@@ -14,15 +14,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-- name: podman | systemctl daemon-reload
-  systemd:
-    daemon_reload: true
-  changed_when: false
-  failed_when: false
-
-- name: podman | systemctl restart podman.socket
+- name: podman | systemctl restart podman.service
   service:
-    name: "podman.socket"
+    name: "podman.service"
     state: "restarted"
     enabled: true
   loop: "{{ ansible_play_hosts }}"

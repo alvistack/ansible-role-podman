@@ -48,7 +48,7 @@ export PIPX_HOME="/usr/local/share/pipx"
 export PIPX_BIN_DIR="/usr/local/bin"
 pipx install --force --pip-args="--upgrade" flake8
 pipx install --force --pip-args="--upgrade" yamllint
-pipx install --force --pip-args="--upgrade" --include-deps "ansible>=4.2.0,<5.0.0"
+pipx install --force --pip-args="--upgrade" --include-deps "ansible>=4.3.0,<5.0.0"
 pipx inject --force --pip-args="--upgrade" --include-apps ansible ansible-lint
 pipx inject --force --pip-args="--upgrade" ansible docker netaddr python-vagrant
 

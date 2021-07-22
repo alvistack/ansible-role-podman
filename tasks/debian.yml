@@ -14,6 +14,24 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+- name: apt-key add
+  apt_key:
+    url: "{{ item.url }}"
+    id: "{{ item.id }}"
+    state: "{{ item.state }}"
+  loop: "{{ _apt_key }}"
+  register: result
+  until: result is succeeded
+
+- name: apt-add-repository
+  apt_repository:
+    repo: "{{ item.repo }}"
+    state: "{{ item.state }}"
+    mode: "{{ item.mode | default('0644') }}"
+  loop: "{{ _apt_repository }}"
+  register: result
+  until: result is succeeded
+
 - name: apt-get install
   apt:
     name: "{{ item.name }}"
@@ -21,3 +39,5 @@
   loop: "{{ _apt }}"
   register: result
   until: result is succeeded
+  notify:
+    - podman | systemctl restart podman.service
