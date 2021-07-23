@@ -5,7 +5,6 @@
 ### Major Changes
 
   - Upgrade minimal Ansible community package support to 4.3.0
-
   - Install package with upstream repository
 
 ## 5.1.0 - 2021-07-18
@@ -31,12 +30,9 @@
 
 ### Major Changes
 
-  - Bugfix [ansible-lint
-    `namespace`](https://github.com/ansible-community/ansible-lint/pull/1451)
-  - Bugfix [ansible-lint
-    `no-handler`](https://github.com/ansible-community/ansible-lint/pull/1402)
-  - Bugfix [ansible-lint
-    `unnamed-task`](https://github.com/ansible-community/ansible-lint/pull/1413)
+  - Bugfix [ansible-lint `namespace`](https://github.com/ansible-community/ansible-lint/pull/1451)
+  - Bugfix [ansible-lint `no-handler`](https://github.com/ansible-community/ansible-lint/pull/1402)
+  - Bugfix [ansible-lint `unnamed-task`](https://github.com/ansible-community/ansible-lint/pull/1413)
   - Simplify Python dependency with system packages
   - Support RHEL 8 with Molecule
   - Support RHEL 7 with Molecule
@@ -94,5 +90,4 @@
 ## 4.2.0 - 2020-02-24
 
   - Ininitial release for Ansible 2.9 or higher
-  - Support both Ubuntu 18.04/19.10 or RHEL/CentOS 7 or openSUSE Leap
-    15.1
+  - Support both Ubuntu 18.04/19.10 or RHEL/CentOS 7 or openSUSE Leap 15.1
