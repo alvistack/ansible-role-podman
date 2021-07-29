@@ -35,7 +35,6 @@
     sh -x -c "qemu-system-x86_64 --version"
     sh -x -c "virsh --version"
     if ! [[ -n "$(vagrant plugin list | grep vagrant-libvirt)" ]]; then
-      export CFLAGS="-I/opt/vagrant/embedded/include/ruby-3.0.0/ruby"
       vagrant plugin install vagrant-libvirt
     fi
     sh -x -c "vagrant plugin list"
