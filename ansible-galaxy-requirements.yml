@@ -28,10 +28,6 @@ roles:
     src: https://github.com/alvistack/ansible-role-crun
     version: develop
 
-  - name: fuse_overlayfs
-    src: https://github.com/alvistack/ansible-role-fuse_overlayfs
-    version: develop
-
   - name: containers_common
     src: https://github.com/alvistack/ansible-role-containers_common
     version: develop
