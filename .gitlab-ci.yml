@@ -59,7 +59,7 @@
 .script-bootstrap-ansible: &script-bootstrap-ansible
   - |
     if ! [[ -x "$(command -v ansible)" ]]; then
-      sudo -E pipx install --force --pip-args="--upgrade" --include-deps "ansible>=4.3.0,<5.0.0"
+      sudo -E pipx install --force --pip-args="--upgrade" --include-deps "ansible>=4.4.0,<5.0.0"
       sudo -E pipx inject --force --pip-args="--upgrade" --include-apps ansible ansible-lint
       sudo -E pipx inject --force --pip-args="--upgrade" ansible docker netaddr python-vagrant
     fi
