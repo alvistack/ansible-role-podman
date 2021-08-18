@@ -15,8 +15,8 @@
 # limitations under the License.
 
 _zypper_repository:
-  - name: "Virtualization:containers"
-    repo: "https://download.opensuse.org/repositories/Virtualization:/containers/openSUSE_Tumbleweed"
+  - name: "home:alvistack"
+    repo: "http://download.opensuse.org/repositories/home:/alvistack/openSUSE_Tumbleweed"
     state: "present"
 
 _zypper:
