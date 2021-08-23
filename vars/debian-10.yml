@@ -15,12 +15,12 @@
 # limitations under the License.
 
 _apt_key:
-  - url: "https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/Debian_10/Release.key"
-    id: "2472D6D0D2F66AF87ABA8DA34D64390375060AA4"
+  - url: "http://download.opensuse.org/repositories/home:/alvistack/Debian_10/Release.key"
+    id: "789CFFDE0295B8A1F4E5690C4BECC97550D0B1FD"
     state: "present"
 
 _apt_repository:
-  - repo: "deb https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/Debian_10 /"
+  - repo: "deb http://download.opensuse.org/repositories/home:/alvistack/Debian_10 /"
     state: "present"
 
 _apt:

@@ -15,19 +15,19 @@
 # limitations under the License.
 
 _rpm_key:
-  - key: "https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/CentOS_7/repodata/repomd.xml.key"
-    fingerprint: "2472D6D0D2F66AF87ABA8DA34D64390375060AA4"
+  - key: "http://download.opensuse.org/repositories/home:/alvistack/CentOS_7/repodata/repomd.xml.key"
+    fingerprint: "789CFFDE0295B8A1F4E5690C4BECC97550D0B1FD"
     state: "present"
 
 _yum_repository:
-  - file: "devel:kubic:libcontainers:stable"
-    name: "devel_kubic_libcontainers_stable"
-    description: "Stable Releases of Upstream github.com/containers packages (CentOS_7)"
-    baseurl: "https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/CentOS_7"
+  - file: "home:alvistack"
+    name: "home_alvistack"
+    description: "home:alvistack (CentOS_7)"
+    baseurl: "http://download.opensuse.org/repositories/home:/alvistack/CentOS_7"
     enabled: true
     priority: "2"
     gpgcheck: true
-    gpgkey: "https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/CentOS_7/repodata/repomd.xml.key"
+    gpgkey: "http://download.opensuse.org/repositories/home:/alvistack/CentOS_7/repodata/repomd.xml.key"
     state: "present"
 
 _yum:
