@@ -15,12 +15,12 @@
 # limitations under the License.
 
 _apt_key:
-  - url: "http://download.opensuse.org/repositories/home:/alvistack/Debian_Testing/Release.key"
+  - url: "http://download.opensuse.org/repositories/home:/alvistack/Debian_11/Release.key"
     id: "789CFFDE0295B8A1F4E5690C4BECC97550D0B1FD"
     state: "present"
 
 _apt_repository:
-  - repo: "deb http://download.opensuse.org/repositories/home:/alvistack/Debian_Testing /"
+  - repo: "deb http://download.opensuse.org/repositories/home:/alvistack/Debian_11 /"
     state: "present"
 
 _apt:
