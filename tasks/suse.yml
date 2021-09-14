@@ -14,19 +14,30 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-- name: zypper addrepo
+- name: rpm --import
   vars:
     ansible_python_interpreter: "python3"
-  zypper_repository:
-    name: "{{ item.name }}"
-    repo: "{{ item.repo }}"
+  rpm_key:
+    key: "{{ item.key }}"
+    fingerprint: "{{ item.fingerprint }}"
     state: "{{ item.state }}"
-    disable_gpg_check: true
-    auto_import_keys: true
-    autorefresh: true
-  loop: "{{ _zypper_repository }}"
+  loop: "{{ _rpm_key }}"
   register: result
   until: result is succeeded
+
+- name: yum-config-manager --add-repo
+  yum_repository:
+    file: "{{ item.file }}"
+    name: "{{ item.name }}"
+    description: "{{ item.description }}"
+    baseurl: "{{ item.baseurl }}"
+    enabled: "{{ item.enabled }}"
+    priority: "{{ item.priority }}"
+    gpgcheck: "{{ item.gpgcheck }}"
+    gpgkey: "{{ item.gpgkey }}"
+    state: "{{ item.state }}"
+    reposdir: "{{ item.reposdir | default('/etc/zypp/repos.d') }}"
+  loop: "{{ _yum_repository }}"
 
 - name: zypper install
   vars:

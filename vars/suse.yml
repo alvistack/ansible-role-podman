@@ -14,9 +14,20 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-_zypper_repository:
-  - name: "home:alvistack"
-    repo: "http://download.opensuse.org/repositories/home:/alvistack/openSUSE_Tumbleweed"
+_rpm_key:
+  - key: "http://download.opensuse.org/repositories/home:/alvistack/openSUSE_Tumbleweed/repodata/repomd.xml.key"
+    fingerprint: "789CFFDE0295B8A1F4E5690C4BECC97550D0B1FD"
+    state: "present"
+
+_yum_repository:
+  - file: "home:alvistack"
+    name: "home_alvistack"
+    description: "home:alvistack (openSUSE_Tumbleweed)"
+    baseurl: "http://download.opensuse.org/repositories/home:/alvistack/openSUSE_Tumbleweed"
+    enabled: true
+    priority: "2"
+    gpgcheck: true
+    gpgkey: "http://download.opensuse.org/repositories/home:/alvistack/openSUSE_Tumbleweed/repodata/repomd.xml.key"
     state: "present"
 
 _zypper:
