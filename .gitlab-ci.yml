@@ -45,11 +45,10 @@
       export DEBIAN_FRONTEND="noninteractive"
       export PIPX_HOME="/usr/local/share/pipx"
       export PIPX_BIN_DIR="/usr/local/bin"
+      echo 'deb http://download.opensuse.org/repositories/home:/alvistack/xUbuntu_20.04/ /' | sudo tee /etc/apt/sources.list.d/home:alvistack.list
+      curl -fsSL https://download.opensuse.org/repositories/home:alvistack/xUbuntu_20.04/Release.key | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/home_alvistack.gpg > /dev/null
       sudo -E apt-get update
-      sudo -E apt-get install -y bzip2 ca-certificates curl gcc gnupg gzip iproute2 procps python3 python3-apt python3-cryptography python3-dev python3-jmespath python3-lxml python3-netaddr python3-pip python3-setuptools python3-venv python3-virtualenv python3-wheel sudo tar unzip xz-utils zip
-      sudo -E pip3 install --prefix=/usr/local --upgrade pipx
-      sudo -E pipx install --force --pip-args="--upgrade" flake8
-      sudo -E pipx install --force --pip-args="--upgrade" yamllint
+      sudo -E apt-get install -y bzip2 ca-certificates curl flake8 gcc gnupg gzip iproute2 procps python3 python3-apt python3-cryptography python3-dev python3-flake8 python3-jmespath python3-lxml python3-netaddr python3-pip python3-pipx python3-setuptools python3-venv python3-virtualenv python3-wheel python3-yamllint sudo tar unzip xz-utils zip
     fi
     sh -x -c "python3 --version"
     sh -x -c "pipx --version"
@@ -59,9 +58,10 @@
 .script-bootstrap-ansible: &script-bootstrap-ansible
   - |
     if ! [[ -x "$(command -v ansible)" ]]; then
-      sudo -E pipx install --force --pip-args="--upgrade" --include-deps "ansible>=4.4.0,<5.0.0"
-      sudo -E pipx inject --force --pip-args="--upgrade" --include-apps ansible ansible-lint
-      sudo -E pipx inject --force --pip-args="--upgrade" ansible docker netaddr python-vagrant
+      echo 'deb http://download.opensuse.org/repositories/home:/alvistack/xUbuntu_20.04/ /' | sudo tee /etc/apt/sources.list.d/home:alvistack.list
+      curl -fsSL https://download.opensuse.org/repositories/home:alvistack/xUbuntu_20.04/Release.key | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/home_alvistack.gpg > /dev/null
+      sudo -E apt-get update
+      sudo -E apt-get install -y ansible python3-ansible-lint python3-docker python3-netaddr python3-vagrant
     fi
     sh -x -c "ansible --version"
     sh -x -c "ansible-lint --version"
@@ -69,10 +69,10 @@
 .script-bootstrap-molecule: &script-bootstrap-molecule
   - |
     if ! [[ -x "$(command -v molecule)" ]]; then
-      export PIPX_HOME="/usr/local/share/pipx"
-      export PIPX_BIN_DIR="/usr/local/bin"
-      sudo -E pipx inject --force --include-apps ansible molecule
-      sudo -E pipx inject --force ansible molecule-docker molecule-vagrant
+      echo 'deb http://download.opensuse.org/repositories/home:/alvistack/xUbuntu_20.04/ /' | sudo tee /etc/apt/sources.list.d/home:alvistack.list
+      curl -fsSL https://download.opensuse.org/repositories/home:alvistack/xUbuntu_20.04/Release.key | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/home_alvistack.gpg > /dev/null
+      sudo -E apt-get update
+      sudo -E apt-get install -y python3-molecule python3-molecule-docker python3-molecule-vagrant
     fi
     sh -x -c "molecule --version"
 
