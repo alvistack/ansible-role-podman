@@ -45,7 +45,7 @@
   zypper:
     name: "{{ item.name }}"
     state: "{{ item.state }}"
-    allow_vendor_change: true
+    extra_args: "--allow-vendor-change"
   loop: "{{ _zypper }}"
   register: result
   until: result is succeeded
