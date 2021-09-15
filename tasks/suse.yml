@@ -33,6 +33,7 @@
     baseurl: "{{ item.baseurl }}"
     enabled: "{{ item.enabled }}"
     priority: "{{ item.priority }}"
+    module_hotfixes: "{{ item.module_hotfixes }}"
     gpgcheck: "{{ item.gpgcheck }}"
     gpgkey: "{{ item.gpgkey }}"
     state: "{{ item.state }}"

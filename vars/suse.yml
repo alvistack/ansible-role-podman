@@ -26,6 +26,7 @@ _yum_repository:
     baseurl: "http://download.opensuse.org/repositories/home:/alvistack/openSUSE_Tumbleweed"
     enabled: true
     priority: "2"
+    module_hotfixes: true
     gpgcheck: true
     gpgkey: "http://download.opensuse.org/repositories/home:/alvistack/openSUSE_Tumbleweed/repodata/repomd.xml.key"
     state: "present"
