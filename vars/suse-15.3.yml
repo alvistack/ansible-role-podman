@@ -20,7 +20,7 @@ _rpm_key:
     state: "present"
 
 _yum_repository:
-  - file: "home:alvistack"
+  - file: "home_alvistack"
     name: "home_alvistack"
     description: "home:alvistack (openSUSE_Leap_15.3)"
     baseurl: "http://download.opensuse.org/repositories/home:/alvistack/openSUSE_Leap_15.3"
