@@ -14,16 +14,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-- name: touch files
-  copy:
-    dest: "{{ item.keyring }}"
-    owner: "{{ item.owner | default('root') }}"
-    group: "{{ item.group | default('root') }}"
-    mode: "{{ item.mode | default('0644') }}"
-    content: ""
-    force: false
-  loop: "{{ _apt_key }}"
-
 - name: apt-key add
   apt_key:
     keyring: "{{ item.keyring }}"
