@@ -22,7 +22,7 @@ _apt_key:
 
 _apt_repository:
   - filename: "home:alvistack"
-    repo: "deb http://download.opensuse.org/repositories/home:/alvistack/xUbuntu_21.04 /"
+    repo: "deb http://download.opensuse.org/repositories/home:/alvistack/xUbuntu_21.04/ /"
     state: "present"
 
 _apt:
