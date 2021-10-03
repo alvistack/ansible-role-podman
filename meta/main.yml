@@ -25,6 +25,7 @@ galaxy_info:
   platforms:
     - name: Ubuntu
       versions:
+        - impish
         - hirsute
         - groovy
         - focal
