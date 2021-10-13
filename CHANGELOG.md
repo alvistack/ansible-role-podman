@@ -4,6 +4,7 @@
 
 ### Major Changes
 
+  - Support Fedora 35
   - Support Ubuntu 21.10
   - Upgrade minimal Ansible community package support to 4.6.0
   - Install dependencies with package manager
