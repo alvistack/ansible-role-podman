@@ -27,7 +27,6 @@ galaxy_info:
       versions:
         - impish
         - hirsute
-        - groovy
         - focal
         - bionic
     - name: EL
