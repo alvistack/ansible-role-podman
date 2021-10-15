@@ -198,13 +198,6 @@ test:fedora-34:
     _MOLECULE_SCENARIO_NAME: "fedora-34"
   allow_failure: true
 
-test:fedora-33:
-  <<: *job-molecule
-  stage: test
-  variables:
-    _MOLECULE_SCENARIO_NAME: "fedora-33"
-  allow_failure: true
-
 test:rhel-8:
   <<: *job-molecule
   stage: test
