@@ -1,6 +1,10 @@
 # Ansible Role for Podman
 
-## 5.2.0 - TBC
+## 5.4.0 - TBC
+
+### Major Changes
+
+## 5.3.0 - 2021-10-20
 
 ### Major Changes
 
@@ -8,8 +12,14 @@
   - Remove Ubuntu 20.10 support
   - Support Fedora 35
   - Support Ubuntu 21.10
-  - Upgrade minimal Ansible community package support to 4.6.0
+  - Upgrade minimal Ansible community package support to 4.7.0
+
+## 5.2.0 - 2021-09-19
+
+### Major Changes
+
   - Install dependencies with package manager
+  - Upgrade minimal Ansible community package support to 4.5.0
 
 ## 5.1.0 - 2021-07-18
 
