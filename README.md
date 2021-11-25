@@ -11,7 +11,7 @@ Ansible Role for Podman Installation.
 
 ## Requirements
 
-This role require Ansible community package 4.8 or higher.
+This role require Ansible community package 4.9 or higher.
 
 This role was designed for:
 
