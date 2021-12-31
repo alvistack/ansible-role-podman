@@ -36,7 +36,6 @@ galaxy_info:
     - name: opensuse
       versions:
         - "15.3"
-        - "15.2"
     - name: Debian
       versions:
         - bullseye
