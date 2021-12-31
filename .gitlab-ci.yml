@@ -191,6 +191,13 @@ test:debian-10:
     _MOLECULE_SCENARIO_NAME: "debian-10"
   allow_failure: true
 
+test:fedora-rawhide:
+  <<: *job-molecule
+  stage: test
+  variables:
+    _MOLECULE_SCENARIO_NAME: "fedora-rawhide"
+  allow_failure: true
+
 test:fedora-35:
   <<: *job-molecule
   stage: test

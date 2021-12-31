@@ -19,7 +19,7 @@ This role was designed for:
   - CentOS 7, 8 Stream
   - openSUSE Leap 15.3, Tumbleweed
   - Debian 10, 11, Testing
-  - Fedora 34, 35
+  - Fedora 34, 35, Rawhide
   - RHEL 7, 8
 
 ## Role Variables
