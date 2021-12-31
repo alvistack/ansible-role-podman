@@ -4,6 +4,7 @@
 
 ### Major Changes
 
+  - Support Fedora Rawhide
   - Support Debian Testing
 
 ## 5.4.0 - 2021-12-31
