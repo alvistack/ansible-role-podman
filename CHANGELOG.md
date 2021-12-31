@@ -4,6 +4,7 @@
 
 ### Major Changes
 
+  - Add `podman-docker` wrapper
   - Support Fedora Rawhide
   - Support Debian Testing
 
