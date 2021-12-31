@@ -1,9 +1,14 @@
 # Ansible Role for Podman
 
-## 5.4.0 - TBC
+## 5.5.0 - TBC
 
 ### Major Changes
 
+## 5.4.0 - 2021-12-31
+
+### Major Changes
+
+  - Remove openSUSE Leap 15.2 support
   - Upgrade minimal Ansible community package support to 4.10
 
 ## 5.3.0 - 2021-10-20

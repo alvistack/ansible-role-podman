@@ -170,13 +170,6 @@ test:opensuse-leap-15.3:
     _MOLECULE_SCENARIO_NAME: "opensuse-leap-15.3"
   allow_failure: true
 
-test:opensuse-leap-15.2:
-  <<: *job-molecule
-  stage: test
-  variables:
-    _MOLECULE_SCENARIO_NAME: "opensuse-leap-15.2"
-  allow_failure: true
-
 test:debian-11:
   <<: *job-molecule
   stage: test
