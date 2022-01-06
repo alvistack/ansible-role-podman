@@ -33,7 +33,6 @@
       raw: |
         set -eu
         apt-get update
-        DEBIAN_FRONTEND=noninteractive apt-get dist-upgrade -y
         DEBIAN_FRONTEND=noninteractive apt-get install -y python3
       changed_when: false
       failed_when: false
@@ -42,7 +41,6 @@
       raw: |
         set -eu
         yum makecache
-        yum update -y
         yum install -y python3
       changed_when: false
       failed_when: false
@@ -51,7 +49,6 @@
       raw: |
         set -eu
         zypper -n --gpg-auto-import-keys refresh
-        zypper -n update -y
         zypper -n install -y python3
       changed_when: false
       failed_when: false
