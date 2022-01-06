@@ -33,3 +33,4 @@ _yum_repository:
 
 _zypper:
   - { state: "latest", name: "podman" }
+  - { state: "latest", name: "podman-docker" }
