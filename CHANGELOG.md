@@ -5,7 +5,6 @@
 ### Major Changes
 
   - Skip package upgrade before running molecule
-  - Add `podman-docker` wrapper
   - Support Fedora Rawhide
   - Support Debian Testing
 
