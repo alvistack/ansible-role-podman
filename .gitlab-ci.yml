@@ -56,8 +56,9 @@
       curl -fsSL "http://keyserver.ubuntu.com/pks/lookup?op=get&search=0xE996735927E427A733BB653E374C7797FB006459" | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/savoury1.gpg > /dev/null
       sudo -E apt-get update
       sudo -E apt-get install -y binutils bridge-utils dnsmasq-base ebtables gcc libarchive-tools libguestfs-tools libvirt-clients libvirt-daemon-system libvirt-dev make qemu-system qemu-utils ruby-dev virt-manager
-      sudo systemctl start libvirtd.service
     fi
+    sudo systemctl start libvirtd.service
+    sh -x -c "sudo systemctl status --no-pager libvirtd.service"
     sh -x -c "qemu-system-x86_64 --version"
     sh -x -c "virsh --version"
 
