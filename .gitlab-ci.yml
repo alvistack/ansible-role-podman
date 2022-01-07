@@ -11,34 +11,6 @@
     mkdir -p $HOME/.ansible/roles
     ln -s $CI_PROJECT_DIR $HOME/.ansible/roles/$_ROLE
 
-.script-bootstrap-vagrant: &script-bootstrap-vagrant
-  - |
-    if ! [[ -x "$(command -v vagrant)" ]]; then
-      export DEBIAN_FRONTEND="noninteractive"
-      echo "deb [arch=amd64] https://apt.releases.hashicorp.com focal main" | sudo tee /etc/apt/sources.list.d/hashicorp.list
-      curl -fsSL https://apt.releases.hashicorp.com/gpg | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/hashicorp.gpg > /dev/null
-      sudo -E apt-get update
-      sudo -E apt-get install -y vagrant
-    fi
-    sh -x -c "vagrant --version"
-
-.script-bootstrap-libvirt: &script-bootstrap-libvirt
-  - |
-    if ! [[ -x "$(command -v qemu-system-x86_64)" ]]; then
-      export DEBIAN_FRONTEND="noninteractive"
-      echo "deb http://ppa.launchpad.net/savoury1/virtualisation/ubuntu focal main" | sudo tee /etc/apt/sources.list.d/savoury1.list
-      curl -fsSL "http://keyserver.ubuntu.com/pks/lookup?op=get&search=0xE996735927E427A733BB653E374C7797FB006459" | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/savoury1.gpg > /dev/null
-      sudo -E apt-get update
-      sudo -E apt-get install -y binutils bridge-utils dnsmasq-base ebtables gcc libarchive-tools libguestfs-tools libvirt-clients libvirt-daemon-system libvirt-dev make qemu-system qemu-utils ruby-dev virt-manager
-    fi
-    sudo systemctl start libvirtd.service
-    sh -x -c "qemu-system-x86_64 --version"
-    sh -x -c "virsh --version"
-    if ! [[ -n "$(vagrant plugin list | grep vagrant-libvirt)" ]]; then
-      vagrant plugin install vagrant-libvirt
-    fi
-    sh -x -c "vagrant plugin list"
-
 .script-bootstrap-python: &script-bootstrap-python
   - |
     if ! [[ -x "$(command -v pipx)" ]]; then
@@ -76,6 +48,32 @@
     fi
     sh -x -c "molecule --version"
 
+.script-bootstrap-libvirt: &script-bootstrap-libvirt
+  - |
+    if ! [[ -x "$(command -v qemu-system-x86_64)" ]]; then
+      export DEBIAN_FRONTEND="noninteractive"
+      echo "deb http://ppa.launchpad.net/savoury1/virtualisation/ubuntu focal main" | sudo tee /etc/apt/sources.list.d/savoury1.list
+      curl -fsSL "http://keyserver.ubuntu.com/pks/lookup?op=get&search=0xE996735927E427A733BB653E374C7797FB006459" | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/savoury1.gpg > /dev/null
+      sudo -E apt-get update
+      sudo -E apt-get install -y binutils bridge-utils dnsmasq-base ebtables gcc libarchive-tools libguestfs-tools libvirt-clients libvirt-daemon-system libvirt-dev make qemu-system qemu-utils ruby-dev virt-manager
+      sudo systemctl start libvirtd.service
+    fi
+    sh -x -c "qemu-system-x86_64 --version"
+    sh -x -c "virsh --version"
+
+.script-bootstrap-vagrant: &script-bootstrap-vagrant
+  - |
+    if ! [[ -x "$(command -v vagrant)" ]]; then
+      export DEBIAN_FRONTEND="noninteractive"
+      echo "deb [arch=amd64] https://apt.releases.hashicorp.com focal main" | sudo tee /etc/apt/sources.list.d/hashicorp.list
+      curl -fsSL https://apt.releases.hashicorp.com/gpg | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/hashicorp.gpg > /dev/null
+      sudo -E apt-get update
+      sudo -E apt-get install -y vagrant
+      vagrant plugin install vagrant-libvirt
+    fi
+    sh -x -c "vagrant --version"
+    sh -x -c "vagrant plugin list"
+
 .script-molecule-test: &script-molecule-test
   - |
     export MOLECULE_INSTANCE_NAME="$(pwgen -1AB 12)"
@@ -96,11 +94,11 @@
 
 .job-molecule: &job-molecule
   script:
-    - *script-bootstrap-vagrant
-    - *script-bootstrap-libvirt
     - *script-bootstrap-python
     - *script-bootstrap-ansible
     - *script-bootstrap-molecule
+    - *script-bootstrap-libvirt
+    - *script-bootstrap-vagrant
     - *script-molecule-test
 
 .job-ansible-galaxy: &job-ansible-galaxy
