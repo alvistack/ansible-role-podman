@@ -134,13 +134,6 @@ test:ubuntu-21.10:
     _MOLECULE_SCENARIO_NAME: "ubuntu-21.10"
   allow_failure: true
 
-test:ubuntu-21.04:
-  <<: *job-molecule
-  stage: test
-  variables:
-    _MOLECULE_SCENARIO_NAME: "ubuntu-21.04"
-  allow_failure: true
-
 test:centos-8-stream:
   <<: *job-molecule
   stage: test

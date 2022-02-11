@@ -26,7 +26,6 @@ galaxy_info:
     - name: Ubuntu
       versions:
         - impish
-        - hirsute
         - focal
         - bionic
     - name: EL
