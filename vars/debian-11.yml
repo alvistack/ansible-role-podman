@@ -27,3 +27,4 @@ _apt_repository:
 
 _apt:
   - { state: "latest", name: "podman" }
+  - { state: "latest", name: "python3-podman-compose" }
