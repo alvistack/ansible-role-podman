@@ -37,5 +37,4 @@ _zypper:
   - { state: "latest", name: "containernetworking-podman-machine" }
   - { state: "latest", name: "podman" }
   - { state: "latest", name: "podman-gvproxy" }
-  - { state: "latest", name: "podman-netavark" }
   - { state: "latest", name: "python3-podman-compose" }
