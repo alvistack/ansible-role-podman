@@ -33,4 +33,5 @@ _yum_repository:
 
 _yum:
   - { state: "latest", name: "podman" }
+  - { state: "latest", name: "podman-gvproxy" }
   - { state: "latest", name: "python3-podman-compose" }
