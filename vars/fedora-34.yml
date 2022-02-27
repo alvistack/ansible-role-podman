@@ -32,6 +32,9 @@ _yum_repository:
     state: "present"
 
 _yum:
+  - { state: "latest", name: "containernetworking-plugins" }
+  - { state: "latest", name: "containernetworking-plugins-dnsname" }
+  - { state: "latest", name: "containernetworking-plugins-podman-machine" }
   - { state: "latest", name: "podman" }
   - { state: "latest", name: "podman-gvproxy" }
   - { state: "latest", name: "python3-podman-compose" }
