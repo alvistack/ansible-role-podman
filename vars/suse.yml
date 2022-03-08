@@ -32,4 +32,13 @@ _yum_repository:
     state: "present"
 
 _zypper:
+  - { state: "latest", name: "containernetworking-dnsname" }
+  - { state: "latest", name: "containernetworking-plugins" }
+  - { state: "latest", name: "containernetworking-podman-machine" }
   - { state: "latest", name: "podman" }
+  - { state: "latest", name: "podman-aardvark-dns" }
+  - { state: "latest", name: "podman-gvproxy" }
+  - { state: "latest", name: "podman-netavark" }
+  - { state: "latest", name: "python3-podman-compose" }
+  - { state: "latest", name: "shadow" }
+  - { state: "latest", name: "slirp4netns" }
