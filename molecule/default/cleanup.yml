@@ -20,7 +20,7 @@
   gather_facts: false
   tasks:
     - name: redhat | subscription-manager unregister
-      raw: |
+      ansible.builtin.raw: |
         set -eu
         subscription-manager remove --all
         subscription-manager unregister

@@ -19,6 +19,6 @@
   become: true
   tasks:
     - name: podman version
-      command: podman version
+      ansible.builtin.command: podman version
       register: result
       changed_when: result is not succeeded

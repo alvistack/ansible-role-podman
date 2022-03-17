@@ -15,7 +15,7 @@
 # limitations under the License.
 
 - name: podman | systemctl restart podman.service
-  service:
+  ansible.builtin.service:
     name: "podman.service"
     state: "restarted"
     enabled: true

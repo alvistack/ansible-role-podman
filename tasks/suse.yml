@@ -17,7 +17,7 @@
 - name: rpm --import
   vars:
     ansible_python_interpreter: "python3"
-  rpm_key:
+  ansible.builtin.rpm_key:
     key: "{{ item.key }}"
     fingerprint: "{{ item.fingerprint }}"
     state: "{{ item.state }}"
@@ -26,8 +26,8 @@
   until: result is succeeded
 
 - name: yum-config-manager --add-repo
-  yum_repository:
-    file: "{{ item.file }}"
+  ansible.builtin.yum_repository:
+    ansible.builtin.file: "{{ item.file }}"
     name: "{{ item.name }}"
     description: "{{ item.description }}"
     baseurl: "{{ item.baseurl }}"
@@ -43,7 +43,7 @@
 - name: zypper install
   vars:
     ansible_python_interpreter: "python3"
-  zypper:
+  ansible.builtin.zypper:
     name: "{{ item.name }}"
     state: "{{ item.state }}"
     extra_args: "--allow-vendor-change"

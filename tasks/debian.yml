@@ -15,7 +15,7 @@
 # limitations under the License.
 
 - name: apt-key add
-  apt_key:
+  ansible.builtin.apt_key:
     keyring: "{{ item.keyring }}"
     url: "{{ item.url }}"
     id: "{{ item.id }}"
@@ -25,7 +25,7 @@
   until: result is succeeded
 
 - name: apt-add-repository
-  apt_repository:
+  ansible.builtin.apt_repository:
     filename: "{{ item.filename }}"
     repo: "{{ item.repo }}"
     state: "{{ item.state }}"
@@ -35,7 +35,7 @@
   until: result is succeeded
 
 - name: apt-get install
-  apt:
+  ansible.builtin.apt:
     name: "{{ item.name }}"
     state: "{{ item.state }}"
   loop: "{{ _apt }}"

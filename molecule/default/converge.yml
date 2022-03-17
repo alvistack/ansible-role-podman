@@ -20,31 +20,31 @@
   tasks:
 
     - name: include role
-      include_role:
+      ansible.builtin.include_role:
         name: runc
       tags: runc
 
     - name: include role
-      include_role:
+      ansible.builtin.include_role:
         name: crun
       tags: crun
 
     - name: include role
-      include_role:
+      ansible.builtin.include_role:
         name: containers_common
       tags: containers_common
 
     - name: include role
-      include_role:
+      ansible.builtin.include_role:
         name: containernetworking_plugins
       tags: containernetworking_plugins
 
     - name: include role
-      include_role:
+      ansible.builtin.include_role:
         name: conmon
       tags: conmon
 
     - name: include role
-      include_role:
+      ansible.builtin.include_role:
         name: podman
       tags: podman
