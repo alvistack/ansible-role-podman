@@ -20,7 +20,7 @@
   gather_facts: false
   tasks:
     - name: redhat | subscription-manager register
-      raw: |
+      ansible.builtin.raw: |
         set -eu
         subscription-manager register \
           --username={{ lookup('env', 'REDHAT_USERNAME') }} \
@@ -30,7 +30,7 @@
       failed_when: false
 
     - name: debian | apt-get install python3
-      raw: |
+      ansible.builtin.raw: |
         set -eu
         apt-get update
         DEBIAN_FRONTEND=noninteractive apt-get install -y python3
@@ -38,7 +38,7 @@
       failed_when: false
 
     - name: redhat | yum install python3
-      raw: |
+      ansible.builtin.raw: |
         set -eu
         yum makecache
         yum install -y python3
@@ -46,7 +46,7 @@
       failed_when: false
 
     - name: suse | zypper install python3
-      raw: |
+      ansible.builtin.raw: |
         set -eu
         zypper -n --gpg-auto-import-keys refresh
         zypper -n install -y python3
@@ -58,14 +58,14 @@
   become: true
   tasks:
     - name: cp -rfT /etc/skel /root
-      raw: |
+      ansible.builtin.raw: |
         set -eu
         cp -rfT /etc/skel /root
       changed_when: false
       failed_when: false
 
     - name: setenforce 0
-      raw: |
+      ansible.builtin.raw: |
         set -eu
         setenforce 0
         sed -i 's/^SELINUX=.*$/SELINUX=permissive/g' /etc/selinux/config
@@ -73,7 +73,7 @@
       failed_when: false
 
     - name: systemctl stop firewalld.service
-      raw: |
+      ansible.builtin.raw: |
         set -eu
         systemctl stop firewalld.service
         systemctl disable firewalld.service
@@ -81,7 +81,7 @@
       failed_when: false
 
     - name: systemctl stop ufw.service
-      raw: |
+      ansible.builtin.raw: |
         set -eu
         systemctl stop ufw.service
         systemctl disable ufw.service
@@ -89,7 +89,7 @@
       failed_when: false
 
     - name: debian | apt-get install *.deb
-      raw: |
+      ansible.builtin.raw: |
         set -eu
         DEBIAN_FRONTEND=noninteractive apt-get install -y bzip2 ca-certificates curl gcc gnupg gzip iproute2 passwd procps python3 python3-apt python3-jmespath python3-lxml python3-pip python3-setuptools python3-venv python3-virtualenv python3-wheel rsync sudo tar unzip util-linux xz-utils zip
       when: ansible_os_family | lower == "debian"
@@ -97,7 +97,7 @@
       failed_when: false
 
     - name: fedora | yum install *.rpm
-      raw: |
+      ansible.builtin.raw: |
         set -eu
         yum install -y bzip2 ca-certificates curl gcc gnupg2 gzip iproute procps-ng python3 python3-dnf-plugin-versionlock python3-jmespath python3-libselinux python3-lxml python3-pip python3-setuptools python3-virtualenv python3-wheel rsync shadow-utils sudo tar unzip util-linux xz yum-utils zip
       when: ansible_distribution | lower == "fedora"
@@ -105,7 +105,7 @@
       failed_when: false
 
     - name: redhat-8 | yum install *.rpm
-      raw: |
+      ansible.builtin.raw: |
         set -eu
         yum install -y http://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
         yum install -y bzip2 ca-certificates curl gcc gnupg2 gzip iproute procps-ng python3 python3-dnf-plugin-versionlock python3-jmespath python3-libselinux python3-lxml python3-pip python3-setuptools python3-virtualenv python3-wheel rsync shadow-utils sudo tar unzip util-linux xz yum-utils zip
@@ -114,7 +114,7 @@
       failed_when: false
 
     - name: redhat-7 | yum install *.rpm
-      raw: |
+      ansible.builtin.raw: |
         set -eu
         subscription-manager repos --enable=rhel-7-server-optional-rpms || echo $?
         yum install -y http://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
@@ -124,7 +124,7 @@
       failed_when: false
 
     - name: suse | zypper -n install *.rpm
-      raw: |
+      ansible.builtin.raw: |
         set -eu
         zypper -n install -y bzip2 ca-certificates curl gcc gpg2 gzip iproute2 procps python3 python3-jmespath python3-lxml python3-pip python3-setuptools python3-virtualenv python3-wheel rsync shadow sudo tar unzip util-linux xz zip
       when: ansible_os_family | lower == "suse"

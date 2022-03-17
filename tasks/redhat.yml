@@ -15,7 +15,7 @@
 # limitations under the License.
 
 - name: rpm --import
-  rpm_key:
+  ansible.builtin.rpm_key:
     key: "{{ item.key }}"
     fingerprint: "{{ item.fingerprint }}"
     state: "{{ item.state }}"
@@ -24,8 +24,8 @@
   until: result is succeeded
 
 - name: yum-config-manager --add-repo
-  yum_repository:
-    file: "{{ item.file }}"
+  ansible.builtin.yum_repository:
+    ansible.builtin.file: "{{ item.file }}"
     name: "{{ item.name }}"
     description: "{{ item.description }}"
     baseurl: "{{ item.baseurl }}"
@@ -38,7 +38,7 @@
   loop: "{{ _yum_repository }}"
 
 - name: yum install
-  yum:
+  ansible.builtin.yum:
     name: "{{ item.name }}"
     state: "{{ item.state }}"
   loop: "{{ _yum }}"
