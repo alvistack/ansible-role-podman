@@ -36,7 +36,7 @@
       skip: true
 
 - name: include release specific tasks
-  include_tasks: "{{ _loop_var }}"
+  ansible.builtin.include_tasks: "{{ _loop_var }}"
   loop: "{{ query('first_found', _params) }}"
   loop_control:
     loop_var: _loop_var
