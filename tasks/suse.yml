@@ -27,7 +27,7 @@
 
 - name: yum-config-manager --add-repo
   ansible.builtin.yum_repository:
-    ansible.builtin.file: "{{ item.file }}"
+    file: "{{ item.file }}"
     name: "{{ item.name }}"
     description: "{{ item.description }}"
     baseurl: "{{ item.baseurl }}"
