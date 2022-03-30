@@ -15,7 +15,7 @@
 # limitations under the License.
 
 _rpm_key:
-  - key: "http://download.opensuse.org/repositories/home:/alvistack/CentOS_8/repodata/repomd.xml.key"
+  - key: "http://download.opensuse.org/repositories/home:/alvistack/CentOS_8_Stream/repodata/repomd.xml.key"
     fingerprint: "789CFFDE0295B8A1F4E5690C4BECC97550D0B1FD"
     state: "present"
 
@@ -23,12 +23,12 @@ _yum_repository:
   - file: "home:alvistack"
     name: "home_alvistack"
     description: "home:alvistack (CentOS_8)"
-    baseurl: "http://download.opensuse.org/repositories/home:/alvistack/CentOS_8"
+    baseurl: "http://download.opensuse.org/repositories/home:/alvistack/CentOS_8_Stream"
     enabled: true
     priority: "2"
     module_hotfixes: true
     gpgcheck: true
-    gpgkey: "http://download.opensuse.org/repositories/home:/alvistack/CentOS_8/repodata/repomd.xml.key"
+    gpgkey: "http://download.opensuse.org/repositories/home:/alvistack/CentOS_8_Stream/repodata/repomd.xml.key"
     state: "present"
 
 _yum:

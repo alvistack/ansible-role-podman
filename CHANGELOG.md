@@ -4,6 +4,7 @@
 
 ### Major Changes
 
+  - Rename repo for CentOS 8 Stream
   - Support Ansible community package 5.5.0
   - Support Ansible community package 5.4.0
 
