@@ -197,6 +197,13 @@ test:fedora-rawhide:
     _MOLECULE_SCENARIO_NAME: "fedora-rawhide"
   allow_failure: true
 
+test:fedora-36:
+  <<: *job-molecule
+  stage: test
+  variables:
+    _MOLECULE_SCENARIO_NAME: "fedora-36"
+  allow_failure: true
+
 test:fedora-35:
   <<: *job-molecule
   stage: test

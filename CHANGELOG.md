@@ -4,6 +4,7 @@
 
 ### Major Changes
 
+  - Support Fedora 36
   - Support Ubuntu 22.04
   - Rename repo for CentOS 8 Stream
   - Support Ansible community package 5.5.0
