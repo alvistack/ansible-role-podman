@@ -104,6 +104,17 @@
       changed_when: false
       failed_when: false
 
+    - name: redhat-9 | yum install *.rpm
+      ansible.builtin.raw: |
+        set -eu
+        yum install -y yum-utils
+        yum-config-manager --enable crb || echo $?
+        yum install -y http://dl.fedoraproject.org/pub/epel/epel-release-latest-9.noarch.rpm
+        yum install -y --allowerasing bzip2 ca-certificates curl gcc gnupg2 gzip iproute procps-ng python3 python3-dnf-plugin-versionlock python3-jmespath python3-libselinux python3-lxml python3-pip python3-setuptools python3-virtualenv python3-wheel rsync shadow-utils sudo tar unzip util-linux xz yum-utils zip
+      when: ansible_os_family | lower == "redhat" and ansible_distribution_major_version | lower == "9"
+      changed_when: false
+      failed_when: false
+
     - name: redhat-8 | yum install *.rpm
       ansible.builtin.raw: |
         set -eu
