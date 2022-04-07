@@ -15,11 +15,11 @@ This role require Ansible community package 4.10 or higher.
 
 This role was designed for:
 
-  - Ubuntu 18.04, 20.04, 21.10
+  - Ubuntu 18.04, 20.04, 21.10, 22.04
   - CentOS 7, 8 Stream
   - openSUSE Leap 15.3, Tumbleweed
   - Debian 10, 11, Testing
-  - Fedora 34, 35, Rawhide
+  - Fedora 34, 35, 36, Rawhide
   - RHEL 7, 8
 
 ## Role Variables

@@ -127,6 +127,13 @@ build:ubuntu-18.04:
   variables:
     _MOLECULE_SCENARIO_NAME: "ubuntu-18.04"
 
+test:ubuntu-22.04:
+  <<: *job-molecule
+  stage: test
+  variables:
+    _MOLECULE_SCENARIO_NAME: "ubuntu-22.04"
+  allow_failure: true
+
 test:ubuntu-21.10:
   <<: *job-molecule
   stage: test
@@ -188,6 +195,13 @@ test:fedora-rawhide:
   stage: test
   variables:
     _MOLECULE_SCENARIO_NAME: "fedora-rawhide"
+  allow_failure: true
+
+test:fedora-36:
+  <<: *job-molecule
+  stage: test
+  variables:
+    _MOLECULE_SCENARIO_NAME: "fedora-36"
   allow_failure: true
 
 test:fedora-35:

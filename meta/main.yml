@@ -25,6 +25,7 @@ galaxy_info:
   platforms:
     - name: Ubuntu
       versions:
+        - jammy
         - impish
         - focal
         - bionic
@@ -41,6 +42,7 @@ galaxy_info:
         - buster
     - name: Fedora
       versions:
+        - "36"
         - "35"
         - "34"
   galaxy_tags:

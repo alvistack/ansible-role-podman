@@ -14,24 +14,18 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-_rpm_key:
-  - key: "http://download.opensuse.org/repositories/home:/alvistack/CentOS_8_Stream/repodata/repomd.xml.key"
-    fingerprint: "789CFFDE0295B8A1F4E5690C4BECC97550D0B1FD"
+_apt_key:
+  - keyring: "/etc/apt/trusted.gpg.d/home_alvistack.gpg"
+    url: "http://download.opensuse.org/repositories/home:/alvistack/xUbuntu_22.04/Release.key"
+    id: "789CFFDE0295B8A1F4E5690C4BECC97550D0B1FD"
     state: "present"
 
-_yum_repository:
-  - file: "home:alvistack"
-    name: "home_alvistack"
-    description: "home:alvistack (CentOS_8)"
-    baseurl: "http://download.opensuse.org/repositories/home:/alvistack/CentOS_8_Stream"
-    enabled: true
-    priority: "2"
-    module_hotfixes: true
-    gpgcheck: true
-    gpgkey: "http://download.opensuse.org/repositories/home:/alvistack/CentOS_8_Stream/repodata/repomd.xml.key"
+_apt_repository:
+  - filename: "home:alvistack"
+    repo: "deb http://download.opensuse.org/repositories/home:/alvistack/xUbuntu_22.04/ /"
     state: "present"
 
-_yum:
+_apt:
   - { state: "latest", name: "containernetworking-dnsname" }
   - { state: "latest", name: "containernetworking-plugins" }
   - { state: "latest", name: "containernetworking-podman-machine" }
@@ -40,5 +34,5 @@ _yum:
   - { state: "latest", name: "podman-gvproxy" }
   - { state: "latest", name: "podman-netavark" }
   - { state: "latest", name: "python3-podman-compose" }
-  - { state: "latest", name: "shadow-utils" }
   - { state: "latest", name: "slirp4netns" }
+  - { state: "latest", name: "uidmap" }
