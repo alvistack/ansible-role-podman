@@ -31,6 +31,7 @@ galaxy_info:
         - bionic
     - name: EL
       versions:
+        - "9"
         - "8"
         - "7"
     - name: opensuse
