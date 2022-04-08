@@ -20,7 +20,7 @@ driver:
     name: libvirt
 platforms:
   - name: ${MOLECULE_INSTANCE_NAME}-1
-    box: alvistack/debian-testing
+    box: alvistack/opensuse-leap-15.4
     cpu: 2
     memory: 8192
     provider_raw_config_args:
