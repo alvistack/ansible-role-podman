@@ -22,7 +22,7 @@ _rpm_key:
 _yum_repository:
   - file: "home:alvistack"
     name: "home_alvistack"
-    description: "home:alvistack (CentOS_8)"
+    description: "home:alvistack (CentOS_8_Stream)"
     baseurl: "http://download.opensuse.org/repositories/home:/alvistack/CentOS_8_Stream"
     enabled: true
     priority: "2"
