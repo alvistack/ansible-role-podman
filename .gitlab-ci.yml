@@ -78,7 +78,7 @@
 .script-molecule-test: &script-molecule-test
   - |
     export MOLECULE_INSTANCE_NAME="$(pwgen -1AB 12)"
-    molecule test -s $_MOLECULE_SCENARIO_NAME
+    sudo -E molecule test -s $_MOLECULE_SCENARIO_NAME
 
 .script-ansible-galaxy-role-import: &script-ansible-galaxy-role-import
   - |
@@ -230,6 +230,13 @@ test:fedora-34:
   stage: test
   variables:
     _MOLECULE_SCENARIO_NAME: "fedora-34"
+  allow_failure: true
+
+test:rhel-9:
+  <<: *job-molecule
+  stage: test
+  variables:
+    _MOLECULE_SCENARIO_NAME: "rhel-9"
   allow_failure: true
 
 test:rhel-8:

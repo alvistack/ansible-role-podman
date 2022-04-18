@@ -53,6 +53,16 @@
         - "."
       skip: true
 
+- name: copy templates
+  ansible.builtin.template:
+    dest: "{{ item.dest }}"
+    src: "{{ item.src | default('./templates' + item.dest + '.j2') }}"
+    owner: "{{ item.owner | default('root') }}"
+    group: "{{ item.group | default('root') }}"
+    mode: "{{ item.mode | default('0644') }}"
+  loop:
+    - { dest: "/etc/containers/nodocker" }
+
 - name: flush handlers
   ansible.builtin.meta: flush_handlers
 

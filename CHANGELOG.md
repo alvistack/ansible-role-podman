@@ -4,6 +4,7 @@
 
 ### Major Changes
 
+  - Support RHEL 9
   - Support CentOS 9 Stream
   - Support openSUSE Leap 15.4
 

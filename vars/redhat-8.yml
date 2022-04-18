@@ -22,7 +22,7 @@ _rpm_key:
 _yum_repository:
   - file: "home:alvistack"
     name: "home_alvistack"
-    description: "home:alvistack (CentOS_8)"
+    description: "home:alvistack (CentOS_8_Stream)"
     baseurl: "http://download.opensuse.org/repositories/home:/alvistack/CentOS_8_Stream"
     enabled: true
     priority: "2"
@@ -37,6 +37,7 @@ _yum:
   - { state: "latest", name: "containernetworking-podman-machine" }
   - { state: "latest", name: "podman" }
   - { state: "latest", name: "podman-aardvark-dns" }
+  - { state: "latest", name: "podman-docker" }
   - { state: "latest", name: "podman-gvproxy" }
   - { state: "latest", name: "podman-netavark" }
   - { state: "latest", name: "python3-podman-compose" }
