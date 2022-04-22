@@ -113,6 +113,13 @@ default:
     - *script-git-submodule
     - *script-symlink-ansible-role
 
+build:ubuntu-22.04:
+  <<: *job-molecule
+  stage: build
+  retry: 2
+  variables:
+    _MOLECULE_SCENARIO_NAME: "ubuntu-22.04"
+
 build:ubuntu-20.04:
   <<: *job-molecule
   stage: build
@@ -120,25 +127,18 @@ build:ubuntu-20.04:
   variables:
     _MOLECULE_SCENARIO_NAME: "ubuntu-20.04"
 
-build:ubuntu-18.04:
-  <<: *job-molecule
-  stage: build
-  retry: 2
-  variables:
-    _MOLECULE_SCENARIO_NAME: "ubuntu-18.04"
-
-test:ubuntu-22.04:
-  <<: *job-molecule
-  stage: test
-  variables:
-    _MOLECULE_SCENARIO_NAME: "ubuntu-22.04"
-  allow_failure: true
-
 test:ubuntu-21.10:
   <<: *job-molecule
   stage: test
   variables:
     _MOLECULE_SCENARIO_NAME: "ubuntu-21.10"
+  allow_failure: true
+
+test:ubuntu-18.04:
+  <<: *job-molecule
+  stage: test
+  variables:
+    _MOLECULE_SCENARIO_NAME: "ubuntu-18.04"
   allow_failure: true
 
 test:centos-9-stream:
@@ -258,5 +258,5 @@ deploy:ansible-galaxy:
   stage: deploy
   retry: 2
   needs:
+    - build:ubuntu-22.04
     - build:ubuntu-20.04
-    - build:ubuntu-18.04
