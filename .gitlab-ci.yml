@@ -9,7 +9,7 @@
   - |
     export _ROLE="$(echo $CI_PROJECT_NAME | sed 's/^ansible-role-//g')"
     mkdir -p $HOME/.ansible/roles
-    ln -s $CI_PROJECT_DIR $HOME/.ansible/roles/$_ROLE
+    ln -s $CI_PROJECT_DIR $HOME/.ansible/roles/alvistack.$_ROLE
 
 .script-bootstrap-python: &script-bootstrap-python
   - |
