@@ -1,9 +1,15 @@
 # Ansible Role for Podman
 
-## 5.7.0 - TBC
+## 5.8.0 - TBC
 
 ### Major Changes
 
+## 5.7.0 - 2022-04-27
+
+### Major Changes
+
+  - Rename Ansible Role with FQCN
+  - Support Ansible community package 5.7.0
   - Support RHEL 9
   - Support CentOS 9 Stream
   - Support openSUSE Leap 15.4
