@@ -49,3 +49,4 @@ provisioner:
       group_vars: group_vars
 verifier:
   name: ansible
+prerun: false

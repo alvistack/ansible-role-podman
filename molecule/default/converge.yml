@@ -18,12 +18,6 @@
   remote_user: root
   become: true
   tasks:
-
-    - name: include role
-      ansible.builtin.include_role:
-        name: alvistack.runc
-      tags: alvistack.runc
-
     - name: include role
       ansible.builtin.include_role:
         name: alvistack.crun
