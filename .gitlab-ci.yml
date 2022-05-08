@@ -75,7 +75,7 @@
 
 .script-molecule-test: &script-molecule-test
   - |
-    export MOLECULE_INSTANCE_NAME="$(pwgen -1AB 12)"
+    export _MOLECULE_INSTANCE_NAME="$(pwgen -1AB 12)"
     sudo -E molecule test -s $_MOLECULE_SCENARIO_NAME
 
 .script-ansible-galaxy-role-import: &script-ansible-galaxy-role-import

@@ -18,8 +18,9 @@ driver:
   name: vagrant
   provider:
     name: libvirt
+  provision: true
 platforms:
-  - name: ${MOLECULE_INSTANCE_NAME}-1
+  - name: ${_MOLECULE_INSTANCE_NAME}-1
     box: alvistack/opensuse-leap-15.3
     cpu: 2
     memory: 8192
