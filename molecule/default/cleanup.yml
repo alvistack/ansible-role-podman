@@ -18,13 +18,48 @@
   remote_user: root
   become: true
   gather_facts: false
+  ignore_unreachable: true
   tasks:
+    - name: rm -rf /var/cache/ansible/*
+      ansible.builtin.raw: |
+        set -eu
+        rm -rf /var/cache/ansible/*
+        rm -rf /root/.cache/*
+        rm -rf /tmp/*
+      changed_when: false
+      failed_when: false
+
+    - name: debian | apt-get -y clean
+      ansible.builtin.raw: |
+        set -eu
+        apt-get -y autoremove
+        apt-get -y autoclean
+        apt-get -y clean
+        rm -rf /var/lib/apt/lists/*
+      changed_when: false
+      failed_when: false
+
+    - name: redhat | yum clean all
+      ansible.builtin.raw: |
+        set -eu
+        yum clean all
+        rm -rf /var/cache/yum/*
+      changed_when: false
+      failed_when: false
+
+    - name: suse | zypper clean --all
+      ansible.builtin.raw: |
+        set -eu
+        zypper clean --all
+        rm -rf /var/cache/zypper/*
+      changed_when: false
+      failed_when: false
+
     - name: redhat | subscription-manager unregister
       ansible.builtin.raw: |
         set -eu
         subscription-manager remove --all
         subscription-manager unregister
         subscription-manager clean
-      when: inventory_hostname != ansible_host
       changed_when: false
       failed_when: false

@@ -46,7 +46,6 @@ galaxy_info:
       versions:
         - "36"
         - "35"
-        - "34"
   galaxy_tags:
     - system
 dependencies: []
