@@ -72,6 +72,14 @@
       changed_when: false
       failed_when: false
 
+    - name: systemctl stop iptables.service
+      ansible.builtin.raw: |
+        set -eu
+        systemctl stop iptables.service
+        systemctl disable iptables.service
+      changed_when: false
+      failed_when: false
+
     - name: systemctl stop firewalld.service
       ansible.builtin.raw: |
         set -eu
