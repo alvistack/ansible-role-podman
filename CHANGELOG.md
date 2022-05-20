@@ -1,9 +1,14 @@
 # Ansible Role for Podman
 
-## 5.8.0 - TBC
+## 6.0.0 - TBC
 
 ### Major Changes
 
+## 5.8.0 - 2022-05-20
+
+### Major Changes
+
+  - Support Ansible community package 5.8.0
   - Remove Fedora 34 support
 
 ## 5.7.0 - 2022-04-27
