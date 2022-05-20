@@ -16,13 +16,13 @@
 
 _apt_key:
   - keyring: "/etc/apt/trusted.gpg.d/home_alvistack.gpg"
-    url: "http://download.opensuse.org/repositories/home:/alvistack/xUbuntu_22.04/Release.key"
+    url: "http://downloadcontent.opensuse.org/repositories/home:/alvistack/xUbuntu_22.04/Release.key"
     id: "789CFFDE0295B8A1F4E5690C4BECC97550D0B1FD"
     state: "present"
 
 _apt_repository:
   - filename: "home:alvistack"
-    repo: "deb http://download.opensuse.org/repositories/home:/alvistack/xUbuntu_22.04/ /"
+    repo: "deb http://downloadcontent.opensuse.org/repositories/home:/alvistack/xUbuntu_22.04/ /"
     state: "present"
 
 _apt:
