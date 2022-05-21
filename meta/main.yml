@@ -15,7 +15,6 @@
 # limitations under the License.
 
 galaxy_info:
-  namespace: alvistack
   role_name: podman
   author: "Wong Hoi Sing Edison <hswong3i@pantarei-design.com>"
   description: Ansible Role for Podman Installation
@@ -36,8 +35,7 @@ galaxy_info:
         - "7"
     - name: opensuse
       versions:
-        - "15.4"
-        - "15.3"
+        - all
     - name: Debian
       versions:
         - bullseye
