@@ -5,12 +5,6 @@
     git submodule sync --recursive
     git submodule update --init --recursive
 
-.script-symlink-ansible-role: &script-symlink-ansible-role
-  - |
-    export _ROLE="$(echo $CI_PROJECT_NAME | sed 's/^ansible-role-//g')"
-    mkdir -p $HOME/.ansible/roles
-    ln -s $CI_PROJECT_DIR $HOME/.ansible/roles/alvistack.$_ROLE
-
 .script-bootstrap-python: &script-bootstrap-python
   - |
     if ! [[ -x "$(command -v pipx)" ]]; then
@@ -73,10 +67,16 @@
     sh -x -c "vagrant --version"
     sh -x -c "vagrant plugin list"
 
+.script-symlink-ansible-role: &script-symlink-ansible-role
+  - |
+    export _ROLE="$(echo $CI_PROJECT_NAME | sed 's/^ansible-role-//g')"
+    mkdir -p $HOME/.ansible/roles
+    ln -s $CI_PROJECT_DIR $HOME/.ansible/roles/alvistack.$_ROLE
+
 .script-molecule-test: &script-molecule-test
   - |
     export _MOLECULE_INSTANCE_NAME="$(pwgen -1AB 12)"
-    sudo -E molecule test -s $_MOLECULE_SCENARIO_NAME
+    sudo -E molecule test -s $_BOX-$_PROVIDER
 
 .script-ansible-galaxy-role-import: &script-ansible-galaxy-role-import
   - |
@@ -91,16 +91,17 @@
     fi
     ansible-galaxy role import --token $ANSIBLE_GALAXY_TOKEN $_USER $_REPO
 
-.job-molecule: &job-molecule
+.job-molecule-test: &job-molecule-test
   script:
     - *script-bootstrap-python
     - *script-bootstrap-ansible
     - *script-bootstrap-molecule
     - *script-bootstrap-libvirt
     - *script-bootstrap-vagrant
+    - *script-symlink-ansible-role
     - *script-molecule-test
 
-.job-ansible-galaxy: &job-ansible-galaxy
+.job-ansible-galaxy-role-import: &job-ansible-galaxy-role-import
   script:
     - *script-bootstrap-python
     - *script-bootstrap-ansible
@@ -109,147 +110,176 @@
 default:
   before_script:
     - *script-git-submodule
-    - *script-symlink-ansible-role
-
-build:ubuntu-22.04:
-  <<: *job-molecule
-  stage: build
   retry: 2
-  variables:
-    _MOLECULE_SCENARIO_NAME: "ubuntu-22.04"
 
-build:ubuntu-21.10:
-  <<: *job-molecule
+build:ubuntu-22.04-libvirt:
+  <<: *job-molecule-test
   stage: build
-  retry: 2
   variables:
-    _MOLECULE_SCENARIO_NAME: "ubuntu-21.10"
+    _BOX: "ubuntu-22.04"
+    _PROVIDER: "libvirt"
 
-build:ubuntu-20.04:
-  <<: *job-molecule
+build:ubuntu-21.10-libvirt:
+  <<: *job-molecule-test
   stage: build
-  retry: 2
   variables:
-    _MOLECULE_SCENARIO_NAME: "ubuntu-20.04"
+    _BOX: "ubuntu-21.10"
+    _PROVIDER: "libvirt"
 
-build:ubuntu-18.04:
-  <<: *job-molecule
+build:ubuntu-20.04-libvirt:
+  <<: *job-molecule-test
   stage: build
-  retry: 2
   variables:
-    _MOLECULE_SCENARIO_NAME: "ubuntu-18.04"
+    _BOX: "ubuntu-20.04"
+    _PROVIDER: "libvirt"
 
-test:centos-9-stream:
-  <<: *job-molecule
+build:ubuntu-18.04-libvirt:
+  <<: *job-molecule-test
+  stage: build
+  variables:
+    _BOX: "ubuntu-18.04"
+    _PROVIDER: "libvirt"
+
+test:centos-9-stream-libvirt:
+  <<: *job-molecule-test
   stage: test
   variables:
-    _MOLECULE_SCENARIO_NAME: "centos-9-stream"
+    _BOX: "centos-9-stream"
+    _PROVIDER: "libvirt"
   allow_failure: true
+  retry: 0
 
-test:centos-8-stream:
-  <<: *job-molecule
+test:centos-8-stream-libvirt:
+  <<: *job-molecule-test
   stage: test
   variables:
-    _MOLECULE_SCENARIO_NAME: "centos-8-stream"
+    _BOX: "centos-8-stream"
+    _PROVIDER: "libvirt"
   allow_failure: true
+  retry: 0
 
-test:centos-7:
-  <<: *job-molecule
+test:centos-7-libvirt:
+  <<: *job-molecule-test
   stage: test
   variables:
-    _MOLECULE_SCENARIO_NAME: "centos-7"
+    _BOX: "centos-7"
+    _PROVIDER: "libvirt"
   allow_failure: true
+  retry: 0
 
-test:opensuse-tumbleweed:
-  <<: *job-molecule
+test:opensuse-tumbleweed-libvirt:
+  <<: *job-molecule-test
   stage: test
   variables:
-    _MOLECULE_SCENARIO_NAME: "opensuse-tumbleweed"
+    _BOX: "opensuse-tumbleweed"
+    _PROVIDER: "libvirt"
   allow_failure: true
+  retry: 0
 
-test:opensuse-leap-15.4:
-  <<: *job-molecule
+test:opensuse-leap-15.4-libvirt:
+  <<: *job-molecule-test
   stage: test
   variables:
-    _MOLECULE_SCENARIO_NAME: "opensuse-leap-15.4"
+    _BOX: "opensuse-leap-15.4"
+    _PROVIDER: "libvirt"
   allow_failure: true
+  retry: 0
 
-test:opensuse-leap-15.3:
-  <<: *job-molecule
+test:opensuse-leap-15.3-libvirt:
+  <<: *job-molecule-test
   stage: test
   variables:
-    _MOLECULE_SCENARIO_NAME: "opensuse-leap-15.3"
+    _BOX: "opensuse-leap-15.3"
+    _PROVIDER: "libvirt"
   allow_failure: true
+  retry: 0
 
-test:debian-testing:
-  <<: *job-molecule
+test:debian-testing-libvirt:
+  <<: *job-molecule-test
   stage: test
   variables:
-    _MOLECULE_SCENARIO_NAME: "debian-testing"
+    _BOX: "debian-testing"
+    _PROVIDER: "libvirt"
   allow_failure: true
+  retry: 0
 
-test:debian-11:
-  <<: *job-molecule
+test:debian-11-libvirt:
+  <<: *job-molecule-test
   stage: test
   variables:
-    _MOLECULE_SCENARIO_NAME: "debian-11"
+    _BOX: "debian-11"
+    _PROVIDER: "libvirt"
   allow_failure: true
+  retry: 0
 
-test:debian-10:
-  <<: *job-molecule
+test:debian-10-libvirt:
+  <<: *job-molecule-test
   stage: test
   variables:
-    _MOLECULE_SCENARIO_NAME: "debian-10"
+    _BOX: "debian-10"
+    _PROVIDER: "libvirt"
   allow_failure: true
+  retry: 0
 
-test:fedora-rawhide:
-  <<: *job-molecule
+test:fedora-rawhide-libvirt:
+  <<: *job-molecule-test
   stage: test
   variables:
-    _MOLECULE_SCENARIO_NAME: "fedora-rawhide"
+    _BOX: "fedora-rawhide"
+    _PROVIDER: "libvirt"
   allow_failure: true
+  retry: 0
 
-test:fedora-36:
-  <<: *job-molecule
+test:fedora-36-libvirt:
+  <<: *job-molecule-test
   stage: test
   variables:
-    _MOLECULE_SCENARIO_NAME: "fedora-36"
+    _BOX: "fedora-36"
+    _PROVIDER: "libvirt"
   allow_failure: true
+  retry: 0
 
-test:fedora-35:
-  <<: *job-molecule
+test:fedora-35-libvirt:
+  <<: *job-molecule-test
   stage: test
   variables:
-    _MOLECULE_SCENARIO_NAME: "fedora-35"
+    _BOX: "fedora-35"
+    _PROVIDER: "libvirt"
   allow_failure: true
+  retry: 0
 
-test:rhel-9:
-  <<: *job-molecule
+test:rhel-9-libvirt:
+  <<: *job-molecule-test
   stage: test
   variables:
-    _MOLECULE_SCENARIO_NAME: "rhel-9"
+    _BOX: "rhel-9"
+    _PROVIDER: "libvirt"
   allow_failure: true
+  retry: 0
 
-test:rhel-8:
-  <<: *job-molecule
+test:rhel-8-libvirt:
+  <<: *job-molecule-test
   stage: test
   variables:
-    _MOLECULE_SCENARIO_NAME: "rhel-8"
+    _BOX: "rhel-8"
+    _PROVIDER: "libvirt"
   allow_failure: true
+  retry: 0
 
-test:rhel-7:
-  <<: *job-molecule
+test:rhel-7-libvirt:
+  <<: *job-molecule-test
   stage: test
   variables:
-    _MOLECULE_SCENARIO_NAME: "rhel-7"
+    _BOX: "rhel-7"
+    _PROVIDER: "libvirt"
   allow_failure: true
+  retry: 0
 
 deploy:ansible-galaxy:
-  <<: *job-ansible-galaxy
+  <<: *job-ansible-galaxy-role-import
   stage: deploy
-  retry: 2
   needs:
-    - build:ubuntu-22.04
-    - build:ubuntu-21.10
-    - build:ubuntu-20.04
-    - build:ubuntu-18.04
+    - build:ubuntu-22.04-libvirt
+    - build:ubuntu-21.10-libvirt
+    - build:ubuntu-20.04-libvirt
+    - build:ubuntu-18.04-libvirt
