@@ -4,7 +4,7 @@
 
 ### Major Changes
 
-## 6.1.0 - TBC
+## 6.1.0 - 2022-07-14
 
 ### Major Changes
 
