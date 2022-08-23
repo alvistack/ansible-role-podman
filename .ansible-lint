@@ -1,0 +1,4 @@
+---
+skip_list:
+  - jinja[spacing]
+  - name[casing]
