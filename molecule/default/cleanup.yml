@@ -14,7 +14,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-- hosts: all
+- name: cleanup | all
+  hosts: all
   remote_user: root
   become: true
   gather_facts: false
