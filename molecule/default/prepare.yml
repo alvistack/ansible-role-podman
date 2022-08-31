@@ -14,7 +14,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-- hosts: all
+- name: prepare | all
+  hosts: all
   remote_user: root
   become: true
   gather_facts: false
@@ -53,7 +54,8 @@
       changed_when: false
       failed_when: false
 
-- hosts: all
+- name: prepare | all
+  hosts: all
   remote_user: root
   become: true
   tasks:
