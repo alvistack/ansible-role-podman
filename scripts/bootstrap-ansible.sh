@@ -36,7 +36,7 @@ fi
 # Prepare Zypper dependencies
 if [ -x "$(command -v zypper)" ]; then
     zypper -n --gpg-auto-import-keys refresh
-    zypper -n update -y
+    zypper -n dist-upgrade -y --allow-vendor-change
     zypper -n install -y ansible ansible-lint bzip2 ca-certificates curl gcc gpg2 gzip iproute2 procps python3 python3-docker python3-flake8 python3-jmespath python3-lxml python3-netaddr python3-pip python3-pipx python3-setuptools python3-vagrant python3-virtualenv python3-wheel python3-yamllint sudo tar unzip xz zip
 fi
 
