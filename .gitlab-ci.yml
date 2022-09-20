@@ -112,6 +112,15 @@ default:
     - *script-git-submodule
   retry: 2
 
+build:ubuntu-22.10-libvirt:
+  <<: *job-molecule-test
+  stage: build
+  variables:
+    _BOX: "ubuntu-22.10"
+    _PROVIDER: "libvirt"
+  allow_failure: true
+  retry: 0
+
 build:ubuntu-22.04-libvirt:
   <<: *job-molecule-test
   stage: build
