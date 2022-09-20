@@ -4,6 +4,8 @@
 
 ### Major Changes
 
+  - Support Fedora 37
+
 ## 6.4.0 - 2022-09-15
 
 ### Major Changes
