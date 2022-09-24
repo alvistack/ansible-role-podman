@@ -63,6 +63,7 @@
       ansible.builtin.raw: |
         set -eu
         cp -rfT /etc/skel /root
+        rm -rf /root/.bash_logout
       changed_when: false
       failed_when: false
 
