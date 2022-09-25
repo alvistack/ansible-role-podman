@@ -27,6 +27,8 @@
         rm -rf /var/cache/ansible/*
         rm -rf /root/.cache/*
         rm -rf /tmp/*
+      args:
+        executable: "/bin/bash"
       changed_when: false
       failed_when: false
 
@@ -37,6 +39,8 @@
         apt-get -y autoclean
         apt-get -y clean
         rm -rf /var/lib/apt/lists/*
+      args:
+        executable: "/bin/bash"
       changed_when: false
       failed_when: false
 
@@ -45,6 +49,8 @@
         set -eu
         yum clean all
         rm -rf /var/cache/yum/*
+      args:
+        executable: "/bin/bash"
       changed_when: false
       failed_when: false
 
@@ -53,6 +59,8 @@
         set -eu
         zypper clean --all
         rm -rf /var/cache/zypper/*
+      args:
+        executable: "/bin/bash"
       changed_when: false
       failed_when: false
 
@@ -62,5 +70,7 @@
         subscription-manager remove --all
         subscription-manager unregister
         subscription-manager clean
+      args:
+        executable: "/bin/bash"
       changed_when: false
       failed_when: false
