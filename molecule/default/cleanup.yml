@@ -22,59 +22,54 @@
   ignore_unreachable: true
   tasks:
     - name: rm -rf /var/cache/ansible/*
-      ansible.builtin.raw:
-        cmd: |
-          set -eu
-          rm -rf /var/cache/ansible/*
-          rm -rf /root/.cache/*
-          rm -rf /tmp/*
+      ansible.builtin.raw: |
+        set -eu
+        rm -rf /var/cache/ansible/*
+        rm -rf /root/.cache/*
+        rm -rf /tmp/*
       args:
         executable: "/bin/bash"
       changed_when: false
       failed_when: false
 
     - name: debian | apt-get -y clean
-      ansible.builtin.raw:
-        cmd: |
-          set -eu
-          apt-get -y autoremove
-          apt-get -y autoclean
-          apt-get -y clean
-          rm -rf /var/lib/apt/lists/*
+      ansible.builtin.raw: |
+        set -eu
+        apt-get -y autoremove
+        apt-get -y autoclean
+        apt-get -y clean
+        rm -rf /var/lib/apt/lists/*
       args:
         executable: "/bin/bash"
       changed_when: false
       failed_when: false
 
     - name: redhat | yum clean all
-      ansible.builtin.raw:
-        cmd: |
-          set -eu
-          yum clean all
-          rm -rf /var/cache/yum/*
+      ansible.builtin.raw: |
+        set -eu
+        yum clean all
+        rm -rf /var/cache/yum/*
       args:
         executable: "/bin/bash"
       changed_when: false
       failed_when: false
 
     - name: suse | zypper clean --all
-      ansible.builtin.raw:
-        cmd: |
-          set -eu
-          zypper clean --all
-          rm -rf /var/cache/zypper/*
+      ansible.builtin.raw: |
+        set -eu
+        zypper clean --all
+        rm -rf /var/cache/zypper/*
       args:
         executable: "/bin/bash"
       changed_when: false
       failed_when: false
 
     - name: redhat | subscription-manager unregister
-      ansible.builtin.raw:
-        cmd: |
-          set -eu
-          subscription-manager remove --all
-          subscription-manager unregister
-          subscription-manager clean
+      ansible.builtin.raw: |
+        set -eu
+        subscription-manager remove --all
+        subscription-manager unregister
+        subscription-manager clean
       args:
         executable: "/bin/bash"
       changed_when: false
