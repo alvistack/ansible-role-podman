@@ -21,42 +21,46 @@
   gather_facts: false
   tasks:
     - name: redhat | subscription-manager register
-      ansible.builtin.raw: |
-        set -eu
-        subscription-manager register \
-          --username={{ lookup('env', 'REDHAT_USERNAME') }} \
-          --password={{ lookup('env', 'REDHAT_PASSWORD') }} \
-          --auto-attach
+      ansible.builtin.raw:
+        cmd: |
+          set -eu
+          subscription-manager register \
+            --username={{ lookup('env', 'REDHAT_USERNAME') }} \
+            --password={{ lookup('env', 'REDHAT_PASSWORD') }} \
+            --auto-attach
       args:
         executable: "/bin/bash"
       changed_when: false
       failed_when: false
 
     - name: debian | apt-get install python3
-      ansible.builtin.raw: |
-        set -eu
-        apt-get update
-        DEBIAN_FRONTEND=noninteractive apt-get install -y python3
+      ansible.builtin.raw:
+        cmd: |
+          set -eu
+          apt-get update
+          DEBIAN_FRONTEND=noninteractive apt-get install -y python3
       args:
         executable: "/bin/bash"
       changed_when: false
       failed_when: false
 
     - name: redhat | yum install python3
-      ansible.builtin.raw: |
-        set -eu
-        yum makecache
-        yum install -y python3
+      ansible.builtin.raw:
+        cmd: |
+          set -eu
+          yum makecache
+          yum install -y python3
       args:
         executable: "/bin/bash"
       changed_when: false
       failed_when: false
 
     - name: suse | zypper install python3
-      ansible.builtin.raw: |
-        set -eu
-        zypper -n --gpg-auto-import-keys refresh
-        zypper -n install -y python3
+      ansible.builtin.raw:
+        cmd: |
+          set -eu
+          zypper -n --gpg-auto-import-keys refresh
+          zypper -n install -y python3
       args:
         executable: "/bin/bash"
       changed_when: false
@@ -68,59 +72,65 @@
   become: true
   tasks:
     - name: cp -rfT /etc/skel /root
-      ansible.builtin.raw: |
-        set -eu
-        cp -rfT /etc/skel /root
-        rm -rf /root/.bash_logout
+      ansible.builtin.raw:
+        cmd: |
+          set -eu
+          cp -rfT /etc/skel /root
+          rm -rf /root/.bash_logout
       args:
         executable: "/bin/bash"
       changed_when: false
       failed_when: false
 
     - name: setenforce 0
-      ansible.builtin.raw: |
-        set -eu
-        setenforce 0
-        sed -i 's/^SELINUX=.*$/SELINUX=permissive/g' /etc/selinux/config
+      ansible.builtin.raw:
+        cmd: |
+          set -eu
+          setenforce 0
+          sed -i 's/^SELINUX=.*$/SELINUX=permissive/g' /etc/selinux/config
       args:
         executable: "/bin/bash"
       changed_when: false
       failed_when: false
 
     - name: systemctl stop iptables.service
-      ansible.builtin.raw: |
-        set -eu
-        systemctl stop iptables.service
-        systemctl disable iptables.service
+      ansible.builtin.raw:
+        cmd: |
+          set -eu
+          systemctl stop iptables.service
+          systemctl disable iptables.service
       args:
         executable: "/bin/bash"
       changed_when: false
       failed_when: false
 
     - name: systemctl stop firewalld.service
-      ansible.builtin.raw: |
-        set -eu
-        systemctl stop firewalld.service
-        systemctl disable firewalld.service
+      ansible.builtin.raw:
+        cmd: |
+          set -eu
+          systemctl stop firewalld.service
+          systemctl disable firewalld.service
       args:
         executable: "/bin/bash"
       changed_when: false
       failed_when: false
 
     - name: systemctl stop ufw.service
-      ansible.builtin.raw: |
-        set -eu
-        systemctl stop ufw.service
-        systemctl disable ufw.service
+      ansible.builtin.raw:
+        cmd: |
+          set -eu
+          systemctl stop ufw.service
+          systemctl disable ufw.service
       args:
         executable: "/bin/bash"
       changed_when: false
       failed_when: false
 
     - name: debian | apt-get install *.deb
-      ansible.builtin.raw: |
-        set -eu
-        DEBIAN_FRONTEND=noninteractive apt-get install -y bzip2 ca-certificates curl gcc gnupg gzip hostname iproute2 passwd procps python3 python3-apt python3-jmespath python3-lxml python3-pip python3-setuptools python3-venv python3-virtualenv python3-wheel rsync sudo tar unzip util-linux xz-utils zip
+      ansible.builtin.raw:
+        cmd: |
+          set -eu
+          DEBIAN_FRONTEND=noninteractive apt-get install -y bzip2 ca-certificates curl gcc gnupg gzip hostname iproute2 passwd procps python3 python3-apt python3-jmespath python3-lxml python3-pip python3-setuptools python3-venv python3-virtualenv python3-wheel rsync sudo tar unzip util-linux xz-utils zip
       args:
         executable: "/bin/bash"
       when: ansible_os_family | lower == "debian"
@@ -128,9 +138,10 @@
       failed_when: false
 
     - name: fedora | yum install *.rpm
-      ansible.builtin.raw: |
-        set -eu
-        yum install -y bzip2 ca-certificates curl gcc gnupg2 gzip hostname iproute procps-ng python3 python3-dnf-plugin-versionlock python3-jmespath python3-libselinux python3-lxml python3-pip python3-setuptools python3-virtualenv python3-wheel rsync shadow-utils sudo tar unzip util-linux xz yum-utils zip
+      ansible.builtin.raw:
+        cmd: |
+          set -eu
+          yum install -y bzip2 ca-certificates curl gcc gnupg2 gzip hostname iproute procps-ng python3 python3-dnf-plugin-versionlock python3-jmespath python3-libselinux python3-lxml python3-pip python3-setuptools python3-virtualenv python3-wheel rsync shadow-utils sudo tar unzip util-linux xz yum-utils zip
       args:
         executable: "/bin/bash"
       when: ansible_distribution | lower == "fedora"
@@ -138,12 +149,13 @@
       failed_when: false
 
     - name: redhat-9 | yum install *.rpm
-      ansible.builtin.raw: |
-        set -eu
-        yum-config-manager --enable crb || echo $?
-        yum-config-manager --enable codeready-builder-for-rhel-9-x86_64-rpms || echo $?
-        yum install -y http://dl.fedoraproject.org/pub/epel/epel-release-latest-9.noarch.rpm
-        yum install -y bzip2 ca-certificates curl gcc gnupg2 gzip hostname iproute procps-ng python3 python3-dnf-plugin-versionlock python3-jmespath python3-libselinux python3-lxml python3-pip python3-setuptools python3-virtualenv python3-wheel rsync shadow-utils sudo tar unzip util-linux xz yum-utils zip
+      ansible.builtin.raw:
+        cmd: |
+          set -eu
+          yum-config-manager --enable crb || echo $?
+          yum-config-manager --enable codeready-builder-for-rhel-9-x86_64-rpms || echo $?
+          yum install -y http://dl.fedoraproject.org/pub/epel/epel-release-latest-9.noarch.rpm
+          yum install -y bzip2 ca-certificates curl gcc gnupg2 gzip hostname iproute procps-ng python3 python3-dnf-plugin-versionlock python3-jmespath python3-libselinux python3-lxml python3-pip python3-setuptools python3-virtualenv python3-wheel rsync shadow-utils sudo tar unzip util-linux xz yum-utils zip
       args:
         executable: "/bin/bash"
       when: ansible_os_family | lower == "redhat" and ansible_distribution_major_version | lower == "9"
@@ -151,10 +163,11 @@
       failed_when: false
 
     - name: redhat-8 | yum install *.rpm
-      ansible.builtin.raw: |
-        set -eu
-        yum install -y http://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
-        yum install -y bzip2 ca-certificates curl gcc gnupg2 gzip hostname iproute procps-ng python3 python3-dnf-plugin-versionlock python3-jmespath python3-libselinux python3-lxml python3-pip python3-setuptools python3-virtualenv python3-wheel rsync shadow-utils sudo tar unzip util-linux xz yum-utils zip
+      ansible.builtin.raw:
+        cmd: |
+          set -eu
+          yum install -y http://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
+          yum install -y bzip2 ca-certificates curl gcc gnupg2 gzip hostname iproute procps-ng python3 python3-dnf-plugin-versionlock python3-jmespath python3-libselinux python3-lxml python3-pip python3-setuptools python3-virtualenv python3-wheel rsync shadow-utils sudo tar unzip util-linux xz yum-utils zip
       args:
         executable: "/bin/bash"
       when: ansible_os_family | lower == "redhat" and ansible_distribution_major_version | lower == "8"
@@ -162,11 +175,12 @@
       failed_when: false
 
     - name: redhat-7 | yum install *.rpm
-      ansible.builtin.raw: |
-        set -eu
-        subscription-manager repos --enable=rhel-7-server-optional-rpms || echo $?
-        yum install -y http://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
-        yum install -y bzip2 ca-certificates curl gcc gnupg2 gzip hostname iproute procps-ng python3 python3-jmespath python3-libselinux python3-lxml python3-pip python3-setuptools python3-virtualenv python3-wheel rsync shadow-utils sudo tar unzip util-linux xz yum-plugin-versionlock yum-utils zip
+      ansible.builtin.raw:
+        cmd: |
+          set -eu
+          subscription-manager repos --enable=rhel-7-server-optional-rpms || echo $?
+          yum install -y http://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+          yum install -y bzip2 ca-certificates curl gcc gnupg2 gzip hostname iproute procps-ng python3 python3-jmespath python3-libselinux python3-lxml python3-pip python3-setuptools python3-virtualenv python3-wheel rsync shadow-utils sudo tar unzip util-linux xz yum-plugin-versionlock yum-utils zip
       args:
         executable: "/bin/bash"
       when: ansible_os_family | lower == "redhat" and ansible_distribution_major_version | lower == "7"
@@ -174,9 +188,10 @@
       failed_when: false
 
     - name: suse | zypper -n install *.rpm
-      ansible.builtin.raw: |
-        set -eu
-        zypper -n install -y bzip2 ca-certificates curl gcc gpg2 gzip hostname iproute2 procps python3 python3-jmespath python3-lxml python3-pip python3-setuptools python3-virtualenv python3-wheel rsync shadow sudo tar unzip util-linux xz zip
+      ansible.builtin.raw:
+        cmd: |
+          set -eu
+          zypper -n install -y bzip2 ca-certificates curl gcc gpg2 gzip hostname iproute2 procps python3 python3-jmespath python3-lxml python3-pip python3-setuptools python3-virtualenv python3-wheel rsync shadow sudo tar unzip util-linux xz zip
       args:
         executable: "/bin/bash"
       when: ansible_os_family | lower == "suse"
