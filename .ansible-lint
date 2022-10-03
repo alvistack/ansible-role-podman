@@ -2,5 +2,4 @@
 skip_list:
   - jinja[spacing]
   - name[casing]
-  - no-shorthand
   - yaml[line-length]
