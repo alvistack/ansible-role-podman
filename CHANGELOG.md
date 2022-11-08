@@ -4,6 +4,8 @@
 
 ### Major Changes
 
+  - Remove openSUSE Leap 15.3 support
+
 ## 6.5.0 - 2022-10-14
 
   - Support Ansible community package 6.5.0
