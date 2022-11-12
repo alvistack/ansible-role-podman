@@ -52,7 +52,7 @@ provisioner:
   config_options:
     defaults:
       forks: 20
-    ssh_connection:
+    ssh:
       pipelining: true
       ssh_args: -o ControlMaster=auto -o ControlPersist=600s
   inventory:
