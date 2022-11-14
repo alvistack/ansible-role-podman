@@ -38,12 +38,6 @@ dependency:
     force: false
 provisioner:
   name: ansible
-  config_options:
-    defaults:
-      forks: 20
-    ssh:
-      pipelining: true
-      ssh_args: -o ControlMaster=auto -o ControlPersist=600s
   inventory:
     links:
       group_vars: group_vars
