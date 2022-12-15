@@ -17,6 +17,7 @@
 offline: true
 
 skip_list:
+  - args[module]
   - jinja[spacing]
   - name[casing]
   - yaml[line-length]
