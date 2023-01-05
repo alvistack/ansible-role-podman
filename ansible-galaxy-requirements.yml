@@ -19,10 +19,6 @@ collections:
     src: https://galaxy.ansible.com
     version: ">=1.4.0,<2.0.0"
 
-  - name: community.docker
-    src: https://galaxy.ansible.com
-    version: ">=3.0.2,<4.0.0"
-
   - name: containers.podman
     src: https://galaxy.ansible.com
     version: ">=1.7.0,<2.0.0"
