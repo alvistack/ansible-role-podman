@@ -71,5 +71,6 @@
     name: "podman.service"
     state: "started"
     enabled: true
+  when: enable_and_start_podman_service
   changed_when: false
   failed_when: false
