@@ -4,6 +4,8 @@
 
 ### Major Changes
 
+-   Support Ubuntu 23.04
+
 ## 7.3.0 - 2023-03-01
 
 -   Support Ansible community package 7.3.0
