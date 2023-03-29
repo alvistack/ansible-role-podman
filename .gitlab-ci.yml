@@ -5,6 +5,12 @@
     git submodule sync --recursive
     git submodule update --init --recursive
 
+.script-linters: &script-linters
+  - |
+    flake8
+    yamllint .
+    ansible-lint
+
 .script-bootstrap-python: &script-bootstrap-python
   - |
     if ! [[ -x "$(command -v pipx)" ]]; then
@@ -110,6 +116,7 @@
 default:
   before_script:
     - *script-git-submodule
+    - *script-linters
   retry: 2
 
 build:ubuntu-23.04-libvirt:
