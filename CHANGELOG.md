@@ -4,6 +4,8 @@
 
 ### Major Changes
 
+-   Support Fedora 38
+
 ## 7.4.0 - 2023-03-29
 
 ### Major Changes
