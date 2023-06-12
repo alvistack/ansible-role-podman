@@ -18,7 +18,7 @@ This role was designed for:
 -   Ubuntu 18.04, 20.04, 22.04, 22.10, 23.04
 -   CentOS 7, 8 Stream, 9 Stream
 -   openSUSE Leap 15.4, Leap 15.5, Tumbleweed
--   Debian 10, 11, Testing
+-   Debian 10, 11, 12, Testing
 -   Fedora 37, 38, Rawhide
 -   RHEL 7, 8, 9
 
