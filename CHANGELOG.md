@@ -1,6 +1,10 @@
 # Ansible Role for Podman
 
-## 8.0.0 - TBC
+## 8.1.0 - TBC
+
+### Major Changes
+
+## 8.0.0 - 2023-06-17
 
 ### Major Changes
 
