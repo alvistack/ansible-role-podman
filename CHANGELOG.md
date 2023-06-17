@@ -4,6 +4,7 @@
 
 ### Major Changes
 
+-   Remove Debian 10 support
 -   Support Debian 12
 -   Support openSUSE Leap 15.5
 -   Support Ansible community package 8.0.0

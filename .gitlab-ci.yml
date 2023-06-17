@@ -235,15 +235,6 @@ test:debian-11-libvirt:
   allow_failure: true
   retry: 0
 
-test:debian-10-libvirt:
-  <<: *job-molecule-test
-  stage: test
-  variables:
-    _BOX: "debian-10"
-    _PROVIDER: "libvirt"
-  allow_failure: true
-  retry: 0
-
 test:fedora-rawhide-libvirt:
   <<: *job-molecule-test
   stage: test
