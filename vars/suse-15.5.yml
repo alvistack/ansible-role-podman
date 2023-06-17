@@ -14,18 +14,24 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-_apt_key:
-  - keyring: "/etc/apt/trusted.gpg.d/home_alvistack.gpg"
-    url: "http://downloadcontent.opensuse.org/repositories/home:/alvistack/Debian_10/Release.key"
-    id: "789CFFDE0295B8A1F4E5690C4BECC97550D0B1FD"
+_rpm_key:
+  - key: "http://downloadcontent.opensuse.org/repositories/home:/alvistack/openSUSE_Leap_15.5/repodata/repomd.xml.key"
+    fingerprint: "789CFFDE0295B8A1F4E5690C4BECC97550D0B1FD"
     state: "present"
 
-_apt_repository:
-  - filename: "home:alvistack"
-    repo: "deb http://downloadcontent.opensuse.org/repositories/home:/alvistack/Debian_10/ /"
+_yum_repository:
+  - file: "home_alvistack"
+    name: "home_alvistack"
+    description: "home:alvistack (openSUSE_Leap_15.5)"
+    baseurl: "http://downloadcontent.opensuse.org/repositories/home:/alvistack/openSUSE_Leap_15.5"
+    enabled: true
+    priority: "2"
+    module_hotfixes: true
+    gpgcheck: true
+    gpgkey: "http://downloadcontent.opensuse.org/repositories/home:/alvistack/openSUSE_Leap_15.5/repodata/repomd.xml.key"
     state: "present"
 
-_apt:
+_zypper:
   - { state: "latest", name: "containernetworking-dnsname" }
   - { state: "latest", name: "containernetworking-plugins" }
   - { state: "latest", name: "containernetworking-podman-machine" }
@@ -35,5 +41,5 @@ _apt:
   - { state: "latest", name: "podman-gvproxy" }
   - { state: "latest", name: "podman-netavark" }
   - { state: "latest", name: "python3-podman-compose" }
+  - { state: "latest", name: "shadow" }
   - { state: "latest", name: "slirp4netns" }
-  - { state: "latest", name: "uidmap" }

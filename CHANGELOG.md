@@ -1,9 +1,17 @@
 # Ansible Role for Podman
 
-## 8.0.0 - TBC
+## 8.1.0 - TBC
 
 ### Major Changes
 
+## 8.0.0 - 2023-06-17
+
+### Major Changes
+
+-   Remove Ubuntu 18.04 support
+-   Remove Debian 10 support
+-   Support Debian 12
+-   Support openSUSE Leap 15.5
 -   Support Ansible community package 8.0.0
 
 ## 7.6.0 - 2023-05-24
