@@ -4,6 +4,7 @@
 
 ### Major Changes
 
+-   Remove Ubuntu 18.04 support
 -   Remove Debian 10 support
 -   Support Debian 12
 -   Support openSUSE Leap 15.5
