@@ -26,9 +26,7 @@ dependency:
   name: galaxy
   options:
     role-file: ansible-galaxy-requirements.yml
-    roles-path: ${HOME}/.ansible/roles
     requirements-file: ansible-galaxy-requirements.yml
-    collections-path: ${HOME}/.ansible/collections
     ignore-errors: true
     force: false
 provisioner:
