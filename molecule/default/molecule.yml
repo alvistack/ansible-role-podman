@@ -15,7 +15,6 @@
 # limitations under the License.
 
 driver:
-  name: delegated
   options:
     managed: false
     ansible_connection_options:
@@ -26,9 +25,7 @@ dependency:
   name: galaxy
   options:
     role-file: ansible-galaxy-requirements.yml
-    roles-path: ${HOME}/.ansible/roles
     requirements-file: ansible-galaxy-requirements.yml
-    collections-path: ${HOME}/.ansible/collections
     ignore-errors: true
     force: false
 provisioner:
