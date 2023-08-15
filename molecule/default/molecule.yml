@@ -15,7 +15,6 @@
 # limitations under the License.
 
 driver:
-  name: delegated
   options:
     managed: false
     ansible_connection_options:
