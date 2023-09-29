@@ -2,6 +2,8 @@
 
 ## 8.5.0 - TBC
 
+-   Support Ubuntu 23.10
+
 ### Major Changes
 
 ## 8.4.0 - 2023-09-14
