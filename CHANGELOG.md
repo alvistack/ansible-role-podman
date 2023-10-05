@@ -2,6 +2,7 @@
 
 ## 8.5.0 - TBC
 
+-   Support Fedora 39
 -   Support Ubuntu 23.10
 
 ### Major Changes
