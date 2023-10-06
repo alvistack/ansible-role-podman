@@ -237,6 +237,15 @@ test:fedora-rawhide-libvirt:
   allow_failure: true
   retry: 0
 
+test:fedora-39-libvirt:
+  <<: *job-molecule-test
+  stage: test
+  variables:
+    _BOX: "fedora-39"
+    _PROVIDER: "libvirt"
+  allow_failure: true
+  retry: 0
+
 test:fedora-38-libvirt:
   <<: *job-molecule-test
   stage: test
@@ -286,5 +295,7 @@ deploy:ansible-galaxy:
   <<: *job-ansible-galaxy-role-import
   stage: deploy
   needs:
+    - build:ubuntu-23.10-libvirt
+    - build:ubuntu-23.04-libvirt
     - build:ubuntu-22.04-libvirt
     - build:ubuntu-20.04-libvirt
