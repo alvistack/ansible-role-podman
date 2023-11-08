@@ -2,6 +2,10 @@
 
 ## 9.0.0 - TBC
 
+## 8.6.0 - 2023-11-08
+
+-   Support Ansible community package 8.6.0
+
 ## 8.5.0 - 2023-10-12
 
 -   Support Ansible community package 8.5.0
