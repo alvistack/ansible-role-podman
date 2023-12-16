@@ -2,6 +2,7 @@
 
 ## 9.1.0 - TBC
 
+-   Remove Fedora 37 support
 -   Remove openSUSE Leap 15.4 support
 
 ## 9.0.0 - 2023-11-08
