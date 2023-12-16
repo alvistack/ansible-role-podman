@@ -2,6 +2,8 @@
 
 ## 9.1.0 - TBC
 
+-   Remove openSUSE Leap 15.4 support
+
 ## 9.0.0 - 2023-11-08
 
 -   Support Ansible community package 9.0.0
