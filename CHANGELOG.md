@@ -1,7 +1,10 @@
 # Ansible Role for Podman
 
-## 9.1.0 - TBC
+## 9.2.0 - TBC
 
+## 9.1.0 - 2023-12-25
+
+-   Support Ansible community package 9.1.0
 -   Remove Fedora 37 support
 -   Remove openSUSE Leap 15.4 support
 
