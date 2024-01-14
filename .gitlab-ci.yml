@@ -126,13 +126,6 @@ build:ubuntu-23.10-libvirt:
     _BOX: "ubuntu-23.10"
     _PROVIDER: "libvirt"
 
-build:ubuntu-23.04-libvirt:
-  <<: *job-molecule-test
-  stage: build
-  variables:
-    _BOX: "ubuntu-23.04"
-    _PROVIDER: "libvirt"
-
 build:ubuntu-22.04-libvirt:
   <<: *job-molecule-test
   stage: build
@@ -278,6 +271,5 @@ deploy:ansible-galaxy:
   stage: deploy
   needs:
     - build:ubuntu-23.10-libvirt
-    - build:ubuntu-23.04-libvirt
     - build:ubuntu-22.04-libvirt
     - build:ubuntu-20.04-libvirt
