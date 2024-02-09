@@ -140,29 +140,20 @@ build:ubuntu-20.04-libvirt:
     _BOX: "ubuntu-20.04"
     _PROVIDER: "libvirt"
 
-test:centos-9-stream-libvirt:
+test:almalinux-9-libvirt:
   <<: *job-molecule-test
   stage: test
   variables:
-    _BOX: "centos-9-stream"
+    _BOX: "almalinux-9"
     _PROVIDER: "libvirt"
   allow_failure: true
   retry: 0
 
-test:centos-8-stream-libvirt:
+test:almalinux-8-libvirt:
   <<: *job-molecule-test
   stage: test
   variables:
-    _BOX: "centos-8-stream"
-    _PROVIDER: "libvirt"
-  allow_failure: true
-  retry: 0
-
-test:centos-7-libvirt:
-  <<: *job-molecule-test
-  stage: test
-  variables:
-    _BOX: "centos-7"
+    _BOX: "almalinux-8"
     _PROVIDER: "libvirt"
   allow_failure: true
   retry: 0
@@ -235,6 +226,33 @@ test:fedora-38-libvirt:
   stage: test
   variables:
     _BOX: "fedora-38"
+    _PROVIDER: "libvirt"
+  allow_failure: true
+  retry: 0
+
+test:centos-9-stream-libvirt:
+  <<: *job-molecule-test
+  stage: test
+  variables:
+    _BOX: "centos-9-stream"
+    _PROVIDER: "libvirt"
+  allow_failure: true
+  retry: 0
+
+test:centos-8-stream-libvirt:
+  <<: *job-molecule-test
+  stage: test
+  variables:
+    _BOX: "centos-8-stream"
+    _PROVIDER: "libvirt"
+  allow_failure: true
+  retry: 0
+
+test:centos-7-libvirt:
+  <<: *job-molecule-test
+  stage: test
+  variables:
+    _BOX: "centos-7"
     _PROVIDER: "libvirt"
   allow_failure: true
   retry: 0
