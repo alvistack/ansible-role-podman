@@ -2,6 +2,11 @@
 
 ## 9.3.0 - TBC
 
+-   Support AlmaLinux 8
+-   Support AlmaLinux 9
+-   Replace OBS repo from CentOS_8_Stream with AlmaLinux_8
+-   Replace OBS repo from CentOS_9_Stream with AlmaLinux_9
+
 ## 9.2.0 - 2024-01-31
 
 -   Support Ansible community package 9.2.0
