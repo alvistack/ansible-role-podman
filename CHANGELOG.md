@@ -1,7 +1,10 @@
 # Ansible Role for Podman
 
-## 9.3.0 - TBC
+## 9.4.0 - TBC
 
+## 9.3.0 - 2024-02-29
+
+-   Support Ansible community package 9.3.0
 -   Support AlmaLinux 8
 -   Support AlmaLinux 9
 -   Replace OBS repo from CentOS_8_Stream with AlmaLinux_8
