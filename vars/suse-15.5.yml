@@ -42,4 +42,3 @@ _zypper:
   - { state: "latest", name: "podman-netavark" }
   - { state: "latest", name: "python3-podman-compose" }
   - { state: "latest", name: "shadow" }
-  - { state: "latest", name: "slirp4netns" }
