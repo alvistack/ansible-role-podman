@@ -35,5 +35,4 @@ _apt:
   - { state: "latest", name: "podman-gvproxy" }
   - { state: "latest", name: "podman-netavark" }
   - { state: "latest", name: "python3-podman-compose" }
-  - { state: "latest", name: "slirp4netns" }
   - { state: "latest", name: "uidmap" }
