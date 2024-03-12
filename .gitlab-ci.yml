@@ -123,29 +123,29 @@ build:ubuntu-23.10-libvirt:
   <<: *job-molecule-test
   stage: build
   variables:
-    _BOX: "ubuntu-23.10"
-    _PROVIDER: "libvirt"
+    _BOX: ubuntu-23.10
+    _PROVIDER: libvirt
 
 build:ubuntu-22.04-libvirt:
   <<: *job-molecule-test
   stage: build
   variables:
-    _BOX: "ubuntu-22.04"
-    _PROVIDER: "libvirt"
+    _BOX: ubuntu-22.04
+    _PROVIDER: libvirt
 
 build:ubuntu-20.04-libvirt:
   <<: *job-molecule-test
   stage: build
   variables:
-    _BOX: "ubuntu-20.04"
-    _PROVIDER: "libvirt"
+    _BOX: ubuntu-20.04
+    _PROVIDER: libvirt
 
 test:almalinux-9-libvirt:
   <<: *job-molecule-test
   stage: test
   variables:
-    _BOX: "almalinux-9"
-    _PROVIDER: "libvirt"
+    _BOX: almalinux-9
+    _PROVIDER: libvirt
   allow_failure: true
   retry: 0
 
@@ -153,8 +153,8 @@ test:almalinux-8-libvirt:
   <<: *job-molecule-test
   stage: test
   variables:
-    _BOX: "almalinux-8"
-    _PROVIDER: "libvirt"
+    _BOX: almalinux-8
+    _PROVIDER: libvirt
   allow_failure: true
   retry: 0
 
@@ -162,8 +162,8 @@ test:opensuse-tumbleweed-libvirt:
   <<: *job-molecule-test
   stage: test
   variables:
-    _BOX: "opensuse-tumbleweed"
-    _PROVIDER: "libvirt"
+    _BOX: opensuse-tumbleweed
+    _PROVIDER: libvirt
   allow_failure: true
   retry: 0
 
@@ -171,8 +171,8 @@ test:opensuse-leap-15.5-libvirt:
   <<: *job-molecule-test
   stage: test
   variables:
-    _BOX: "opensuse-leap-15.5"
-    _PROVIDER: "libvirt"
+    _BOX: opensuse-leap-15.5
+    _PROVIDER: libvirt
   allow_failure: true
   retry: 0
 
@@ -180,8 +180,8 @@ test:debian-testing-libvirt:
   <<: *job-molecule-test
   stage: test
   variables:
-    _BOX: "debian-testing"
-    _PROVIDER: "libvirt"
+    _BOX: debian-testing
+    _PROVIDER: libvirt
   allow_failure: true
   retry: 0
 
@@ -189,8 +189,8 @@ test:debian-12-libvirt:
   <<: *job-molecule-test
   stage: test
   variables:
-    _BOX: "debian-12"
-    _PROVIDER: "libvirt"
+    _BOX: debian-12
+    _PROVIDER: libvirt
   allow_failure: true
   retry: 0
 
@@ -198,8 +198,8 @@ test:debian-11-libvirt:
   <<: *job-molecule-test
   stage: test
   variables:
-    _BOX: "debian-11"
-    _PROVIDER: "libvirt"
+    _BOX: debian-11
+    _PROVIDER: libvirt
   allow_failure: true
   retry: 0
 
@@ -207,8 +207,8 @@ test:fedora-rawhide-libvirt:
   <<: *job-molecule-test
   stage: test
   variables:
-    _BOX: "fedora-rawhide"
-    _PROVIDER: "libvirt"
+    _BOX: fedora-rawhide
+    _PROVIDER: libvirt
   allow_failure: true
   retry: 0
 
@@ -216,8 +216,8 @@ test:fedora-39-libvirt:
   <<: *job-molecule-test
   stage: test
   variables:
-    _BOX: "fedora-39"
-    _PROVIDER: "libvirt"
+    _BOX: fedora-39
+    _PROVIDER: libvirt
   allow_failure: true
   retry: 0
 
@@ -225,8 +225,8 @@ test:fedora-38-libvirt:
   <<: *job-molecule-test
   stage: test
   variables:
-    _BOX: "fedora-38"
-    _PROVIDER: "libvirt"
+    _BOX: fedora-38
+    _PROVIDER: libvirt
   allow_failure: true
   retry: 0
 
@@ -234,8 +234,8 @@ test:centos-9-stream-libvirt:
   <<: *job-molecule-test
   stage: test
   variables:
-    _BOX: "centos-9-stream"
-    _PROVIDER: "libvirt"
+    _BOX: centos-9-stream
+    _PROVIDER: libvirt
   allow_failure: true
   retry: 0
 
@@ -243,8 +243,8 @@ test:centos-8-stream-libvirt:
   <<: *job-molecule-test
   stage: test
   variables:
-    _BOX: "centos-8-stream"
-    _PROVIDER: "libvirt"
+    _BOX: centos-8-stream
+    _PROVIDER: libvirt
   allow_failure: true
   retry: 0
 
@@ -252,8 +252,8 @@ test:centos-7-libvirt:
   <<: *job-molecule-test
   stage: test
   variables:
-    _BOX: "centos-7"
-    _PROVIDER: "libvirt"
+    _BOX: centos-7
+    _PROVIDER: libvirt
   allow_failure: true
   retry: 0
 
@@ -261,8 +261,8 @@ test:rhel-9-libvirt:
   <<: *job-molecule-test
   stage: test
   variables:
-    _BOX: "rhel-9"
-    _PROVIDER: "libvirt"
+    _BOX: rhel-9
+    _PROVIDER: libvirt
   allow_failure: true
   retry: 0
 
@@ -270,8 +270,8 @@ test:rhel-8-libvirt:
   <<: *job-molecule-test
   stage: test
   variables:
-    _BOX: "rhel-8"
-    _PROVIDER: "libvirt"
+    _BOX: rhel-8
+    _PROVIDER: libvirt
   allow_failure: true
   retry: 0
 
@@ -279,8 +279,8 @@ test:rhel-7-libvirt:
   <<: *job-molecule-test
   stage: test
   variables:
-    _BOX: "rhel-7"
-    _PROVIDER: "libvirt"
+    _BOX: rhel-7
+    _PROVIDER: libvirt
   allow_failure: true
   retry: 0
 

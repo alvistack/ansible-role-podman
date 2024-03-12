@@ -17,7 +17,7 @@
 galaxy_info:
   role_name: podman
   namespace: alvistack
-  author: "Wong Hoi Sing Edison <hswong3i@pantarei-design.com>"
+  author: Wong Hoi Sing Edison <hswong3i@pantarei-design.com>
   description: Ansible Role for Podman Installation
   company: PantaRei Design
   license: Apache-2.0

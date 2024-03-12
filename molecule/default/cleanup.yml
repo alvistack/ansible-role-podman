@@ -1,5 +1,4 @@
 ---
-
 # Copyright 2024 Wong Hoi Sing Edison <hswong3i@pantarei-design.com>
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -28,7 +27,7 @@
         rm -rf /root/.cache/*
         rm -rf /tmp/*
       args:
-        executable: "/bin/bash"
+        executable: /bin/bash
       changed_when: false
       failed_when: false
 
@@ -40,7 +39,7 @@
         apt-get -y clean
         rm -rf /var/lib/apt/lists/*
       args:
-        executable: "/bin/bash"
+        executable: /bin/bash
       changed_when: false
       failed_when: false
 
@@ -50,7 +49,7 @@
         yum clean all
         rm -rf /var/cache/yum/*
       args:
-        executable: "/bin/bash"
+        executable: /bin/bash
       changed_when: false
       failed_when: false
 
@@ -60,7 +59,7 @@
         zypper clean --all
         rm -rf /var/cache/zypper/*
       args:
-        executable: "/bin/bash"
+        executable: /bin/bash
       changed_when: false
       failed_when: false
 
@@ -71,6 +70,6 @@
         subscription-manager unregister
         subscription-manager clean
       args:
-        executable: "/bin/bash"
+        executable: /bin/bash
       changed_when: false
       failed_when: false

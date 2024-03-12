@@ -1,5 +1,4 @@
 ---
-
 # Copyright 2024 Wong Hoi Sing Edison <hswong3i@pantarei-design.com>
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,7 +15,7 @@
 
 - name: rpm --import
   vars:
-    ansible_python_interpreter: "python3"
+    ansible_python_interpreter: python3
   ansible.builtin.rpm_key:
     key: "{{ item.key }}"
     fingerprint: "{{ item.fingerprint }}"
@@ -42,7 +41,7 @@
 
 - name: zypper install
   vars:
-    ansible_python_interpreter: "python3"
+    ansible_python_interpreter: python3
   community.general.zypper:
     name: "{{ item.name }}"
     state: "{{ item.state }}"

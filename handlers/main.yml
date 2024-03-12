@@ -1,5 +1,4 @@
 ---
-
 # Copyright 2024 Wong Hoi Sing Edison <hswong3i@pantarei-design.com>
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,8 +15,8 @@
 
 - name: podman | systemctl restart podman.service
   ansible.builtin.service:
-    name: "podman.service"
-    state: "restarted"
+    name: podman.service
+    state: restarted
     enabled: true
   loop: "{{ ansible_play_hosts }}"
   delegate_to: "{{ item }}"
