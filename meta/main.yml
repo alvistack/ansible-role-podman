@@ -15,7 +15,6 @@
 # limitations under the License.
 
 galaxy_info:
-  standalone: true
   role_name: podman
   namespace: alvistack
   author: "Wong Hoi Sing Edison <hswong3i@pantarei-design.com>"
