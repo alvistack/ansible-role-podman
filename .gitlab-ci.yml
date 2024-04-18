@@ -15,8 +15,8 @@
   - |
     if ! [[ -x "$(command -v pipx)" ]]; then
       export DEBIAN_FRONTEND="noninteractive"
-      echo "deb http://downloadcontent.opensuse.org/repositories/home:/alvistack/xUbuntu_22.04/ /" | sudo tee /etc/apt/sources.list.d/home:alvistack.list
-      curl -fsSL https://downloadcontent.opensuse.org/repositories/home:alvistack/xUbuntu_22.04/Release.key | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/home_alvistack.gpg > /dev/null
+      echo "deb http://downloadcontent.opensuse.org/repositories/home:/alvistack/xUbuntu_24.04/ /" | sudo tee /etc/apt/sources.list.d/home:alvistack.list
+      curl -fsSL https://downloadcontent.opensuse.org/repositories/home:alvistack/xUbuntu_24.04/Release.key | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/home_alvistack.gpg > /dev/null
       sudo -E apt-get update
       sudo -E apt-get install -y bzip2 ca-certificates curl flake8 gcc gnupg gzip iproute2 pipx procps python3 python3-apt python3-cryptography python3-flake8 python3-jmespath python3-lxml python3-netaddr python3-pip python3-setuptools python3-venv python3-virtualenv python3-wheel sudo tar unzip xz-utils yamllint zip
     fi
@@ -29,8 +29,8 @@
   - |
     if ! [[ -x "$(command -v ansible)" ]]; then
       export DEBIAN_FRONTEND="noninteractive"
-      echo "deb http://downloadcontent.opensuse.org/repositories/home:/alvistack/xUbuntu_22.04/ /" | sudo tee /etc/apt/sources.list.d/home:alvistack.list
-      curl -fsSL https://downloadcontent.opensuse.org/repositories/home:alvistack/xUbuntu_22.04/Release.key | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/home_alvistack.gpg > /dev/null
+      echo "deb http://downloadcontent.opensuse.org/repositories/home:/alvistack/xUbuntu_24.04/ /" | sudo tee /etc/apt/sources.list.d/home:alvistack.list
+      curl -fsSL https://downloadcontent.opensuse.org/repositories/home:alvistack/xUbuntu_24.04/Release.key | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/home_alvistack.gpg > /dev/null
       sudo -E apt-get update
       sudo -E apt-get install -y ansible ansible-lint python3-docker python3-netaddr python3-vagrant
     fi
@@ -41,10 +41,10 @@
   - |
     if ! [[ -x "$(command -v molecule)" ]]; then
       export DEBIAN_FRONTEND="noninteractive"
-      echo "deb http://downloadcontent.opensuse.org/repositories/home:/alvistack/xUbuntu_22.04/ /" | sudo tee /etc/apt/sources.list.d/home:alvistack.list
-      curl -fsSL https://downloadcontent.opensuse.org/repositories/home:alvistack/xUbuntu_22.04/Release.key | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/home_alvistack.gpg > /dev/null
+      echo "deb http://downloadcontent.opensuse.org/repositories/home:/alvistack/xUbuntu_24.04/ /" | sudo tee /etc/apt/sources.list.d/home:alvistack.list
+      curl -fsSL https://downloadcontent.opensuse.org/repositories/home:alvistack/xUbuntu_24.04/Release.key | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/home_alvistack.gpg > /dev/null
       sudo -E apt-get update
-      sudo -E apt-get install -y python3-molecule python3-molecule-docker python3-molecule-vagrant
+      sudo -E apt-get install -y python3-molecule python3-molecule-plugins
     fi
     sh -x -c "molecule --version"
 
@@ -52,6 +52,8 @@
   - |
     if ! [[ -x "$(command -v qemu-system-x86_64)" ]]; then
       export DEBIAN_FRONTEND="noninteractive"
+      echo "deb http://downloadcontent.opensuse.org/repositories/home:/alvistack/xUbuntu_24.04/ /" | sudo tee /etc/apt/sources.list.d/home:alvistack.list
+      curl -fsSL https://downloadcontent.opensuse.org/repositories/home:alvistack/xUbuntu_24.04/Release.key | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/home_alvistack.gpg > /dev/null
       sudo -E apt-get update
       sudo -E apt-get install -y binutils bridge-utils dnsmasq-base ebtables gcc libarchive-tools libguestfs-tools libvirt-clients libvirt-daemon-system libvirt-dev make qemu-system qemu-utils ruby-dev virt-manager
     fi
@@ -64,8 +66,8 @@
   - |
     if ! [[ -x "$(command -v vagrant)" ]]; then
       export DEBIAN_FRONTEND="noninteractive"
-      echo "deb [arch=amd64] https://apt.releases.hashicorp.com jammy main" | sudo tee /etc/apt/sources.list.d/hashicorp.list
-      curl -fsSL https://apt.releases.hashicorp.com/gpg | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/hashicorp.gpg > /dev/null
+      echo "deb http://downloadcontent.opensuse.org/repositories/home:/alvistack/xUbuntu_24.04/ /" | sudo tee /etc/apt/sources.list.d/home:alvistack.list
+      curl -fsSL https://downloadcontent.opensuse.org/repositories/home:alvistack/xUbuntu_24.04/Release.key | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/home_alvistack.gpg > /dev/null
       sudo -E apt-get update
       sudo -E apt-get install -y vagrant
       vagrant plugin install vagrant-libvirt
