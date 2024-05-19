@@ -1,6 +1,6 @@
 ---
 
-# Copyright 2023 Wong Hoi Sing Edison <hswong3i@pantarei-design.com>
+# Copyright 2024 Wong Hoi Sing Edison <hswong3i@pantarei-design.com>
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -15,35 +15,21 @@
 # limitations under the License.
 
 extends: default
-
 rules:
   braces:
     max-spaces-inside: 1
-    level: error
-  brackets:
-    max-spaces-inside: 1
-    level: error
-  colons:
-    max-spaces-after: -1
-    level: error
-  commas:
-    max-spaces-after: -1
-    level: error
-  comments: disable
-  comments-indentation: disable
-  document-start: disable
-  empty-lines:
-    max: 3
-    level: error
-  hyphens:
-    level: error
+    min-spaces-inside: 0
+  comments:
+    min-spaces-from-content: 1
+  comments-indentation: false
+  document-start:
+    present: true
   indentation:
-    spaces: 2
-    indent-sequences: true
-  key-duplicates: enable
+    indent-sequences: consistent
+    level: error
+  key-duplicates:
+    forbid-duplicated-merge-keys: true
   line-length: disable
-  new-line-at-end-of-file: disable
-  new-lines:
-    type: unix
-  trailing-spaces: disable
-  truthy: disable
+  octal-values:
+    forbid-explicit-octal: true
+    forbid-implicit-octal: true
