@@ -15,13 +15,13 @@ This role require Ansible community package 4.10 or higher.
 
 This role was designed for:
 
--   Ubuntu 20.04, 22.04, 23.10, 24.04
--   AlmaLinux 8, 9
--   openSUSE Leap 15.5, Tumbleweed
--   Debian 11, 12, Testing
--   Fedora 38, 39, 40, Rawhide
--   CentOS 7, 8 Stream, 9 Stream
--   RHEL 7, 8, 9
+- Ubuntu 20.04, 22.04, 23.10, 24.04
+- AlmaLinux 8, 9
+- openSUSE Leap 15.5, Tumbleweed
+- Debian 11, 12, Testing
+- Fedora 38, 39, 40, Rawhide
+- CentOS 7, 8 Stream, 9 Stream
+- RHEL 7, 8, 9
 
 ## Role Variables
 
@@ -41,11 +41,11 @@ This role could simply deploy to `localhost` as below:
 
 ## License
 
--   Code released under [Apache License 2.0](LICENSE)
--   Docs released under [CC BY 4.0](http://creativecommons.org/licenses/by/4.0/)
+- Code released under [Apache License 2.0](LICENSE)
+- Docs released under [CC BY 4.0](http://creativecommons.org/licenses/by/4.0/)
 
 ## Author Information
 
--   Wong Hoi Sing Edison
-    -   <https://twitter.com/hswong3i>
-    -   <https://github.com/hswong3i>
+- Wong Hoi Sing Edison
+  - <https://twitter.com/hswong3i>
+  - <https://github.com/hswong3i>
