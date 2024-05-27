@@ -1,10 +1,10 @@
 # Ansible Role for Podman
 
-## 10.1.0 - TBC
+## 10.0.0 - TBC
 
-## 10.0.0 - 2024-05-24
+## 9.6.0 - 2024-05-27
 
-- Support Ansible community package 10.0.0
+- Support Ansible community package 9.6.0
 
 ## 9.5.0 - 2024-04-24
 
