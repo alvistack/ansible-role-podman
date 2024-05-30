@@ -2,6 +2,8 @@
 
 ## 10.0.0 - TBC
 
+- Remove Fedora 38 support
+
 ## 9.6.0 - 2024-05-27
 
 - Support Ansible community package 9.6.0
