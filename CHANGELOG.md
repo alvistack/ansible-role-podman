@@ -2,6 +2,7 @@
 
 ## 10.0.0 - TBC
 
+- Support openSUSE Leap 15.6
 - Remove Fedora 38 support
 
 ## 9.6.0 - 2024-05-27
