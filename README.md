@@ -17,9 +17,9 @@ This role was designed for:
 
 - Ubuntu 20.04, 22.04, 23.10, 24.04
 - AlmaLinux 8, 9
-- openSUSE Leap 15.5, Tumbleweed
+- openSUSE Leap 15.5, 15.6, Tumbleweed
 - Debian 11, 12, Testing
-- Fedora 38, 39, 40, Rawhide
+- Fedora 39, 40, Rawhide
 - CentOS 7, 8 Stream, 9 Stream
 - RHEL 7, 8, 9
 

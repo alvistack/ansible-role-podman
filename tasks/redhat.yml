@@ -37,7 +37,7 @@
   loop: "{{ _yum_repository }}"
 
 - name: yum install
-  ansible.legacy.dnf:
+  ansible.builtin.yum:
     name: "{{ item.name }}"
     state: "{{ item.state }}"
   loop: "{{ _yum }}"

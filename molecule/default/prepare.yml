@@ -141,7 +141,6 @@
         set -eu
         yum-config-manager --enable crb || echo $?
         yum-config-manager --enable codeready-builder-for-rhel-9-x86_64-rpms || echo $?
-        yum install -y http://dl.fedoraproject.org/pub/epel/epel-release-latest-9.noarch.rpm
         yum install -y bzip2 ca-certificates curl gcc gnupg2 gzip hostname iproute procps-ng python3 python3-dnf-plugin-versionlock python3-jmespath python3-libselinux python3-lxml python3-pip python3-setuptools python3-virtualenv python3-wheel rsync shadow-utils sudo tar unzip util-linux xz yum-utils zip
       args:
         executable: /bin/bash
@@ -152,7 +151,6 @@
     - name: redhat-8 | yum install *.rpm
       ansible.builtin.raw: |
         set -eu
-        yum install -y http://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
         yum install -y bzip2 ca-certificates curl gcc gnupg2 gzip hostname iproute procps-ng python3 python3-dnf-plugin-versionlock python3-jmespath python3-libselinux python3-lxml python3-pip python3-setuptools python3-virtualenv python3-wheel rsync shadow-utils sudo tar unzip util-linux xz yum-utils zip
       args:
         executable: /bin/bash
@@ -164,7 +162,6 @@
       ansible.builtin.raw: |
         set -eu
         subscription-manager repos --enable=rhel-7-server-optional-rpms || echo $?
-        yum install -y http://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
         yum install -y bzip2 ca-certificates curl gcc gnupg2 gzip hostname iproute procps-ng python3 python3-jmespath python3-libselinux python3-lxml python3-pip python3-setuptools python3-virtualenv python3-wheel rsync shadow-utils sudo tar unzip util-linux xz yum-plugin-versionlock yum-utils zip
       args:
         executable: /bin/bash
