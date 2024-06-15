@@ -46,7 +46,6 @@
     name: "{{ item.name }}"
     state: "{{ item.state }}"
     force_resolution: true
-    extra_args: --no-confirm
   loop: "{{ _zypper }}"
   register: result
   until: result is succeeded
