@@ -1,6 +1,8 @@
 # Ansible Role for Podman
 
-## 10.2.0 - TBC
+## 10.3.0 - TBC
+
+## 10.2.0 - 2024-07-17
 
 - Remove Kubernetes 1.27 support
 - Remove Ubuntu 23.10 support
