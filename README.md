@@ -15,7 +15,7 @@ This role require Ansible community package 4.10 or higher.
 
 This role was designed for:
 
-- Ubuntu 20.04, 22.04, 23.10, 24.04
+- Ubuntu 20.04, 22.04, 24.04
 - AlmaLinux 8, 9
 - openSUSE Leap 15.5, 15.6, Tumbleweed
 - Debian 11, 12, Testing
