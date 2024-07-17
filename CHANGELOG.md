@@ -2,6 +2,7 @@
 
 ## 10.2.0 - TBC
 
+- Remove Ubuntu 23.10 support
 - Support Ansible community package 10.2.0
 
 ## 10.1.0 - 2024-06-19
