@@ -2,6 +2,8 @@
 
 ## 10.2.0 - TBC
 
+- Support Ansible community package 10.2.0
+
 ## 10.1.0 - 2024-06-19
 
 - Support Ansible community package 10.1.0
