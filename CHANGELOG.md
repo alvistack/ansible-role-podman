@@ -2,6 +2,7 @@
 
 ## 10.2.0 - TBC
 
+- Remove Kubernetes 1.27 support
 - Remove Ubuntu 23.10 support
 - Support Ansible community package 10.2.0
 
