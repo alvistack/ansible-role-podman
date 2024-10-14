@@ -121,6 +121,13 @@ default:
     - *script-linters
   retry: 2
 
+build:ubuntu-24.10-libvirt:
+  <<: *job-molecule-test
+  stage: build
+  variables:
+    _BOX: ubuntu-24.10
+    _PROVIDER: libvirt
+
 build:ubuntu-24.04-libvirt:
   <<: *job-molecule-test
   stage: build
@@ -299,6 +306,7 @@ deploy:ansible-galaxy:
   <<: *job-ansible-galaxy-role-import
   stage: deploy
   needs:
+    - build:ubuntu-24.10-libvirt
     - build:ubuntu-24.04-libvirt
     - build:ubuntu-22.04-libvirt
     - build:ubuntu-20.04-libvirt
