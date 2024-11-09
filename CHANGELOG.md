@@ -1,6 +1,11 @@
 # Ansible Role for Podman
 
-## 10.6.0 - TBC
+## 11.0.0 - TBC
+
+## 10.6.0 - 2024-11-09
+
+- Support Fedora 41
+- Support Ansible community package 10.6.0
 
 ## 10.5.0 - 2024-10-14
 
