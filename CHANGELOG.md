@@ -2,6 +2,8 @@
 
 ## 11.0.0 - TBC
 
+- Support Ansible community package 11.0.0
+
 ## 10.6.0 - 2024-11-09
 
 - Support Fedora 41
