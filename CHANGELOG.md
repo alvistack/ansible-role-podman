@@ -2,6 +2,7 @@
 
 ## 11.2.0 - TBC
 
+- Remove Debian 11 support
 - Remove openSUSE Leap 15.5 support
 - Remove Fedora 39 support
 
