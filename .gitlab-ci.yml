@@ -248,15 +248,6 @@ test:fedora-40-libvirt:
   allow_failure: true
   retry: 0
 
-test:fedora-39-libvirt:
-  <<: *job-molecule-test
-  stage: test
-  variables:
-    _BOX: fedora-39
-    _PROVIDER: libvirt
-  allow_failure: true
-  retry: 0
-
 test:centos-9-stream-libvirt:
   <<: *job-molecule-test
   stage: test
