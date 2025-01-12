@@ -19,7 +19,7 @@ _deb822_repository:
     types: deb
     uris: http://downloadcontent.opensuse.org/repositories/home:/alvistack/Debian_Testing
     suites: /
-    components: ~
+    components:
     signed_by: http://downloadcontent.opensuse.org/repositories/home:/alvistack/Debian_Testing/Release.key
     enabled: true
     state: present
