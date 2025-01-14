@@ -13,9 +13,9 @@
 
 .script-bootstrap-python: &script-bootstrap-python
   - |
-    if ! [[ -x "$(command -v pipx)" ]]; then
+    if ! [[ -x "$(command -v pipx)" && -x "$(command -v flake8)" && -x "$(command -v yamllint)" ]]; then
       export DEBIAN_FRONTEND="noninteractive"
-      printf "Components:\nEnabled: yes\nX-Repolib-Name: alvistack\nSigned-By: /etc/apt/keyrings/alvistack.asc\nSuites: /\nTypes: deb\nURIs: http://downloadcontent.opensuse.org/repositories/home:/alvistack/xUbuntu_24.04" | sudo tee /etc/apt/sources.list.d/alvistack.sources > /dev/null
+      printf "Components:\nEnabled: yes\nX-Repolib-Name: alvistack\nSigned-By: /etc/apt/keyrings/alvistack.asc\nSuites: /\nTypes: deb\nURIs: http://downloadcontent.opensuse.org/repositories/home:/alvistack/xUbuntu_24.04\n" | sudo tee /etc/apt/sources.list.d/alvistack.sources > /dev/null
       curl -fsSL https://downloadcontent.opensuse.org/repositories/home:alvistack/xUbuntu_24.04/Release.key | sudo tee /etc/apt/keyrings/alvistack.asc > /dev/null
       sudo -E apt-get update
       sudo -E apt-get install -y bzip2 ca-certificates curl flake8 gcc gnupg gzip iproute2 pipx procps python3 python3-apt python3-cryptography python3-flake8 python3-jmespath python3-lxml python3-netaddr python3-pip python3-setuptools python3-venv python3-virtualenv python3-wheel sudo tar unzip xz-utils yamllint zip
@@ -27,9 +27,9 @@
 
 .script-bootstrap-ansible: &script-bootstrap-ansible
   - |
-    if ! [[ -x "$(command -v ansible)" ]]; then
+    if ! [[ -x "$(command -v ansible)" && -x "$(command -v ansible-lint)" ]]; then
       export DEBIAN_FRONTEND="noninteractive"
-      printf "Components:\nEnabled: yes\nX-Repolib-Name: alvistack\nSigned-By: /etc/apt/keyrings/alvistack.asc\nSuites: /\nTypes: deb\nURIs: http://downloadcontent.opensuse.org/repositories/home:/alvistack/xUbuntu_24.04" | sudo tee /etc/apt/sources.list.d/alvistack.sources > /dev/null
+      printf "Components:\nEnabled: yes\nX-Repolib-Name: alvistack\nSigned-By: /etc/apt/keyrings/alvistack.asc\nSuites: /\nTypes: deb\nURIs: http://downloadcontent.opensuse.org/repositories/home:/alvistack/xUbuntu_24.04\n" | sudo tee /etc/apt/sources.list.d/alvistack.sources > /dev/null
       curl -fsSL https://downloadcontent.opensuse.org/repositories/home:alvistack/xUbuntu_24.04/Release.key | sudo tee /etc/apt/keyrings/alvistack.asc > /dev/null
       sudo -E apt-get update
       sudo -E apt-get install -y ansible ansible-lint python3-docker python3-netaddr python3-vagrant
@@ -41,7 +41,7 @@
   - |
     if ! [[ -x "$(command -v molecule)" ]]; then
       export DEBIAN_FRONTEND="noninteractive"
-      printf "Components:\nEnabled: yes\nX-Repolib-Name: alvistack\nSigned-By: /etc/apt/keyrings/alvistack.asc\nSuites: /\nTypes: deb\nURIs: http://downloadcontent.opensuse.org/repositories/home:/alvistack/xUbuntu_24.04" | sudo tee /etc/apt/sources.list.d/alvistack.sources > /dev/null
+      printf "Components:\nEnabled: yes\nX-Repolib-Name: alvistack\nSigned-By: /etc/apt/keyrings/alvistack.asc\nSuites: /\nTypes: deb\nURIs: http://downloadcontent.opensuse.org/repositories/home:/alvistack/xUbuntu_24.04\n" | sudo tee /etc/apt/sources.list.d/alvistack.sources > /dev/null
       curl -fsSL https://downloadcontent.opensuse.org/repositories/home:alvistack/xUbuntu_24.04/Release.key | sudo tee /etc/apt/keyrings/alvistack.asc > /dev/null
       sudo -E apt-get update
       sudo -E apt-get install -y python3-molecule python3-molecule-plugins
@@ -52,7 +52,7 @@
   - |
     if ! [[ -x "$(command -v qemu-system-x86_64)" ]]; then
       export DEBIAN_FRONTEND="noninteractive"
-      printf "Components:\nEnabled: yes\nX-Repolib-Name: alvistack\nSigned-By: /etc/apt/keyrings/alvistack.asc\nSuites: /\nTypes: deb\nURIs: http://downloadcontent.opensuse.org/repositories/home:/alvistack/xUbuntu_24.04" | sudo tee /etc/apt/sources.list.d/alvistack.sources > /dev/null
+      printf "Components:\nEnabled: yes\nX-Repolib-Name: alvistack\nSigned-By: /etc/apt/keyrings/alvistack.asc\nSuites: /\nTypes: deb\nURIs: http://downloadcontent.opensuse.org/repositories/home:/alvistack/xUbuntu_24.04\n" | sudo tee /etc/apt/sources.list.d/alvistack.sources > /dev/null
       curl -fsSL https://downloadcontent.opensuse.org/repositories/home:alvistack/xUbuntu_24.04/Release.key | sudo tee /etc/apt/keyrings/alvistack.asc > /dev/null
       sudo -E apt-get update
       sudo -E apt-get install -y binutils bridge-utils dnsmasq-base ebtables gcc libarchive-tools libguestfs-tools libvirt-clients libvirt-daemon-system libvirt-dev make qemu-system qemu-utils ruby-dev virt-manager
@@ -66,7 +66,7 @@
   - |
     if ! [[ -x "$(command -v vagrant)" ]]; then
       export DEBIAN_FRONTEND="noninteractive"
-      printf "Components:\nEnabled: yes\nX-Repolib-Name: alvistack\nSigned-By: /etc/apt/keyrings/alvistack.asc\nSuites: /\nTypes: deb\nURIs: http://downloadcontent.opensuse.org/repositories/home:/alvistack/xUbuntu_24.04" | sudo tee /etc/apt/sources.list.d/alvistack.sources > /dev/null
+      printf "Components:\nEnabled: yes\nX-Repolib-Name: alvistack\nSigned-By: /etc/apt/keyrings/alvistack.asc\nSuites: /\nTypes: deb\nURIs: http://downloadcontent.opensuse.org/repositories/home:/alvistack/xUbuntu_24.04\n" | sudo tee /etc/apt/sources.list.d/alvistack.sources > /dev/null
       curl -fsSL https://downloadcontent.opensuse.org/repositories/home:alvistack/xUbuntu_24.04/Release.key | sudo tee /etc/apt/keyrings/alvistack.asc > /dev/null
       sudo -E apt-get update
       sudo -E apt-get install -y vagrant
