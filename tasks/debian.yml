@@ -13,25 +13,25 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-- name: apt-key add
-  ansible.builtin.apt_key:
-    keyring: "{{ item.keyring }}"
-    url: "{{ item.url }}"
-    id: "{{ item.id }}"
+- name: apt-add-repository
+  ansible.builtin.deb822_repository:
+    name: "{{ item.name }}"
+    types: "{{ item.types }}"
+    uris: "{{ item.uris }}"
+    suites: "{{ item.suites }}"
+    components: "{{ item.components }}"
+    signed_by: "{{ item.signed_by }}"
+    enabled: "{{ item.enabled }}"
     state: "{{ item.state }}"
-  loop: "{{ _apt_key }}"
+    architectures: "{{ item.architectures | default(None) or omit }}"
+  loop: "{{ _deb822_repository }}"
   register: result
   until: result is succeeded
 
-- name: apt-add-repository
-  ansible.builtin.apt_repository:
-    filename: "{{ item.filename }}"
-    repo: "{{ item.repo }}"
-    state: "{{ item.state }}"
-    mode: "{{ item.mode | default('0644') }}"
-  loop: "{{ _apt_repository }}"
-  register: result
-  until: result is succeeded
+- name: apt-get update
+  ansible.builtin.apt:
+    update_cache: true
+  changed_when: false
 
 - name: apt-get install
   ansible.builtin.apt:

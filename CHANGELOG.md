@@ -2,6 +2,11 @@
 
 ## 11.2.0 - TBC
 
+- Replace with `ansible.builtin.deb822_repository`
+- Remove Debian 11 support
+- Remove openSUSE Leap 15.5 support
+- Remove Fedora 39 support
+
 ## 11.1.0 - 2024-12-04
 
 - Support Ansible community package 11.1.0
