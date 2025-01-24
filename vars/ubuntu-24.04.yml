@@ -14,13 +14,18 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+_apt_key:
+  - url: http://downloadcontent.opensuse.org/repositories/home:/alvistack/xUbuntu_24.04/Release.key
+    dest: /etc/apt/keyrings/home_alvistack.asc
+    checksum: "sha256:90b960d05e9c5f068f70a6afa1c2623c400312f4e719bd97719d85e49b7de2b2"
+
 _deb822_repository:
-  - name: alvistack
+  - name: home_alvistack
     types: deb
     uris: http://downloadcontent.opensuse.org/repositories/home:/alvistack/xUbuntu_24.04
     suites: /
     components:
-    signed_by: http://downloadcontent.opensuse.org/repositories/home:/alvistack/xUbuntu_24.04/Release.key
+    signed_by: /etc/apt/keyrings/home_alvistack.asc
     enabled: true
     state: present
 
