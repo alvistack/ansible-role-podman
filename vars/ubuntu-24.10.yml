@@ -16,16 +16,16 @@
 
 _apt_key:
   - url: http://downloadcontent.opensuse.org/repositories/home:/alvistack/xUbuntu_24.10/Release.key
-    dest: /etc/apt/keyrings/home_alvistack.asc
+    dest: /etc/apt/keyrings/home-alvistack.asc
     checksum: "sha256:90b960d05e9c5f068f70a6afa1c2623c400312f4e719bd97719d85e49b7de2b2"
 
 _deb822_repository:
-  - name: home_alvistack
+  - name: home-alvistack
     types: deb
     uris: http://downloadcontent.opensuse.org/repositories/home:/alvistack/xUbuntu_24.10
     suites: /
     components:
-    signed_by: /etc/apt/keyrings/home_alvistack.asc
+    signed_by: /etc/apt/keyrings/home-alvistack.asc
     enabled: true
     state: present
 
