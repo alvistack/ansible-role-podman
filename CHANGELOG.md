@@ -1,6 +1,8 @@
 # Ansible Role for Podman
 
-## 11.2.0 - TBC
+## 11.3.0 - TBC
+
+## 11.2.0 - 2025-01-30
 
 - Replace `apt-key` with `get_url`
 - Replace with `ansible.builtin.deb822_repository`
