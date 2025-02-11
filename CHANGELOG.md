@@ -2,6 +2,8 @@
 
 ## 11.3.0 - TBC
 
+- Support CentOS 10 Stream
+
 ## 11.2.0 - 2025-01-30
 
 - Replace `apt-key` with `get_url`
