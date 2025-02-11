@@ -230,6 +230,15 @@ test:fedora-40-libvirt:
   allow_failure: true
   retry: 0
 
+test:centos-10-stream-libvirt:
+  <<: *job-molecule-test
+  stage: test
+  variables:
+    _BOX: centos-10-stream
+    _PROVIDER: libvirt
+  allow_failure: true
+  retry: 0
+
 test:centos-9-stream-libvirt:
   <<: *job-molecule-test
   stage: test
