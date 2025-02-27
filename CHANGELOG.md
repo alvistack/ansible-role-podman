@@ -2,6 +2,7 @@
 
 ## 11.3.0 - TBC
 
+- Support AlmaLinux Kitten 10
 - Support CentOS 10 Stream
 
 ## 11.2.0 - 2025-01-30
