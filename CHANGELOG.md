@@ -1,7 +1,10 @@
 # Ansible Role for Podman
 
-## 11.3.0 - TBC
+## 11.4.0 - TBC
 
+## 11.3.0 - 2025-02-27
+
+- Support Ansible community package 11.3.0
 - Support AlmaLinux Kitten 10
 - Support CentOS 10 Stream
 
