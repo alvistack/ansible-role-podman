@@ -15,8 +15,10 @@
 # limitations under the License.
 
 offline: true
-
 skip_list:
   - name[casing]
   - var-naming[no-role-prefix]
   - yaml[line-length]
+exclude_paths:
+  - files
+  - templates
