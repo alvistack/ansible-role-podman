@@ -1,0 +1,38 @@
+# never prefer repository
+Package: *
+Pin: origin downloadcontent.opensuse.org
+Pin-Priority: 1
+
+# prefer packages
+
+Package: podman
+Pin: origin downloadcontent.opensuse.org
+Pin-Priority: 500
+
+Package: podman-aardvark-dns
+Pin: origin downloadcontent.opensuse.org
+Pin-Priority: 500
+
+Package: podman-docker
+Pin: origin downloadcontent.opensuse.org
+Pin-Priority: 500
+
+Package: podman-gvproxy
+Pin: origin downloadcontent.opensuse.org
+Pin-Priority: 500
+
+Package: podman-netavark
+Pin: origin downloadcontent.opensuse.org
+Pin-Priority: 500
+
+Package: containernetworking-dnsname
+Pin: origin downloadcontent.opensuse.org
+Pin-Priority: 500
+
+Package: containernetworking-plugins
+Pin: origin downloadcontent.opensuse.org
+Pin-Priority: 500
+
+Package: containernetworking-podman-machine
+Pin: origin downloadcontent.opensuse.org
+Pin-Priority: 500

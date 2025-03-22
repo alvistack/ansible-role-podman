@@ -23,6 +23,17 @@
   loop:
     - { dest: /etc/apt/keyrings }
     - { dest: /usr/share/keyrings }
+    - { dest: /etc/apt/preferences.d }
+
+- name: prepare files
+  ansible.builtin.file:
+    dest: "{{ item.dest }}"
+    owner: "{{ item.owner | default('root') }}"
+    group: "{{ item.group | default('root') }}"
+    mode: "{{ item.mode | default('0644') }}"
+    path: "{{ item.path | default(None) }}"
+  loop:
+    - { dest: /etc/apt/preferences.d/99-alvistack, path: apt/preferences }
 
 - name: apt-key add
   vars:
