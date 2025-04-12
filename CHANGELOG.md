@@ -2,6 +2,8 @@
 
 ## 11.5.0 - TBC
 
+- Support Ubuntu 25.04
+
 ## 11.4.0 - 2025-03-31
 
 - Support Ansible community package 11.4.0
