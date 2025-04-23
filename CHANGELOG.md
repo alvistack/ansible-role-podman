@@ -4,6 +4,7 @@
 
 ## 11.5.0 - 2025-04-23
 
+- Support Ansible community package 11.5.0
 - Support Ubuntu 25.04
 
 ## 11.4.0 - 2025-03-31
