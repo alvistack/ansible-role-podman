@@ -2,6 +2,7 @@
 
 ## 12.0.0 - TBC
 
+- Remove Fedora 40 support
 - Support Fedora 42
 
 ## 11.5.0 - 2025-04-23
