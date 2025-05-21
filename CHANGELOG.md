@@ -2,6 +2,9 @@
 
 ## 12.0.0 - TBC
 
+## 11.6.0 - 2025-05-21
+
+- Support Ansible community package 11.6.0
 - Remove Fedora 40 support
 - Support Fedora 42
 
