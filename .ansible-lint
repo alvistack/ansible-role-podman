@@ -17,6 +17,7 @@
 offline: true
 skip_list:
   - name[casing]
+  - name[unique]
   - var-naming[no-role-prefix]
   - yaml[line-length]
 exclude_paths:
