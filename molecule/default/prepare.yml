@@ -19,6 +19,15 @@
   become: true
   gather_facts: false
   tasks:
+    - name: suse | netconfig update -f
+      ansible.builtin.raw: |
+        set -eu
+        netconfig update -f
+      args:
+        executable: /bin/bash
+      changed_when: false
+      failed_when: false
+
     - name: redhat | subscription-manager register
       ansible.builtin.raw: |
         set -eu
