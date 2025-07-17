@@ -2,6 +2,10 @@
 
 ## 12.0.0 - TBC
 
+## 11.8.0 - 2025-07-17
+
+- Support Ansible community package 11.8.0
+
 ## 11.7.0 - 2025-06-18
 
 - Support Ansible community package 11.7.0
