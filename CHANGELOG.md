@@ -2,6 +2,8 @@
 
 ## 12.0.0 - TBC
 
+- Support Debian 13
+
 ## 11.9.0 - 2025-08-17
 
 - Support Ansible community package 11.9.0
