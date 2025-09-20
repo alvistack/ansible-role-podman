@@ -1,0 +1,42 @@
+---
+
+# Copyright 2025 Wong Hoi Sing Edison <hswong3i@pantarei-design.com>
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+_apt_key:
+  - url: http://downloadcontent.opensuse.org/repositories/home:/alvistack/xUbuntu_25.10/Release.key
+    dest: /etc/apt/keyrings/home-alvistack.asc
+    checksum: "sha256:90b960d05e9c5f068f70a6afa1c2623c400312f4e719bd97719d85e49b7de2b2"
+
+_deb822_repository:
+  - name: home-alvistack
+    types: deb
+    uris: http://downloadcontent.opensuse.org/repositories/home:/alvistack/xUbuntu_25.10
+    suites: /
+    components:
+    signed_by: /etc/apt/keyrings/home-alvistack.asc
+    enabled: true
+    state: present
+
+_apt:
+  - { state: latest, name: containernetworking-dnsname }
+  - { state: latest, name: containernetworking-plugins }
+  - { state: latest, name: containernetworking-podman-machine }
+  - { state: latest, name: podman }
+  - { state: latest, name: podman-aardvark-dns }
+  - { state: latest, name: podman-docker }
+  - { state: latest, name: podman-gvproxy }
+  - { state: latest, name: podman-netavark }
+  - { state: latest, name: python3-podman-compose }
+  - { state: latest, name: uidmap }

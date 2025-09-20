@@ -2,6 +2,7 @@
 
 ## 12.0.0 - TBC
 
+- Support Ubuntu 25.10
 - Remove Ubuntu 24.10 support
 - Support Debian 13
 
