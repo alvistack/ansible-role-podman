@@ -2,6 +2,9 @@
 
 ## 12.0.0 - TBC
 
+## 11.10.0 - 2025-09-23
+
+- Support Ansible community package 11.10.0
 - Support Ubuntu 25.10
 - Remove Ubuntu 24.10 support
 - Support Debian 13
