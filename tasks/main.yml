@@ -17,12 +17,12 @@
   ansible.builtin.include_vars: ../vars/main.yml
 
 - name: include release specific variables
-  ansible.builtin.include_vars: "{{ _loop_var }}"
-  loop: "{{ query('first_found', _params) }}"
+  ansible.builtin.include_vars: "{{ loop_var }}"
+  loop: "{{ query('first_found', params) }}"
   loop_control:
-    loop_var: _loop_var
+    loop_var: loop_var
   vars:
-    _params:
+    params:
       files:
         - "{{ ansible_distribution | lower }}-{{ ansible_distribution_version | lower }}.yml"
         - "{{ ansible_distribution | lower }}-{{ ansible_distribution_major_version | lower }}.yml"
@@ -35,12 +35,12 @@
       skip: true
 
 - name: include release specific tasks
-  ansible.builtin.include_tasks: "{{ _loop_var }}"
-  loop: "{{ query('first_found', _params) }}"
+  ansible.builtin.include_tasks: "{{ loop_var }}"
+  loop: "{{ query('first_found', params) }}"
   loop_control:
-    loop_var: _loop_var
+    loop_var: loop_var
   vars:
-    _params:
+    params:
       files:
         - "{{ ansible_distribution | lower }}-{{ ansible_distribution_version | lower }}.yml"
         - "{{ ansible_distribution | lower }}-{{ ansible_distribution_major_version | lower }}.yml"
