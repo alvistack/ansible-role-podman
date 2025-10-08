@@ -2,6 +2,10 @@
 
 ## 13.0.0 - TBC
 
+## 12.1.0 - 2025-10-04
+
+- Support Ansible community package 12.1.0
+
 ## 12.0.0 - 2025-10-04
 
 - Support Ansible community package 12.0.0
