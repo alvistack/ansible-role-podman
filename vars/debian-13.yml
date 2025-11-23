@@ -17,7 +17,7 @@
 _apt_key:
   - url: https://downloadcontent.opensuse.org/repositories/home:/alvistack/Debian_13/Release.key
     dest: /etc/apt/keyrings/home-alvistack.asc
-    checksum: "sha256:90b960d05e9c5f068f70a6afa1c2623c400312f4e719bd97719d85e49b7de2b2"
+    checksum: "sha256:2959bf5709615cba0109715e4c2001066a4536398fa54f0f602abc208f04017e"
 
 _deb822_repository:
   - name: home-alvistack
