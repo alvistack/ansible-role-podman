@@ -2,6 +2,7 @@
 
 ## 13.2.0 - TBC
 
+- Support Fedora 43
 - Remove Fedora 41 support
 - Support Ansible community package 13.2.0
 

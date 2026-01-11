@@ -228,6 +228,15 @@ test:fedora-rawhide-libvirt:
   allow_failure: true
   retry: 0
 
+test:fedora-43-libvirt:
+  <<: *job-molecule-test
+  stage: test
+  variables:
+    _BOX: fedora-43
+    _PROVIDER: libvirt
+  allow_failure: true
+  retry: 0
+
 test:fedora-42-libvirt:
   <<: *job-molecule-test
   stage: test
