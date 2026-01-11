@@ -237,15 +237,6 @@ test:fedora-42-libvirt:
   allow_failure: true
   retry: 0
 
-test:fedora-41-libvirt:
-  <<: *job-molecule-test
-  stage: test
-  variables:
-    _BOX: fedora-41
-    _PROVIDER: libvirt
-  allow_failure: true
-  retry: 0
-
 test:centos-10-stream-libvirt:
   <<: *job-molecule-test
   stage: test
