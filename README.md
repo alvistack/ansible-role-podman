@@ -20,7 +20,7 @@ This role was designed for:
 - openSUSE Leap 15.6, Tumbleweed
 - Debian 12, 13, Testing
 - Fedora 42, 43, Rawhide
-- CentOS 7, 8 Stream, 9 Stream
+- CentOS 7, 8 Stream, 9 Stream, 10 Stream
 - RHEL 7, 8, 9
 
 ## Role Variables
