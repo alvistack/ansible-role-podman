@@ -122,7 +122,7 @@
         DEBIAN_FRONTEND=noninteractive apt-get install -y bzip2 ca-certificates curl gcc gnupg gzip hostname iproute2 passwd procps python3 python3-apt python3-debian python3-jmespath python3-lxml python3-pip python3-setuptools python3-venv python3-virtualenv python3-wheel rsync sudo tar unzip util-linux xz-utils zip
       args:
         executable: /bin/bash
-      when: ansible_os_family | lower == "debian"
+      when: ansible_facts['os_family'] | lower == "debian"
       changed_when: false
       failed_when: false
 
@@ -132,7 +132,7 @@
         yum install -y bzip2 ca-certificates curl gcc gnupg2 gzip hostname iproute procps-ng python3 python3-dnf-plugin-versionlock python3-jmespath python3-libselinux python3-lxml python3-pip python3-setuptools python3-virtualenv python3-wheel rsync shadow-utils sudo tar unzip util-linux xz yum-utils zip
       args:
         executable: /bin/bash
-      when: ansible_distribution | lower == "fedora"
+      when: ansible_facts['distribution'] | lower == "fedora"
       changed_when: false
       failed_when: false
 
@@ -144,7 +144,7 @@
         yum install -y bzip2 ca-certificates curl gcc gnupg2 gzip hostname iproute procps-ng python3 python3-dnf-plugin-versionlock python3-jmespath python3-libselinux python3-lxml python3-pip python3-setuptools python3-virtualenv python3-wheel rsync shadow-utils sudo tar unzip util-linux xz yum-utils zip
       args:
         executable: /bin/bash
-      when: ansible_os_family | lower == "redhat" and ansible_distribution_major_version | lower == "9"
+      when: ansible_facts['os_family'] | lower == "redhat" and ansible_facts['distribution_major_version'] | lower == "9"
       changed_when: false
       failed_when: false
 
@@ -154,7 +154,7 @@
         yum install -y bzip2 ca-certificates curl gcc gnupg2 gzip hostname iproute procps-ng python3 python3-dnf-plugin-versionlock python3-jmespath python3-libselinux python3-lxml python3-pip python3-setuptools python3-virtualenv python3-wheel rsync shadow-utils sudo tar unzip util-linux xz yum-utils zip
       args:
         executable: /bin/bash
-      when: ansible_os_family | lower == "redhat" and ansible_distribution_major_version | lower == "8"
+      when: ansible_facts['os_family'] | lower == "redhat" and ansible_facts['distribution_major_version'] | lower == "8"
       changed_when: false
       failed_when: false
 
@@ -165,7 +165,7 @@
         yum install -y bzip2 ca-certificates curl gcc gnupg2 gzip hostname iproute procps-ng python3 python3-jmespath python3-libselinux python3-lxml python3-pip python3-setuptools python3-virtualenv python3-wheel rsync shadow-utils sudo tar unzip util-linux xz yum-plugin-versionlock yum-utils zip
       args:
         executable: /bin/bash
-      when: ansible_os_family | lower == "redhat" and ansible_distribution_major_version | lower == "7"
+      when: ansible_facts['os_family'] | lower == "redhat" and ansible_facts['distribution_major_version'] | lower == "7"
       changed_when: false
       failed_when: false
 
@@ -175,6 +175,6 @@
         zypper -n install -y bzip2 ca-certificates curl gcc gpg2 gzip hostname iproute2 procps python3 python3-jmespath python3-lxml python3-pip python3-setuptools python3-virtualenv python3-wheel rsync shadow sudo tar unzip util-linux xz zip
       args:
         executable: /bin/bash
-      when: ansible_os_family | lower == "suse"
+      when: ansible_facts['os_family'] | lower == "suse"
       changed_when: false
       failed_when: false
