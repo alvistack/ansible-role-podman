@@ -156,6 +156,15 @@ build:ubuntu-20.04-libvirt:
     _BOX: ubuntu-20.04
     _PROVIDER: libvirt
 
+test:almalinux-10-libvirt:
+  <<: *job-molecule-test
+  stage: test
+  variables:
+    _BOX: almalinux-10
+    _PROVIDER: libvirt
+  allow_failure: true
+  retry: 0
+
 test:almalinux-9-libvirt:
   <<: *job-molecule-test
   stage: test
