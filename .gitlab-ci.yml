@@ -291,6 +291,15 @@ test:centos-7-libvirt:
   allow_failure: true
   retry: 0
 
+test:rhel-10-libvirt:
+  <<: *job-molecule-test
+  stage: test
+  variables:
+    _BOX: rhel-10
+    _PROVIDER: libvirt
+  allow_failure: true
+  retry: 0
+
 test:rhel-9-libvirt:
   <<: *job-molecule-test
   stage: test

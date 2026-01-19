@@ -21,7 +21,7 @@ This role was designed for:
 - Debian 12, 13, Testing
 - Fedora 42, 43, Rawhide
 - CentOS 7, 8 Stream, 9 Stream, 10 Stream
-- RHEL 7, 8, 9
+- RHEL 7, 8, 9, 10
 
 ## Role Variables
 
