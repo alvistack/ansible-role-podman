@@ -25,7 +25,6 @@
         subscription-manager register \
         --username={{ lookup('env', 'REDHAT_USERNAME') }} \
         --password={{ lookup('env', 'REDHAT_PASSWORD') }} \
-        --auto-attach
       args:
         executable: /bin/bash
       changed_when: false
