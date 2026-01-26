@@ -192,6 +192,15 @@ test:opensuse-tumbleweed-libvirt:
   allow_failure: true
   retry: 0
 
+test:opensuse-leap-16.0-libvirt:
+  <<: *job-molecule-test
+  stage: test
+  variables:
+    _BOX: opensuse-leap-16.0
+    _PROVIDER: libvirt
+  allow_failure: true
+  retry: 0
+
 test:opensuse-leap-15.6-libvirt:
   <<: *job-molecule-test
   stage: test

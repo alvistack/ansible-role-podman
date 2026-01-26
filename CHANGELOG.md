@@ -2,6 +2,7 @@
 
 ## 13.2.0 - TBC
 
+- Support openSUSE Leap 16.0
 - Support RHEL 10
 - Support Fedora 43
 - Remove Fedora 41 support
