@@ -15,7 +15,7 @@
 # limitations under the License.
 
 _rpm_key:
-  - key: https://downloadcontent.opensuse.org/repositories/home:/alvistack/Fedora_Rawhide/repodata/repomd.xml.key
+  - key: https://download.opensuse.org/repositories/home:/alvistack/Fedora_Rawhide/repodata/repomd.xml.key
     fingerprint: 789CFFDE0295B8A1F4E5690C4BECC97550D0B1FD
     state: present
 
@@ -23,12 +23,12 @@ _yum_repository:
   - file: home:alvistack
     name: home_alvistack
     description: home:alvistack (Fedora_Rawhide)
-    baseurl: https://downloadcontent.opensuse.org/repositories/home:/alvistack/Fedora_Rawhide
+    baseurl: https://download.opensuse.org/repositories/home:/alvistack/Fedora_Rawhide
     enabled: true
     priority: "2"
     module_hotfixes: true
     gpgcheck: true
-    gpgkey: https://downloadcontent.opensuse.org/repositories/home:/alvistack/Fedora_Rawhide/repodata/repomd.xml.key
+    gpgkey: https://download.opensuse.org/repositories/home:/alvistack/Fedora_Rawhide/repodata/repomd.xml.key
     state: present
 
 _yum:
