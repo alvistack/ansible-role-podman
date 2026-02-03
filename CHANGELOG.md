@@ -1,12 +1,14 @@
 # Ansible Role for Podman
 
-## 13.2.0 - TBC
+## 13.4.0 - TBC
+
+## 13.3.0 - 2026-02-03
 
 - Support openSUSE Leap 16.0
 - Support RHEL 10
 - Support Fedora 43
 - Remove Fedora 41 support
-- Support Ansible community package 13.2.0
+- Support Ansible community package 13.3.0
 
 ## 12.3.0 - 2026-01-08
 
