@@ -1,3 +1,5 @@
+---
+
 # Copyright 2026 Wong Hoi Sing Edison <hswong3i@pantarei-design.com>
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -11,20 +13,3 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-
-[ssh_connection]
-control_path = %(directory)s/%%h-%%p-%%r
-pipelining = true
-scp_extra_args = -O
-scp_if_ssh = true
-ssh_args = -o ControlMaster=auto -o ControlPersist=600s
-transfer_method = smart
-
-[defaults]
-display_failed_stderr = true
-forks = 20
-host_key_checking = false
-interpreter_python = auto
-nocows = 1
-remote_tmp = $HOME/.ansible/tmp
-retry_files_enabled = false
