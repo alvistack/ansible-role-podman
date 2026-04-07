@@ -2,6 +2,7 @@
 
 ## 13.6.0 - TBC
 
+- Support Ubuntu 26.04
 - Remove Ubuntu 25.04 support
 
 ## 13.5.0 - 2026-03-28
