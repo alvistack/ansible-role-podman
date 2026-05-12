@@ -22,7 +22,7 @@ driver:
 platforms:
   - name: ${_MOLECULE_INSTANCE_NAME}-1
     box: alvistack/rhel-8
-    cpu: 2
+    cpus: 2
     memory: 8192
     provider_raw_config_args:
       - cpu_mode = 'host-passthrough'
