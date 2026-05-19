@@ -23,6 +23,8 @@
   loop: "{{ _rpm_key }}"
   register: result
   until: result is succeeded
+  tags:
+    - _rpm_key
 
 - name: yum-config-manager --add-repo
   ansible.builtin.yum_repository:
@@ -38,6 +40,8 @@
     state: "{{ item.state }}"
     reposdir: "{{ item.reposdir | default('/etc/zypp/repos.d') }}"
   loop: "{{ _yum_repository }}"
+  tags:
+    - _yum_repository
 
 - name: zypper install
   vars:
@@ -51,3 +55,5 @@
   until: result is succeeded
   notify:
     - podman | systemctl restart podman.service
+  tags:
+    - _zypper

@@ -31,7 +31,7 @@ _yum_repository:
     gpgkey: http://downloadcontent.opensuse.org/repositories/home:/alvistack/CentOS_9_Stream/repodata/repomd.xml.key
     state: present
 
-_yum:
+_dnf:
   - { state: latest, name: containernetworking-dnsname }
   - { state: latest, name: containernetworking-plugins }
   - { state: latest, name: containernetworking-podman-machine }

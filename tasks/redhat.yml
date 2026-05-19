@@ -21,6 +21,8 @@
   loop: "{{ _rpm_key }}"
   register: result
   until: result is succeeded
+  tags:
+    - _rpm_key
 
 - name: yum-config-manager --add-repo
   ansible.builtin.yum_repository:
@@ -35,13 +37,17 @@
     gpgkey: "{{ item.gpgkey }}"
     state: "{{ item.state }}"
   loop: "{{ _yum_repository }}"
+  tags:
+    - _yum_repository
 
-- name: yum install
+- name: dnf install
   ansible.builtin.dnf:
     name: "{{ item.name }}"
     state: "{{ item.state }}"
-  loop: "{{ _yum }}"
+  loop: "{{ _dnf }}"
   register: result
   until: result is succeeded
   notify:
     - podman | systemctl restart podman.service
+  tags:
+    - _dnf
