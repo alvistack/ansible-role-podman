@@ -1,7 +1,14 @@
 # Ansible Role for Podman
 
-## 13.6.0 - TBC
+## 13.8.0 - TBC
 
+## 13.7.0 - 2026-05-20
+
+- Support Ansible community package 13.7.0
+
+## 13.6.0 - 2026-05-19
+
+- Support Ansible community package 13.6.0
 - Support Ubuntu 26.04
 - Remove Ubuntu 25.04 support
 
