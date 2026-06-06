@@ -1,6 +1,10 @@
 # Ansible Role for Podman
 
-## 13.8.0 - TBC
+## 14.1.0 - TBC
+
+## 14.0.0 - 2026-06-06
+
+- Support Ansible community package 14.0.0
 
 ## 13.7.0 - 2026-05-20
 
