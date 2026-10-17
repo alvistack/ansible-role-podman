@@ -2,6 +2,8 @@
 
 ## 15.0.0 - TBC
 
+- Remove Ubuntu 25.10 support
+
 ## 14.5.0 - 2026-10-07
 
 - Support Ansible community package 14.5.0
