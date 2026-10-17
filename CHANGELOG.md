@@ -2,6 +2,7 @@
 
 ## 15.0.0 - TBC
 
+- Support Ubuntu 26.10
 - Remove Ubuntu 25.10 support
 
 ## 14.5.0 - 2026-10-07
